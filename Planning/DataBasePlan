@@ -1,0 +1,35 @@
+
+Q1. What types of information does my business currently use?
+-> 
+
+Q2. What types of information does my business need?
+  1. Product
+    - Product details( Product ID,product name,Product Price,Product QTY,Product Desc,Product Images)
+	- Product Review(Product Id, Product Rating,Review)
+	//- Product Sales(Product Id,No of sales,
+	- 
+	
+	
+  2. Orders
+    -Order status(order status id,order status desc) (1.order placed,2.order packed & shipped,3.order transit,4.order deliverd,5.order cancelled,6.order returned)
+    -Order(pid,order id, customer id,ordered qty,order amt,order date,delivery date(max 5 days),order status) composite key(pid,oid)
+	-ReplacedOrders(replacement id,new Order id,old order id,customer id)//->foreign key order id new and old;
+	-//OrderQuery
+	-
+	
+	
+  3. Customer
+    -Customer Details(customer id,f name,l name,c mobile, c add, c email, usernmae, password, created ac date, active)
+	//logical table
+	-purchareHistory(cid,oid,pid,purchare date,delivery status,o amount)
+	
+	
+  4. Expert
+	-Expert Details(e id,f name,l name,c mobile, c add, c email, usernmae, password, created ac date, active)
+    -ExpertPool(e id, e rating,	experties tag, expert level)
+	-ExpertLevel(lvl id, comm per as per level,)
+	-List(list id,e id,product id)
+	-Expert services(e id,cid, ,,)
+  
+  5. Admin
+    -
