@@ -1,4 +1,4 @@
-# Software Requirements Specification (SRS) - Gaming Enthusiasts E-commerce Platform
+# Software Requirements Specification (SRS) - GamingGears
 
 ## 1. Introduction
 The Gaming Enthusiasts E-commerce Platform is an online website that aims to provide a comprehensive collection of gaming gear for gaming enthusiasts. It also offers expert guidance by allowing experts to curate and share gaming setup lists. This document outlines the functional and non-functional requirements for the development of the platform.
