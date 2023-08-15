@@ -1,0 +1,69 @@
+package com.demo.gaminggears.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Cart")
+public class Cart {
+	
+    private int custid;
+    private int proid;
+    private int qty;
+    private double price;
+
+    // Constructors
+    public Cart() {
+    }
+
+    public Cart(int custid, int proid, int qty, double price) {
+        this.custid = custid;
+        this.proid = proid;
+        this.qty = qty;
+        this.price = price;
+    }
+
+    // Getters and Setters
+    public int getCustid() {
+        return custid;
+    }
+
+    public void setCustid(int custid) {
+        this.custid = custid;
+    }
+
+    public int getProid() {
+        return proid;
+    }
+
+    public void setProid(int proid) {
+        this.proid = proid;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "custid=" + custid +
+                ", proid=" + proid +
+                ", qty=" + qty +
+                ", price=" + price +
+                '}';
+    }
+}

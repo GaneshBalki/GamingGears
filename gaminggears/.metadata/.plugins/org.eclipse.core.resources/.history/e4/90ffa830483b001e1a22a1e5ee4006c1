@@ -1,0 +1,53 @@
+package com.demo.gaminggears.model;
+
+public class Area {
+    private int areaId;
+    private String areaName;
+    private int cityId;
+
+    // Constructors
+    public Area() {
+        // Default constructor
+    }
+
+    public Area(int areaId, String areaName, int cityId) {
+        this.areaId = areaId;
+        this.areaName = areaName;
+        this.cityId = cityId;
+    }
+
+    // Getters and Setters
+    public int getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Area{" +
+                "areaId=" + areaId +
+                ", areaName='" + areaName + '\'' +
+                ", cityId=" + cityId +
+                '}';
+    }
+}

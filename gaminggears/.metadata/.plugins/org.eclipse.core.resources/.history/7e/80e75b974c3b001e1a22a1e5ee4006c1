@@ -1,0 +1,22 @@
+package com.demo.gaminggears.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
+import org.springframework.stereotype.Repository;
+
+import com.demo.gaminggears.entity.Product;
+import java.util.List;
+
+	@Repository
+	public interface ProductRepository extends JpaRepository<Product, Integer>{
+	    
+		@Query(value="select * from product",nativeQuery = true)
+		//@Query(value="select p from Product p where price between :lpr and :hpr")
+		List<Product> getByPrice(int lpr, int hpr);
+		
+		@Procedure(procedureName="getNumproducts")
+		public int getCount();
+
+	}
+

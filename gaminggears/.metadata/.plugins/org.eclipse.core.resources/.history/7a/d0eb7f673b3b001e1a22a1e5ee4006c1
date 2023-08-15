@@ -1,0 +1,53 @@
+package com.demo.gaminggears.model;
+
+import java.util.Date;
+
+public class Orders {
+    private int orderid;
+    private int custid;
+    private int disid;
+    private Date odate;
+    private int status;
+    private String paymentmode;
+    private double amount;
+    private int transactionid;
+
+    // Constructors
+    public Order() {
+    }
+
+    public Order(int orderid, int custid, int disid, Date odate, int status, String paymentmode, double amount, int transactionid) {
+        this.orderid = orderid;
+        this.custid = custid;
+        this.disid = disid;
+        this.odate = odate;
+        this.status = status;
+        this.paymentmode = paymentmode;
+        this.amount = amount;
+        this.transactionid = transactionid;
+    }
+
+    // Getters and Setters
+    public int getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
+    }
+
+    public int getCustid() {
+        return custid;
+    }
+
+    public void setCustid(int custid) {
+        this.custid = custid;
+    }
+
+    public int getDisid() {
+        return disid;
+    }
+
+    public void setDisid(int disid) {
+        this.disid = disid;
+   

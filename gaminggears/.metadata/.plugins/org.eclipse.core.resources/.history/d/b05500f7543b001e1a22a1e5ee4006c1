@@ -1,0 +1,107 @@
+package com.demo.gaminggears.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Distrubutor")
+public class Distrubutor {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int disid;
+    private String disname;
+    @ManyToOne
+    private String storeloc;
+    private String licence;
+    private String storename;
+    private String mobile;
+    private String email;
+
+    // Constructors
+    public Distrubutor() {
+    }
+
+    public Distrubutor(int disid, String disname, String storeloc, String licence, String storename, String mobile, String email) {
+        this.disid = disid;
+        this.disname = disname;
+        this.storeloc = storeloc;
+        this.licence = licence;
+        this.storename = storename;
+        this.mobile = mobile;
+        this.email = email;
+    }
+
+    // Getters and Setters
+    public int getDisid() {
+        return disid;
+    }
+
+    public void setDisid(int disid) {
+        this.disid = disid;
+    }
+
+    public String getDisname() {
+        return disname;
+    }
+
+    public void setDisname(String disname) {
+        this.disname = disname;
+    }
+
+    public String getStoreloc() {
+        return storeloc;
+    }
+
+    public void setStoreloc(String storeloc) {
+        this.storeloc = storeloc;
+    }
+
+    public String getLicence() {
+        return licence;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
+    }
+
+    public String getStorename() {
+        return storename;
+    }
+
+    public void setStorename(String storename) {
+        this.storename = storename;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Distributor{" +
+                "disid=" + disid +
+                ", disname='" + disname + '\'' +
+                ", storeloc='" + storeloc + '\'' +
+                ", licence='" + licence + '\'' +
+                ", storename='" + storename + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+}

@@ -1,0 +1,50 @@
+package com.demo.gaminggears.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Address")
+public class Address {
+	@Id
+    private int addressId;
+    private int areaId;
+
+    // Constructors
+    public Address() {
+        // Default constructor
+    }
+
+    public Address(int addressId, int areaId) {
+        this.addressId = addressId;
+        this.areaId = areaId;
+    }
+
+    // Getters and Setters
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
+    public int getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", areaId=" + areaId +
+                '}';
+    }
+}
+

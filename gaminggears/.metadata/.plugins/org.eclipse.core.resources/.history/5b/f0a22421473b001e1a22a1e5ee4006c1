@@ -1,0 +1,107 @@
+package com.demo.gaminggears.model;
+import java.util.Date;
+
+public class Orders {
+    private int orderid;
+    private int custid;
+    private int disid;
+    private Date odate;
+    private int status;
+    private String paymentmode;
+    private double amount;
+    private int transactionid;
+
+    // Constructors
+    public Orders() {
+    }
+
+    public Orders(int orderid, int custid, int disid, Date odate, int status, String paymentmode, double amount, int transactionid) {
+        this.orderid = orderid;
+        this.custid = custid;
+        this.disid = disid;
+        this.odate = odate;
+        this.status = status;
+        this.paymentmode = paymentmode;
+        this.amount = amount;
+        this.transactionid = transactionid;
+    }
+
+    // Getters and Setters
+    public int getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
+    }
+
+    public int getCustid() {
+        return custid;
+    }
+
+    public void setCustid(int custid) {
+        this.custid = custid;
+    }
+
+    public int getDisid() {
+        return disid;
+    }
+
+    public void setDisid(int disid) {
+        this.disid = disid;
+    }
+
+    public Date getOdate() {
+        return odate;
+    }
+
+    public void setOdate(Date odate) {
+        this.odate = odate;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getPaymentmode() {
+        return paymentmode;
+    }
+
+    public void setPaymentmode(String paymentmode) {
+        this.paymentmode = paymentmode;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public int getTransactionid() {
+        return transactionid;
+    }
+
+    public void setTransactionid(int transactionid) {
+        this.transactionid = transactionid;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderid=" + orderid +
+                ", custid=" + custid +
+                ", disid=" + disid +
+                ", odate=" + odate +
+                ", status=" + status +
+                ", paymentmode='" + paymentmode + '\'' +
+                ", amount=" + amount +
+                ", transactionid=" + transactionid +
+                '}';
+    }
+}
