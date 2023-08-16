@@ -26,12 +26,13 @@ public class Distributor {
     private String storename;
     private String mobile;
     private String email;
+    private String pass;
 
     // Constructors
     public Distributor() {
     }
 
-    public Distributor(int disid, String disname, Address addressId, String licence, String storename, String mobile, String email) {
+    public Distributor(int disid, String disname, Address addressId, String licence, String storename, String mobile, String email, String pass) {
         this.disid = disid;
         this.disname = disname;
         this.addressId = addressId;
@@ -39,6 +40,7 @@ public class Distributor {
         this.storename = storename;
         this.mobile = mobile;
         this.email = email;
+        this.pass = pass;
     }
 
     // Getters and Setters
@@ -98,6 +100,14 @@ public class Distributor {
         this.email = email;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     @Override
     public String toString() {
         return "Distributor{" +
@@ -108,6 +118,7 @@ public class Distributor {
                 ", storename='" + storename + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
                 '}';
     }
 }
