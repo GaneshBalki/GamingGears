@@ -21,4 +21,16 @@ public class ProductService implements IProductService {
 		return plist;
 		
 	}
+
+	public void addProduct(Product p) {
+	        productRepository.save(p);
+	}
+
+	public void deleteById(int pid) {	
+		productRepository.deleteById(pid);	
+	}
+
+
+
+	
 }

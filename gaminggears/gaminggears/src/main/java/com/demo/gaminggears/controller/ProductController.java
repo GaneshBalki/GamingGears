@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +26,7 @@ import com.demo.gaminggears.service.ProductService;
 
 
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ProductController {
 	
@@ -38,6 +39,20 @@ public class ProductController {
 		return plist;
 		
 	}
+	
+	@PostMapping("/products/{pid}")
+	public ResponseEntity<String> insertProduct( @RequestBody Product p) {
+		  productService.addProduct(p);
+		  return ResponseEntity.ok("added successfully");
+	}
+	
+	@DeleteMapping("/products/{pid}")
+	public ResponseEntity<String> deleteProduct(@PathVariable int pid) {
+		productService.deleteById(pid);
+		return ResponseEntity.ok("deleted successfully");
+		
+	}
+	
 	/*
 	@GetMapping("/products/{pid}")
 	public ResponseEntity<Product>   getById(@PathVariable int pid) {
@@ -51,20 +66,6 @@ public class ProductController {
 		
 	}
 	
-	@PostMapping("/products/{pid}")
-	public ResponseEntity<String> insertProduct( @RequestBody Product p) {
-		  productService.addProduct(p);
-		  return ResponseEntity.ok("added successfully");
-	}
-	
-	
-	
-	@DeleteMapping("/products/{pid}")
-	public ResponseEntity<String> deleteProduct(@PathVariable int pid) {
-		productService.deleteById(pid);
-		return ResponseEntity.ok("deleted successfully");
-		
-	}
 	
 	@PutMapping("/products/{pid}")
 	public ResponseEntity<String> updateProduct(@RequestBody Product p) {
