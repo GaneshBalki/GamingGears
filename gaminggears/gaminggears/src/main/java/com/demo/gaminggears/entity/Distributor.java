@@ -1,5 +1,6 @@
 package com.demo.gaminggears.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,11 +14,12 @@ import javax.persistence.Table;
 public class Distributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "disid")
     private int disid;
     private String disname;
 
     @ManyToOne
-    @JoinColumn(name = "addressId")
+    @JoinColumn(name = "addressid")
     private Address addressId;
 
     private String licence;

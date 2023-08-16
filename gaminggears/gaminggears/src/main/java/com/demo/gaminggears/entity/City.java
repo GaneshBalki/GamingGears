@@ -1,5 +1,6 @@
 package com.demo.gaminggears.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 @Table(name = "City")
 public class City {
 	@Id
+	@Column(name="cityId")
     private int cityId;
     private String cityName;
     private String state;

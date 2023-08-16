@@ -1,5 +1,6 @@
 package com.demo.gaminggears.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,9 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "proid")
     private int proid;
+    @Column(name = "proname")
     private String proname;
 
     @ManyToOne
@@ -25,6 +28,7 @@ public class Product {
     @JoinColumn(name = "brandid")
     private Brand brandid;
 
+    
     private double price;
     private String url1;
     private String url2;
@@ -33,6 +37,7 @@ public class Product {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "disid")
     private Distributor disid;
 
     // Constructors

@@ -1,0 +1,25 @@
+package com.pattern;
+
+public class NumberTriangle {
+
+	public static void main(String[] args) {
+int rowsNumber=4;
+int spaces=7;
+                 for(int i=1;i<=rowsNumber;i++) {
+                	 int spaceBefore=rowsNumber;
+                
+                	
+                		 for(int k=0;k<spaceBefore;k++) {
+                			 System.out.print(" ");
+                		 }
+                		 for(int l=1;l<=i;l++) {
+                			 System.out.print(i+" ");
+                		 }
+                	
+                		 
+                	 
+                	 System.out.println();
+                 }
+	}
+
+}

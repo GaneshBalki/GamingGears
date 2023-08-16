@@ -1,5 +1,6 @@
 package com.demo.gaminggears.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 @Table(name = "Area")
 public class Area {
     @Id
+    @Column(name = "areaid")
     private int areaId;
     private String areaName;
 

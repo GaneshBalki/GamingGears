@@ -1,5 +1,6 @@
 package com.demo.gaminggears.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,10 +11,11 @@ import javax.persistence.Table;
 @Table(name = "Address")
 public class Address {
     @Id
+    @Column(name = "addressid")
     private int addressId;
     
     @ManyToOne
-    @JoinColumn(name = "areaId")
+    @JoinColumn(name = "areaid")
     private Area areaId;
 
     // Constructors

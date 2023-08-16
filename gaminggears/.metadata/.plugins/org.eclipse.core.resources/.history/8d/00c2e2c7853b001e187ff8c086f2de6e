@@ -1,0 +1,26 @@
+package com.pattern;
+
+public class NumberTriangle {
+
+	public static void main(String[] args) {
+
+                 for(int i=1;i<=4;i++) {
+                	 int num=7/(i+1);
+                	
+                		
+                		 for(int k=num;k>0;k--) {
+                			 System.out.print(" ");
+                		 }
+                		 for(int l=1;l<=i;l++) {
+                			 System.out.print(" ");
+                		 }
+                		 for(int k=num;k>0;k--) {
+                			 System.out.print(" ");
+                		 }
+                		 
+                	 
+                	 System.out.println();
+                 }
+	}
+
+}
