@@ -10,7 +10,7 @@ import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.repository.DistributorRepository;
 
 @Service
-public class LoginService implements ILoginService{
+public class DistributorService implements IDistributorService{
 	@Autowired
 	DistributorRepository distributorRepository;
 	
@@ -33,6 +33,18 @@ public class LoginService implements ILoginService{
 	public void registerDistributor(Distributor dis) {
 		// TODO Auto-generated method stub
 		distributorRepository.save(dis);
+	}
+	public Distributor forgetPassDistributor(String disemail) {
+		// TODO Auto-generated method stub
+List<Distributor> dislist =distributorRepository.findAll();
+		
+		for(Distributor d : dislist) {
+			if(d.getEmail().equalsIgnoreCase(disemail)) {
+				System.out.println(d);
+				return d;
+			}
+		}
+		return null;
 	}
 
 }

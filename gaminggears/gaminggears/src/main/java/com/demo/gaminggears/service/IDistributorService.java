@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.demo.gaminggears.entity.Distributor;
 
-public interface ILoginService {
+public interface IDistributorService {
 	List<Distributor> getAllDistributors();
 	
 	

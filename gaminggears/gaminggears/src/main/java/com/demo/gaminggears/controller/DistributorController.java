@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.entity.Product;
-import com.demo.gaminggears.service.LoginService;
+import com.demo.gaminggears.service.DistributorService;
 import com.demo.gaminggears.service.ProductService;
 
 
@@ -32,30 +32,36 @@ import com.demo.gaminggears.service.ProductService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-public class LoginController {
+public class DistributorController {
 	
 	@Autowired (required = true)
-	LoginService loginService;
+	DistributorService distributorService;
 	
 	@GetMapping("/distributors")
 	public List<Distributor> getAllDistributors() {
-		List<Distributor> dislist=loginService.getAllDistributors();
+		List<Distributor> dislist=distributorService.getAllDistributors();
 		return dislist;
 		
 	}
 	@PostMapping("/dislogin")
 	public Distributor dislogin(@RequestBody Login dislogin) {
 		
-		return loginService.verfiyDistributor(dislogin);
+		return distributorService.verfiyDistributor(dislogin);
 		
 	}
-	
+	@PostMapping("/disforgetpass")
+	public Distributor dislogin(@RequestBody String email) {
+		
+		return distributorService.forgetPassDistributor(email);
+		
+	}
 	@PostMapping("/distributor")
 	public void dislogin(@RequestBody Distributor dis) {
 		
-		loginService.registerDistributor(dis);
+		distributorService.registerDistributor(dis);
 		
 	}
+	
 	/*
 	@GetMapping("/products/{pid}")
 	public ResponseEntity<Product>   getById(@PathVariable int pid) {
