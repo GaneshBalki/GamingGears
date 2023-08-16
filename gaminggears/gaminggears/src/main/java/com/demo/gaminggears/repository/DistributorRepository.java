@@ -11,8 +11,7 @@ import java.util.List;
 	@Repository
 	public interface DistributorRepository extends JpaRepository<Distributor, Integer>{
 	    
-		@Query(value="select * from distributor",nativeQuery = true)
-				List<Distributor> getAllDistributor();
+		
 		
 	}
 

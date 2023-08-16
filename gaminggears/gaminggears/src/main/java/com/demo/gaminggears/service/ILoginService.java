@@ -6,4 +6,6 @@ import com.demo.gaminggears.entity.Distributor;
 
 public interface ILoginService {
 	List<Distributor> getAllDistributors();
+	
+	
 }

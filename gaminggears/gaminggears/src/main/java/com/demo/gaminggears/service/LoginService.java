@@ -30,5 +30,9 @@ public class LoginService implements ILoginService{
 		}
 		return null;
 	}
+	public void registerDistributor(Distributor dis) {
+		// TODO Auto-generated method stub
+		distributorRepository.save(dis);
+	}
 
 }
