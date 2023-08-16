@@ -49,6 +49,13 @@ public class LoginController {
 		return loginService.verfiyDistributor(dislogin);
 		
 	}
+	
+	@PostMapping("/distributor")
+	public void dislogin(@RequestBody Distributor dis) {
+		
+		loginService.registerDistributor(dis);
+		
+	}
 	/*
 	@GetMapping("/products/{pid}")
 	public ResponseEntity<Product>   getById(@PathVariable int pid) {
