@@ -8,33 +8,33 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AskExpert")
-public class AskExpert {
+@Table(name = "Askexpert")
+public class Askexpert {
     @Id
     @Column(name = "queid")
     private int queId;
 
     @ManyToOne
-    @JoinColumn(name = "custId")
-    private Customer custId;
+    @JoinColumn(name = "custid")
+    private Customer custid;
 
     @ManyToOne
-    @JoinColumn(name = "expId")
-    private Expert expId;
+    @JoinColumn(name = "expid")
+    private Expert expid;
 
     private String que;
     private int status;
     private String resolution;
 
     // Constructors
-    public AskExpert() {
+    public Askexpert() {
         // Default constructor
     }
 
-    public AskExpert(int queId, Customer custId, Expert expId, String que, int status, String resolution) {
+    public Askexpert(int queId, Customer custId, Expert expId, String que, int status, String resolution) {
         this.queId = queId;
-        this.custId = custId;
-        this.expId = expId;
+        this.custid = custId;
+        this.expid = expId;
         this.que = que;
         this.status = status;
         this.resolution = resolution;
@@ -49,20 +49,20 @@ public class AskExpert {
         this.queId = queId;
     }
 
-    public Customer getCustId() {
-        return custId;
+    public Customer getCustid() {
+        return custid;
     }
 
-    public void setCustId(Customer custId) {
-        this.custId = custId;
+    public void setCustid(Customer custId) {
+        this.custid = custId;
     }
 
-    public Expert getExpId() {
-        return expId;
+    public Expert getExpid() {
+        return expid;
     }
 
-    public void setExpId(Expert expId) {
-        this.expId = expId;
+    public void setExpid(Expert expId) {
+        this.expid = expId;
     }
 
     public String getQue() {
@@ -94,8 +94,8 @@ public class AskExpert {
     public String toString() {
         return "AskExpert{" +
                 "queId=" + queId +
-                ", custId=" + custId +
-                ", expId=" + expId +
+                ", custId=" + custid +
+                ", expId=" + expid +
                 ", que='" + que + '\'' +
                 ", status=" + status +
                 ", resolution='" + resolution + '\'' +

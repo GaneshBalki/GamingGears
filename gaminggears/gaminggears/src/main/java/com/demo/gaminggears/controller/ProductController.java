@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.service.IProductService;
 import com.demo.gaminggears.service.ProductService;
 
 
@@ -31,7 +32,7 @@ import com.demo.gaminggears.service.ProductService;
 public class ProductController {
 	
 	@Autowired (required = true)
-	ProductService productService;
+	IProductService productService;
 	
 	@GetMapping("/products")
 	public List<Product>   displayAllProducts() {
@@ -50,6 +51,12 @@ public class ProductController {
 	public ResponseEntity<String> deleteProduct(@PathVariable int pid) {
 		productService.deleteById(pid);
 		return ResponseEntity.ok("deleted successfully");
+		
+	}
+	@GetMapping("/products/{pid}")
+	public Product getProduct(@PathVariable int pid) {
+		return productService.getById(pid);
+	
 		
 	}
 	

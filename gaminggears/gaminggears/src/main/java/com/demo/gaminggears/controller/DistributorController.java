@@ -25,6 +25,7 @@ import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.service.DistributorService;
+import com.demo.gaminggears.service.IDistributorService;
 import com.demo.gaminggears.service.ProductService;
 
 
@@ -35,7 +36,7 @@ import com.demo.gaminggears.service.ProductService;
 public class DistributorController {
 	
 	@Autowired (required = true)
-	DistributorService distributorService;
+	IDistributorService distributorService;
 	
 	@GetMapping("/distributors")
 	public List<Distributor> getAllDistributors() {
@@ -56,9 +57,10 @@ public class DistributorController {
 		
 	}
 	@PostMapping("/distributor")
-	public void dislogin(@RequestBody Distributor dis) {
+	public ResponseEntity<String> dislogin(@RequestBody Distributor dis) {
 		
 		distributorService.registerDistributor(dis);
+		return ResponseEntity.ok("added successfully");
 		
 	}
 	

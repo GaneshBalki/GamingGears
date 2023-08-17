@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BuildUnit")
-public class BuildUnit {
+@Table(name = "Buildunit")
+public class Buildunit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "unitid")
@@ -31,10 +31,10 @@ public class BuildUnit {
     private int gpu;
 
     // Constructors
-    public BuildUnit() {
+    public Buildunit() {
     }
 
-    public BuildUnit(int unitid, Expert expid, int ram, int ssd, int cpu, int processor, int cpucooler, int mouse, int motherboard, int gpu) {
+    public Buildunit(int unitid, Expert expid, int ram, int ssd, int cpu, int processor, int cpucooler, int mouse, int motherboard, int gpu) {
         this.unitid = unitid;
         this.expid = expid;
         this.ram = ram;

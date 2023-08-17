@@ -30,6 +30,13 @@ public class ProductService implements IProductService {
 		productRepository.deleteById(pid);	
 	}
 
+	@Override
+	public Product getById(int pid) {
+		// TODO Auto-generated method stub
+		
+		return productRepository.findById(pid).orElse(null);
+	}
+
 
 
 	

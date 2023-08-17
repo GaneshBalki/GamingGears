@@ -6,11 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Expert")
+@Table(name = "Expert")
 public class Expert {
-	@Id
-	@Column(name = "expid")
+    @Id
+    @Column(name = "expid")
     private int expid;
+    private String expname;
     private String certification;
     private String skills;
     private int sells;
@@ -22,8 +23,9 @@ public class Expert {
     public Expert() {
     }
 
-    public Expert(int expid, String certification, String skills, int sells, int experience, double commission, int status) {
+    public Expert(int expid, String expname, String certification, String skills, int sells, int experience, double commission, int status) {
         this.expid = expid;
+        this.expname = expname;
         this.certification = certification;
         this.skills = skills;
         this.sells = sells;
@@ -39,6 +41,14 @@ public class Expert {
 
     public void setExpid(int expid) {
         this.expid = expid;
+    }
+
+    public String getExpname() {
+        return expname;
+    }
+
+    public void setExpname(String expname) {
+        this.expname = expname;
     }
 
     public String getCertification() {
@@ -93,6 +103,7 @@ public class Expert {
     public String toString() {
         return "Expert{" +
                 "expid=" + expid +
+                ", expname='" + expname + '\'' +
                 ", certification='" + certification + '\'' +
                 ", skills='" + skills + '\'' +
                 ", sells=" + sells +
@@ -102,4 +113,3 @@ public class Expert {
                 '}';
     }
 }
-
