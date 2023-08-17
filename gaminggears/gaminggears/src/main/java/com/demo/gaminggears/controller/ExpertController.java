@@ -17,7 +17,7 @@ import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.service.ExpertService;
 import com.demo.gaminggears.service.IExpertSevice;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins ="*")
 @RestController
 public class ExpertController {
 	@Autowired
@@ -28,13 +28,13 @@ public class ExpertController {
 		return iexpertService.getAllExperts();
 			}
 	
-	@PostMapping("/expert/{expertid}")
+	@PostMapping("/experts/{expid}")
 	public ResponseEntity<String> insertExpert( @RequestBody Expert e) {
 		  iexpertService.addExpert(e);
 		  return ResponseEntity.ok("added successfully");
 	}
 	
-	@GetMapping("/expert/{expertid}")
+	@GetMapping("/experts/{expid}")
 	public Expert getExpert (@PathVariable int expertid) {
 		return iexpertService.getExpertById(expertid);
 		

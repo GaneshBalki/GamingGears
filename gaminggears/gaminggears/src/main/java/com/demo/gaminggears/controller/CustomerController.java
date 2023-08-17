@@ -13,7 +13,7 @@ import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.service.CustomerService;
 import com.demo.gaminggears.service.ICustomerService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 public class CustomerController {
 	

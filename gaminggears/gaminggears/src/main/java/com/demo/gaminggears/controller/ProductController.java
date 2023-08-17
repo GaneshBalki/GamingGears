@@ -27,7 +27,7 @@ import com.demo.gaminggears.service.ProductService;
 
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 public class ProductController {
 	
