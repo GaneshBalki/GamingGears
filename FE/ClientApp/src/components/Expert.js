@@ -69,10 +69,10 @@ export class Expert extends Component {
                     <h5 className="card-title mb-3">Name : {Expert.expname}</h5>
                   </a>
                   <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <p> Sells : {Expert.sells}</p>
+                    <p> Sells : {Expert.sells} units</p>
                   </a>
                   <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <p>Experience : {Expert.experience}</p>
+                    <p>Experience : {Expert.experience} years</p>
                   </a>
 
                 </div>

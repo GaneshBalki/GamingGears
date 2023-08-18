@@ -25,9 +25,11 @@ const ProductDetails = (props) => {
     }
 
     return (
-        <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0' }}>
+        <div className="container mt-5"  style={{ background: '#f8f9fa' }}>
           <div className="row" >
                 <div className="col-md-6">
+                <pre></pre>
+                        <pre></pre>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active" data-bs-interval="10000">
@@ -56,6 +58,7 @@ const ProductDetails = (props) => {
                 </div>
                 <div className="col-md-6">
                     <div className="product-details">
+                        <pre></pre>
                         <pre></pre>
 
                         <h2>{product.proname}</h2>

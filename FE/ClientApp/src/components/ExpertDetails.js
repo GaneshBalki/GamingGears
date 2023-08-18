@@ -28,7 +28,8 @@ const ExpertDetails = (props) => {
     }
 
     return (
-        <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0' }}>
+ <div className="container mt-5" >
+    <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0' }}>
           <div className="row" >
                 <div className="col-md-6">
                 <img src={expertlogo} className="d-block" style={{ height: '280px' }} alt="Slide 1" />
@@ -60,9 +61,11 @@ const ExpertDetails = (props) => {
             <pre></pre>
                      
             {/* buid unit lists */}
-               <h4>{expert.expid}</h4>
-                <Assembly expid={expert.expid}></Assembly>       
+               
+                  
          
+        </div>
+        <Assembly expid={expert.expid}></Assembly>    
         </div>
     );
 }

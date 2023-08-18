@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ExpertService from '../service/ExpertService';
+import { Link } from 'react-router-dom';
 
 class Assembly extends Component {
     constructor(props) {
@@ -13,40 +14,184 @@ class Assembly extends Component {
 
     componentDidMount() {
         this.fetchdata();
+
     }
 
     fetchdata() {
-        const { data } = this.props; // Assuming you're passing the data prop correctly
-        data.forEach(item => {
-            const expid = item.expid.expid;
-            ExpertService.getAssemblyList({ expid })
-                .then((response) => {
-                    this.setState(prevState => ({
-                        assemblyarr: [...prevState.assemblyarr, ...response.data],
-                        searcharr: [...prevState.assemblyarr, ...response.data]
-                    }));
-                })
-                .catch();
-        });
+        console.log(this.props.expid + " is the expert id")
+        ExpertService.getAssemblyList(this.props.expid)
+            .then((response) => {
+                this.setState({ ...this.state, assemblyarr: [...response.data], searcharr: [...response.data] })
+            }).catch()
     }
+
 
     render() {
         return (
             <div>
+
                 {this.state.searcharr.map((item, index) => (
-                    <div key={index}>
-                        <h2>Unit ID: {item.unitid}</h2>
-                        <h3>Expert Info</h3>
-                        {/* Render expert properties */}
+                    <div style={{ marginBottom: '20px' }} key={index}>
+                        <table className="table table-hover" style={{ backgroundColor: '#f1f1f1', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.2)' }}>
                         
-                        <h3>Ram Info</h3>
-                        <p>Ram Name: {item.ram.proname}</p>
-                        <p>Ram Price: {item.ram.price}</p>
-                        {/* More ram properties */}
-                        
-                        {/* Similar code for other properties like ssd, cpu, etc. */}
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        <Link to={`/products/${item.cpu.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.cpu.url1} className="w-100" alt={item.ram.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.cpu.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.cpu.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.cpu.price}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>
+                                        <Link to={`/products/${item.cpucooler.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.cpucooler.url1} className="w-100" alt={item.cpu.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.cpucooler.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.cpucooler.proname}
+                                            
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.cpucooler.price}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>
+                                        <Link to={`/products/${item.gpu.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.gpu.url1} className="w-100" alt={item.cpucooler.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.gpu.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.gpu.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.gpu.price}</td>
+                                   
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>
+                                        <Link to={`/products/${item.motherboard.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.motherboard.url1} className="w-100" alt={item.gpu.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.motherboard.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.motherboard.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.motherboard.price}</td>
+                                  
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>
+                                        <Link to={`/products/${item.mouse.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.mouse.url1} className="w-100" alt={item.gpu.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.mouse.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.mouse.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.mouse.price}</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>
+                                        <Link to={`/products/${item.processor.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.processor.url1} className="w-100" alt={item.processor.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.processor.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.processor.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.processor.price}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>
+                                        <Link to={`/products/${item.ram.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.ram.url1} className="w-100" alt={item.ram.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.ram.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.ram.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.ram.price}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>
+                                        <Link to={`/products/${item.ssd.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            <img src={item.ssd.url1} className="w-100" alt={item.ssd.url1} style={{ height: 35, objectFit: 'contain' }} />
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/products/${item.ssd.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                            {item.ssd.proname}
+                                        </Link>
+                                    </td>
+                                    <td>&#8377; {item.ssd.price}</td>
+                                </tr>
+                               
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <h3>Total Price</h3>
+                                    </td>
+                                    <td>&#8377; {
+                                    item.cpu.price+item.cpucooler.price+item.gpu.price+item.motherboard.price+item.mouse.price+item.processor.price+item.ram.price+item.ssd.price}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <h3></h3>
+                                    </td>
+                                    <td> <button className="btn btn-primary">Buy Now</button></td>
+
+                                </tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                        <pre></pre>
+                        <pre></pre>
+                        <pre></pre>
+                        <pre></pre>
                     </div>
+
                 ))}
+
             </div>
         );
     }
