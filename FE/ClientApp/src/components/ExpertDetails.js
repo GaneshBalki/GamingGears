@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom'; // Import useParams hook
 import HomeProducts from './HomeProducts';
 import expertlogo from '../images/expert.png'
 import ExpertService from '../service/ExpertService';
+import Assembly from './Assembly';
 
 const ExpertDetails = (props) => {
     const { expid } = useParams(); // Access the 'pid' property
-    console.log('pid:', expid);
-    console.log('props:', props);
-    console.log('useParams:', useParams());
+    // console.log('pid:', expid);
+    // console.log('props:', props);
+    // console.log('useParams:', useParams());
     const [expert, setExpert] = React.useState(null);
 
     React.useEffect(() => {
@@ -59,7 +60,8 @@ const ExpertDetails = (props) => {
             <pre></pre>
                      
             {/* buid unit lists */}
-                       
+               <h4>{expert.expid}</h4>
+                <Assembly expid={expert.expid}></Assembly>       
          
         </div>
     );

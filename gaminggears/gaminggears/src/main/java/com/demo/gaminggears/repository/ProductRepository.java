@@ -13,5 +13,6 @@ import java.util.List;
 		@Query(value="select * from product",nativeQuery = true)
 				List<Product> getAllProduct();
 		
+		
 	}
 
