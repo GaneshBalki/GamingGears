@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import ProductService from '../service/ProductService';
+import React from 'react';
+
 import { useParams } from 'react-router-dom'; // Import useParams hook
-import HomeProducts from './HomeProducts';
+
 import expertlogo from '../images/expert.png'
 import ExpertService from '../service/ExpertService';
 import Assembly from './Assembly';
@@ -31,7 +31,7 @@ const ExpertDetails = (props) => {
  <div className="container mt-5" >
     <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0' }}>
           <div className="row" >
-                <div className="col-md-6">
+                <div className="col-md-6 ">
                 <img src={expertlogo} className="d-block" style={{ height: '280px' }} alt="Slide 1" />
 
                     

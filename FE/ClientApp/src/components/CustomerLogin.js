@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import logo from '../images/logo1.png'
 const CustomerLogin = () => {
   const [fullName, setFullName] = useState(''); // State for full name
   const [email, setEmail] = useState(''); // State for email
@@ -18,9 +18,10 @@ const CustomerLogin = () => {
     <div className="container mt-5" style={{ height: '450px' }}>
       <div className="row" >
 
-        <div className="col-md-7 d-flex justify-content-center align-items-center" style={{ backgroundColor: '#0073cf ', height: '450px', color: 'white' }}>
-          India, officially the Republic of India (ISO: Bhārat Gaṇarājya), is a country in South Asia. It is the seventh-largest country by area; the most populous country as of June 2023; and from the time of its independence in 1947, the world's most populous democracy. Bounded by the Indian Ocean on the south, the … See more
-        </div>
+        <div className="col-md-7 d-flex justify-content-center align-items-center" style={{ backgroundColor: '#0074cf ', height: '450px', color: 'white' }}>
+        <img src={logo} className="w-100" alt="logo" style={{ height: 70, objectFit: 'contain' }} />
+                                    
+                  </div>
 
 
         <div className="col-md-5 d-flex justify-content-center align-items-center " style={{ background: '#f8f9fa', height: '450px' }}>

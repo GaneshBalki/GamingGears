@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ExpertService from '../service/ExpertService';
 import { Link } from 'react-router-dom';
 import expert from '../images/expert.png'
-import Footer from './Footer';
+import './HomeProduct.css';
 export class Expert extends Component {
   static displayName = Expert.name;
   constructor(props) {
@@ -47,7 +47,7 @@ export class Expert extends Component {
           {/* ProductCards */}
           {this.state.searcharr.map((Expert) => (
             <div key={Expert.expid} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex">
-              <div className="card flex-fill border-0" style={{ background: '#f8f9fa' }}>
+              <div className="card flex-fill border-0 card-hover" style={{ background: '#f8f9fa' }}>
                 <div className="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
                 <Link to={`/experts/${Expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>
                   <img src={expert} className="w-100" alt={Expert.experience} style={{ height: 150, objectFit: 'contain' }} />
