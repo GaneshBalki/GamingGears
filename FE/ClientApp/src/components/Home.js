@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import cor1 from '../images/OIP.jpg'
-import logo from '../images/logo.png'
+
 import logo2 from '../images/logo2.png'
 import HomeProducts from './HomeProducts';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -40,7 +39,7 @@ export class Home extends Component {
 
 
         
-        <Footer></Footer>
+       
         
 
       </div>

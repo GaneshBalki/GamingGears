@@ -27,9 +27,9 @@ public class ExpertService implements IExpertSevice{
 	}
 
 	@Override
-	public Expert getExpertById(int expertid) {
+	public Expert getExpertById(int expid) {
 		// TODO Auto-generated method stub
-		return expertRepository.findById(expertid).orElse(null);
+		return expertRepository.findById(expid).orElse(null);
 		
 	}
     

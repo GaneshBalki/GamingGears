@@ -5,7 +5,7 @@
   }
   
   .card-hover:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjust the box shadow as needed */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adjust the box shadow as needed */
     background-color: #e0e0e0; /* Change to the desired hover background color (darker) */
   }
   

@@ -10,6 +10,6 @@ public interface IExpertSevice {
 
 	void addExpert(Expert e);
 
-	Expert getExpertById(int expertid);
+	Expert getExpertById(int expid);
 
 }

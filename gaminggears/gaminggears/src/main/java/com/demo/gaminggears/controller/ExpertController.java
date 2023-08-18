@@ -35,8 +35,8 @@ public class ExpertController {
 	}
 	
 	@GetMapping("/experts/{expid}")
-	public Expert getExpert (@PathVariable int expertid) {
-		return iexpertService.getExpertById(expertid);
+	public Expert getExpert (@PathVariable int expid) {
+		return iexpertService.getExpertById(expid);
 		
 		
 	}

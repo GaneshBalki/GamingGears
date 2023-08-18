@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ExpertService from '../service/ExpertService';
-import logo from '../images/logo.png'
+import { Link } from 'react-router-dom';
 import expert from '../images/expert.png'
 import Footer from './Footer';
 export class Expert extends Component {
@@ -49,6 +49,7 @@ export class Expert extends Component {
             <div key={Expert.expid} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex">
               <div className="card flex-fill border-0" style={{ background: '#f8f9fa' }}>
                 <div className="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
+                <Link to={`/experts/${Expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>
                   <img src={expert} className="w-100" alt={Expert.experience} style={{ height: 150, objectFit: 'contain' }} />
                   <a href="#!" onClick={() => this.getExpertById(Expert.expid)}>
                     <div className="mask">
@@ -60,7 +61,9 @@ export class Expert extends Component {
                       <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                     </div>
                   </a>
+                  </Link>
                 </div>
+                <Link to={`/experts/${Expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>
                 <div className="card-body">
                   <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
                     <h5 className="card-title mb-3">Name : {Expert.expname}</h5>
@@ -73,11 +76,12 @@ export class Expert extends Component {
                   </a>
 
                 </div>
+                </Link>
               </div>
             </div>
           ))}
         </div>
-        <Footer></Footer>
+       
       </div>
 
 
