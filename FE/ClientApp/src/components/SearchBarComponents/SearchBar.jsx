@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { json } from "react-router-dom";
+
 
 function SearchBar({setResults}) {
 const [input,setInput]=useState("")

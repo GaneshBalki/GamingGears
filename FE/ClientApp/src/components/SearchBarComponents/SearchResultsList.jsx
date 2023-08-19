@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './SearchResultList.css';
 
 const SearchResultsList = ({results}) => {
   
 
   return (
-    <div>{
+    <div className='results-list' style={{ width: '350px', borderRadius: '0',  boxShadow: 'none', outline: 'none', marginLeft: '348px',border: '0.05px solid #ced4da' }}>{
      results.map((result,id)=>{
         
-        return  <Link to={`/products/${result.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+        return  <Link to={`/products/${result.proid}`} className="text-reset search-result" style={{ textDecoration: 'none', boxShadow: '0 4px 6px rgba(0.01, 0.01, 0.01, 0.05)', }}>
         <div key={id}>{result.proname}</div></Link>
      })
     }

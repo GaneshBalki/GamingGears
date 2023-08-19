@@ -9,7 +9,9 @@ import SearchResultsList from './SearchBarComponents/SearchResultsList';
 
 const NavMenu = () => {
   const [collapsed, setCollapsed] = useState(true);
+
   const [results, setResults]=useState([]);
+  
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
   };
@@ -21,7 +23,7 @@ const NavMenu = () => {
 
         {/* searchbar div */}
         <SearchBar setResults={setResults}></SearchBar>
-        <SearchResultsList results={results}></SearchResultsList>
+       
 
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!collapsed} navbar>
@@ -44,6 +46,7 @@ const NavMenu = () => {
           </ul>
         </Collapse>
       </Navbar>
+      <SearchResultsList results={results}></SearchResultsList>
     </header>
   );
 };

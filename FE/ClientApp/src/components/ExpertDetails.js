@@ -48,7 +48,7 @@ const ExpertDetails = (props) => {
                         <pre></pre>
                         <pre></pre>
                         <pre></pre>
-                        <h4>&#8377; {expert.experience}</h4>
+                        <h4>Experience {expert.experience}</h4>
                         <pre></pre>
 
                         <button className="btn btn-primary">Request</button>
