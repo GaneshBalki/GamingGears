@@ -4,6 +4,7 @@ import ExpertDetails from "./components/ExpertDetails.js";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import ProductDetails from "./components/ProductDetails.js";
+import ProductsByCat from "./components/ProductsByCat.js";
 
 const AppRoutes = [
   {
@@ -29,6 +30,10 @@ const AppRoutes = [
   {
     path: '/experts/:expid',
     element: <ExpertDetails></ExpertDetails>
+  },
+  {
+    path: '/category-products/:catid',
+    element: <ProductsByCat></ProductsByCat>
   }
 ];
 

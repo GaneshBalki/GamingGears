@@ -8,5 +8,8 @@ class ProductService{
     getProductById(pid){
         return axios.get(`http://localhost:8282/products/${pid}`)
     }
+    getProductByCatId(catid){
+        return axios.get(`http://localhost:8282/category-products/${catid}`)
+    }
 }
 export default new ProductService();
