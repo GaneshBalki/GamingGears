@@ -15,12 +15,12 @@ function HomeCategory() {
         <div className="col-lg-3 col-md-4 col-sm-12 mb-4 d-flex">
           <div className="card flex-fill border-0" style={{ background: '#f8f9fa', width: '100%' }}>
             <a href="#" className="text-center d-flex flex-column justify-content-center" style={{ textDecoration: 'none' }}>
+            <Link to={`/category-products/${224}`} className="text-reset" style={{ textDecoration: 'none' }}>
               <button type="button" className="btn btn-outline-secondary mx-auto p-3 mb-2" style={{ border: 'none' }} data-mdb-ripple-color="dark">
-                <Link to={`/category-products/${224}`} className="text-reset" style={{ textDecoration: 'none' }}>
                   <img src={cabinet} className="rounded mx-auto d-block" alt="..." height={100} width={100} />
-                </Link>
               </button>
               <div className="text-dark">Cabinet</div>
+              </Link>
             </a>
           </div>
 
