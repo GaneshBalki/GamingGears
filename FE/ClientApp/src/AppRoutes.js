@@ -1,7 +1,9 @@
 import CustomerLogin from "./components/CustomerLogin.js";
+import CustomerRegistration from "./components/CustomerRegistration.js";
 import { Expert } from "./components/Expert.js";
 import ExpertDetails from "./components/ExpertDetails.js";
 import { FetchData } from "./components/FetchData";
+import ForgotPassword from "./components/ForgotPassword.js";
 import { Home } from "./components/Home";
 import ProductDetails from "./components/ProductDetails.js";
 import ProductsByCat from "./components/ProductsByCat.js";
@@ -34,6 +36,14 @@ const AppRoutes = [
   {
     path: '/category-products/:catid',
     element: <ProductsByCat></ProductsByCat>
+  },
+  {
+    path: '/customer-registration',
+    element: <CustomerRegistration></CustomerRegistration>
+  },
+  {
+    path: '/forgot-password/:email',
+    element: <ForgotPassword></ForgotPassword>
   }
 ];
 

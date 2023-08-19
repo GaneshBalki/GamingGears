@@ -32,6 +32,13 @@ List<Customer> custlist =customerRepository.findAll();
 		}
 		return null;
 	}
+
+
+	@Override
+	public void forgetPassword(Login custlogin) {
+		
+		customerRepository.updatePassword(custlogin.getEmail(), custlogin.getPass());
+	}
 	
 	
 }

@@ -46,7 +46,7 @@ const NavMenu = () => {
           </ul>
         </Collapse>
       </Navbar>
-      <SearchResultsList results={results}></SearchResultsList>
+      <SearchResultsList results={results} ></SearchResultsList>
     </header>
   );
 };

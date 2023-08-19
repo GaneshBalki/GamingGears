@@ -3,7 +3,9 @@ package com.demo.gaminggears.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +35,9 @@ public class CustomerController {
 		
 	}
 	
+	@PutMapping("/forgot-password")
+	public ResponseEntity<String> forgetPassword(@RequestBody Login custlogin) {
+		customerService.forgetPassword(custlogin);
+		return ResponseEntity.ok("ok");
+	}
 }

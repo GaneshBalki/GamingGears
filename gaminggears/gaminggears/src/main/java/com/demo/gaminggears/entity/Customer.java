@@ -10,9 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "Customer",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,32 +24,32 @@ public class Customer {
     private String mobNumber;
     private String email;
     private String pass;
-    private Date birthdate;
     private int userStatus;
     private int isExpert;
-
-    @ManyToOne
-    @JoinColumn(name = "addressId")
-    private Address addressId;
+    private String address;
+//    @ManyToOne
+//    @JoinColumn(name = "addressId")
+//    private Address addressId;
+    
 
     // Constructors
     public Customer() {
         // Default constructor
     }
 
-    public Customer(int custId, String fname, String lname, String mobNumber, String email, String pass,
-                    Date birthdate, int userStatus, int isExpert, Address addressId) {
-        this.custId = custId;
+    public Customer( String fname, String lname, String mobNumber, String email, String pass,
+                    int userStatus, int isExpert,String address) {
+        //this.custId = custId;
         this.fname = fname;
         this.lname = lname;
         this.mobNumber = mobNumber;
         this.email = email;
         this.pass = pass;
-        this.birthdate = birthdate;
+        //this.birthdate = birthdate;
         this.userStatus = userStatus;
         this.isExpert = isExpert;
-        this.addressId = addressId;
-    }
+        this.address = address;
+  }
 
     // Getters and Setters
     public int getCustId() {
@@ -99,13 +100,6 @@ public class Customer {
         this.pass = pass;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
 
     public int getUserStatus() {
         return userStatus;
@@ -123,12 +117,12 @@ public class Customer {
         this.isExpert = isExpert;
     }
 
-    public Address getAddressId() {
-        return addressId;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
+    public void setAddressId(String address) {
+        this.address = address;
     }
 
     // toString method
@@ -141,10 +135,9 @@ public class Customer {
                 ", mobNumber='" + mobNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
-                ", birthdate=" + birthdate +
                 ", userStatus=" + userStatus +
                 ", isExpert=" + isExpert +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 '}';
     }
 }

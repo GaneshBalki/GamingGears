@@ -9,4 +9,6 @@ public interface ICustomerService {
 
 	Customer verfiyCustomer(Login custlogin);
 
+	void forgetPassword(Login custlogin);
+
 }
