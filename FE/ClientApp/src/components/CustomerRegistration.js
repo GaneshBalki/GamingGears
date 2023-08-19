@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import './CustomerRegistration.css'
 const CustomerRegistration = () => {
     const [formData, setFormData] = useState({
         fname: '',
@@ -58,11 +58,11 @@ const CustomerRegistration = () => {
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-header">Registration Form</div>
+        <div className="container" >
+            <div className="row justify-content-center" >
+                <div className="col-md-6" >
+                    <div className="card card-hover" style={{ border: 'none', height: '600px', background: '#f8f9fa' }}>
+                        <div className="card-header" style={{ border: 'none', height: '70px', background: '#f8f9fa', fontSize: '2em' }}>Registration Form</div>
                         <div className="card-body">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
@@ -134,8 +134,14 @@ const CustomerRegistration = () => {
                                         value={formData.address}
                                         onChange={handleChange}
                                         required
+                                        style={{
+                                            width: '592px',  // Set the width
+                                            height: '80px', // Set the height
+                                            resize: 'none'
+                                        }}
                                     />
                                 </div>
+                                <br></br>
                                 <button type="submit" className="btn btn-primary">
                                     Register
                                 </button>

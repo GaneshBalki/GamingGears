@@ -1,0 +1,17 @@
+/* Define scrollbar styles for webkit browsers */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    background-color: #f1f1f1; /* Background color of the scrollbar track */
+  }
+  
+  /* Handle (thumb) of the scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background: #007BFF; /* Color of the scrollbar handle (thumb) */
+    border-radius: 0; /* Remove rounded corners for the handle */
+  }
+  
+  /* On hover, the handle will have a lighter background */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Lighter blue on hover */
+  }
+  

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import logo2 from '../images/logo2.png'
 import HomeProducts from './HomeProducts';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Footer from './Footer';
+
+import './AAA.css'
 import HomeCategory from './HomeCategory';
 import CarouselComponent from './CarouselComponent';
 export class Home extends Component {
