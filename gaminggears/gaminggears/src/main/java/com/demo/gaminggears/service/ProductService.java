@@ -37,6 +37,12 @@ public class ProductService implements IProductService {
 		return productRepository.findById(pid).orElse(null);
 	}
 
+	@Override
+	public List<Product> getProductsByCategory(int catid) {
+		// TODO Auto-generated method stub
+		return productRepository.getProductsByCategory(catid);
+	}
+
 
 
 	

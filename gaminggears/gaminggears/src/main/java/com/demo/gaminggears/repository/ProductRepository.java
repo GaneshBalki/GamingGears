@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.demo.gaminggears.entity.Assembly;
 import com.demo.gaminggears.entity.Product;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 		@Query(value="select * from product",nativeQuery = true)
 				List<Product> getAllProduct();
 		
-		
+		@Query(value = "SELECT * FROM product WHERE catid = ?1", nativeQuery = true)
+	    List<Product> getProductsByCategory(int catid);
 	}
 
