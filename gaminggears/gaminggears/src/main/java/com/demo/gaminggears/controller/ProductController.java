@@ -60,7 +60,12 @@ public class ProductController {
 		
 	}
 	
-
+	@GetMapping("category-products/{catid}")
+	public List<Product> getProductsByCategory(@PathVariable int catid){
+		return productService.getProductsByCategory(catid);
+		
+	}
+	
 	/*
 	@GetMapping("/products/{pid}")
 	public ResponseEntity<Product>   getById(@PathVariable int pid) {
