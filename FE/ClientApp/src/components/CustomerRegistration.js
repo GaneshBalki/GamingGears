@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './CustomerRegistration.css'
 const CustomerRegistration = () => {
     const [formData, setFormData] = useState({
         fname: '',
@@ -142,7 +141,7 @@ const CustomerRegistration = () => {
                                     />
                                 </div>
                                 <br></br>
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn btn-primary" style={{width:'170px',fontSize:'18px'}}>
                                     Register
                                 </button>
                             </form>
