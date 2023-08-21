@@ -7,6 +7,7 @@ import ForgotPassword from "./components/ForgotPassword.js";
 import { Home } from "./components/Home";
 import ProductDetails from "./components/ProductDetails.js";
 import ProductsByCat from "./components/ProductsByCat.js";
+import SearchResults from "./components/SearchBarComponents/SearchResults.jsx";
 
 const AppRoutes = [
   {
@@ -14,7 +15,7 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: '/counter',
+    path: '/expert',
     element: <Expert />
   },
   {
@@ -44,6 +45,10 @@ const AppRoutes = [
   {
     path: '/forgot-password/:email',
     element: <ForgotPassword></ForgotPassword>
+  },
+  {
+    path: '/searchresult/:input',
+    element: <SearchResults></SearchResults>
   }
 ];
 

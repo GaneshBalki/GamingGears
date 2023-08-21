@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'; // Import useParams hook
 import HomeProducts from './HomeProducts';
 
 const ProductDetails = (props) => {
-    const { pid } = useParams(); // Access the 'pid' property
+    const { pid } = useParams(); // Access the 'pid' property for url
     console.log('pid:', pid);
     console.log('props:', props);
     console.log('useParams:', useParams());
@@ -32,7 +32,7 @@ const ProductDetails = (props) => {
                         <pre></pre>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
-                            <div className="carousel-item active" data-bs-interval="10000">
+                            <div className="carousel-item active" data-bs-interval="2000">
                                 <img src={product.url1} className="d-block" style={{ width: '600px', height: '450px' }} alt="Slide 1" />
 
                             </div>

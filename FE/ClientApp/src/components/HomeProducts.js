@@ -36,7 +36,7 @@ class HomeProducts extends Component {
                                     <img src={product.url1} className="w-100" alt={product.proname} style={{ height:150, objectFit: 'contain' }} />
                                  </Link>   
                                    
-                                    <a href="#!">
+                                   
                                         <div className="mask">
                                             <div className="d-flex justify-content-start align-items-end h-100">
                                                 <h5>
@@ -47,7 +47,7 @@ class HomeProducts extends Component {
                                         <div className="hover-overlay">
                                             <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
                                         </div>
-                                    </a>
+                                
                                 </div>
                                 <Link to={`/products/${product.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
                                 <div className="card-body">
