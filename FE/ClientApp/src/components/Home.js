@@ -7,12 +7,16 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './AAA.css'
 import HomeCategory from './HomeCategory';
 import CarouselComponent from './CarouselComponent';
+import NavMenu from './NavMenu';
 export class Home extends Component {
   static displayName = Home.name;
 
   render() {
     return (
+     
       <div>
+        
+        
         {/* corosole */}
 
 
@@ -44,7 +48,6 @@ export class Home extends Component {
         
 
       </div>
-
 
 
 

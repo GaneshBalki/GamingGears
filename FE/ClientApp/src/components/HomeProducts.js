@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './HomeProduct.css';
 import ProductService from '../service/ProductService'
+import NavMenu from './NavMenu';
 class HomeProducts extends Component {
     constructor(props) {
         super(props);
@@ -25,6 +26,7 @@ class HomeProducts extends Component {
     }
     render() {
         return (
+            
             <div className="container pt-5">
                 <div className="row">
                     {/* ProductCards */}

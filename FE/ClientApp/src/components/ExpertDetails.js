@@ -23,35 +23,32 @@ const ExpertDetails = (props) => {
             });
     }, [expid]);
 
-    if (!expert) {
+    if (!expert || !expert.status) {
         return <p>Loading...</p>;
     }
 
     return (
  <div className="container mt-5" >
-    <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0' }}>
+    <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0',height: '280px'  }}>
           <div className="row" >
                 <div className="col-md-6 ">
-                <img src={expertlogo} className="d-block" style={{ height: '280px' }} alt="Slide 1" />
+                <img src={expertlogo} className="d-block" style={{ height: '250px',paddingTop:'20px'}} alt="Slide 1" />
 
                     
                 </div>
                 <div className="col-md-6">
-                    <div className="product-details">
-                        <pre></pre>
+                    <div className="expert-details">
+                        <br></br>
 
-                        <h2>{expert.expname}</h2>
+                        <h2>Expert Name : {expert.expname}</h2>
                         <pre></pre>
+                        <h5>Experience : {expert.experience} yrs</h5>
                         <pre></pre>
+                        <h5>Skills : {expert.skills} yrs</h5>
                         <pre></pre>
-                        <p>{expert.sells}</p>
+                        <h5>Unit Sold : {expert.sells}</h5>
                         <pre></pre>
-                        <pre></pre>
-                        <pre></pre>
-                        <h4>Experience {expert.experience}</h4>
-                        <pre></pre>
-
-                        <button className="btn btn-primary">Request</button>
+                        <button className="btn btn-primary">Request </button>
                        
                        
                     </div>
@@ -65,6 +62,7 @@ const ExpertDetails = (props) => {
                   
          
         </div>
+        <pre></pre>
         <Assembly expid={expert.expid}></Assembly>    
         </div>
     );

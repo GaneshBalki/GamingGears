@@ -10,12 +10,12 @@ export class Layout extends Component {
   render() {
     return (
       <div>
-      <NavMenu></NavMenu> 
+     <NavMenu></NavMenu>
         <Container tag="main">
           {this.props.children}
         </Container>
 
-        
+
         <Footer></Footer>
         
       </div>
