@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-import logo2 from '../images/logo2.png'
+import logo2 from '../../images/logo2.png'
 import HomeProducts from './HomeProducts';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import './AAA.css'
+import '../AAA.css'
 import HomeCategory from './HomeCategory';
 import CarouselComponent from './CarouselComponent';
-import NavMenu from './LayoutComponent/NavMenu';
 export class Home extends Component {
   static displayName = Home.name;
 

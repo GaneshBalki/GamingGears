@@ -1,7 +1,7 @@
 import React from 'react';
-import cor6 from '../images/cor6.jpg';
-import cor2 from '../images/cor2.jpg'; // Replace with the actual image path
-import cor4 from '../images/cor4.jpg';   // Replace with the actual logo path
+import cor6 from '../../images/cor6.jpg';
+import cor2 from '../../images/cor2.jpg'; // Replace with the actual image path
+import cor4 from '../../images/cor4.jpg';   // Replace with the actual logo path
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import 'bootstrap/dist/js/bootstrap.bundle.min'; // Import Bootstrap JS

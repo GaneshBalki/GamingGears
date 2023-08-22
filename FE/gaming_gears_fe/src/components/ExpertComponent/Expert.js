@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import ExpertService from '../service/ExpertService';
+import ExpertService from '../../service/ExpertService';
 import { Link } from 'react-router-dom';
-import expertimg from '../images/expert.png';
-import './HomeProduct.css';
-import { useUser } from './UserContext';
+import expertimg from '../../images/expert.png';
+import '../HomeComponent/HomeProduct.css';
+import { useUser } from '../UserContext';
 
 const Expert = () => {
   const { custid } = useUser();
-  var hasMatch =false;
+  const [hasMatch, setHasMatch] = useState(false);
   const [expertData, setExpertData] = useState({
     expertarr: [],
     searcharr: [],
@@ -16,9 +16,16 @@ const Expert = () => {
 
   useEffect(() => {
     fetchExpertData();
-    const filteredExperts = expertData.searcharr.filter((expert) => expert.expid === custid);
-   hasMatch = filteredExperts.length > 0;
   }, []);
+
+  useEffect(() => {
+    // Filter the experts and update hasMatch here
+    const filteredExperts = expertData.searcharr.filter((expert) => expert.expid == custid && expert.status > 0);
+    setHasMatch(filteredExperts.length > 0);
+
+    // Log the updated value of hasMatch
+    console.log("Updated hasMatch:", hasMatch);
+  }, [custid, expertData.searcharr]);
 
   const fetchExpertData = () => {
     ExpertService.getExperts()
@@ -44,13 +51,22 @@ const Expert = () => {
     <div className="container pt-5">
       <div className="container">
         {
-          hasMatch ?<button type="button" className="btn btn-primary">
-          You An Expert
-        </button>:<button type="button" className="btn btn-primary">
-          Become An Expert
-        </button>
+          hasMatch ? (
+
+            <button type="button" className="btn btn-primary">
+              <Link to={`/my-experts/${custid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                You Are an Expert
+              </Link>
+            </button>
+          ) : (
+            <button type="button" className="btn btn-primary">
+              <Link to={`/add-expert/${custid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+
+                Become an Expert
+              </Link>
+            </button>
+          )
         }
-        
       </div>
       <pre></pre>
       <pre></pre>
@@ -60,6 +76,7 @@ const Expert = () => {
       <div className="row">
         {expertData.searcharr.map((expert) => (
           <div key={expert.expid} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex">
+            {console.log(expert.expid)}
             <div className="card flex-fill border-0 card-hover" style={{ background: '#f8f9fa' }}>
               <div className="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">
                 <Link to={`/experts/${expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>

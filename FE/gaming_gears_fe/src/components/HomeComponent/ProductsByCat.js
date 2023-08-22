@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './HomeProduct.css';
-import ProductService from '../service/ProductService';
+import ProductService from '../../service/ProductService';
 
 function ProductsByCat() {
     const [prodarr, setProdarr] = useState([]);

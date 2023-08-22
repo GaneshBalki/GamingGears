@@ -1,15 +1,16 @@
-import Cart from "./components/Cart.js";
-import CustomerLogin from "./components/CustomerLogin.js";
-import CustomerRegistration from "./components/CustomerRegistration.js";
-import DistributorHome from "./components/DistributorHome.js";
-import ExpertDetails from "./components/ExpertDetails.js";
-import { FetchData } from "./components/FetchData";
-import ForgotPassword from "./components/ForgotPassword.js";
-import { Home } from "./components/Home";
+import Cart from "./components/CustomerComp/Cart.js";
+import CustomerRegistration from "./components/CustomerComp/CustomerRegistration.js";
+import ForgotPassword from "./components/CustomerComp/ForgotPassword.js";
+import CustomerLogin from "./components/CustomerComp/CustomerLogin.js";
+import DistributorHome from "./components/DistributorComponent/DistributorHome.js";
+import { Home } from "./components/HomeComponent/Home";
 import ProductDetails from "./components/ProductDetails.js";
-import ProductsByCat from "./components/ProductsByCat.js";
+import ProductsByCat from "./components/HomeComponent/ProductsByCat.js";
 import SearchResults from "./components/SearchBarComponents/SearchResults.jsx";
-import Expert from './components/Expert.js'
+import Expert from './components/ExpertComponent/Expert.js'
+import ExpertHome from "./components/ExpertComponent/ExpertHome.js";
+import ExpertRegistration from "./components/ExpertComponent/ExpertRegistration.js";
+import ExpertDetails from "./components/ExpertComponent/ExpertDetails.js";
 
 const AppRoutes = [
   {
@@ -19,10 +20,6 @@ const AppRoutes = [
   {
     path: '/expert',
     element: <Expert></Expert>
-  },
-  {
-    path: '/fetch-data',
-    element: <FetchData />
   },
   {
     path: '/customerlogin',
@@ -59,6 +56,14 @@ const AppRoutes = [
   {
     path: '/distributor',
     element: <DistributorHome></DistributorHome>
+  },
+  {
+    path: '/my-experts/:custid',
+    element: <ExpertHome></ExpertHome>
+  },
+  {
+    path: '/add-expert/:custid',
+    element: <ExpertRegistration></ExpertRegistration>
   }
 ];
 

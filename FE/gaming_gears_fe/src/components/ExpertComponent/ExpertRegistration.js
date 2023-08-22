@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from './UserContext';
+import { useUser } from '../UserContext';
 const ExpertRegistration = () => {
     const {custid}=useUser();
     const [formData, setFormData] = useState({
         expname: '',
         certification: '',
         skills: '',
-    });
+        experience:'',
+        });
 
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ const ExpertRegistration = () => {
                 certification: formData.certification,
                 skills: formData.skills,
                 sells: 0,
+                experience: formData.experience,
                 commission: 0,
                 isExpert: 0,
                 status: 0,
@@ -29,7 +31,8 @@ const ExpertRegistration = () => {
 
             if (response.status === 200) {
                 console.log("Registration successful");
-                navigate('/customerlogin');
+                window.alert("Thanks For Registration, your request will be approved very soon");
+                navigate('/expert');
             } else {
                 setErrorMessage('Invalid email or password');
                 console.log('Registration failed');
@@ -62,37 +65,49 @@ const ExpertRegistration = () => {
                         <div className="card-body">
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
-                                    <label htmlFor="fname">Expert Name</label>
+                                    <label htmlFor="expname">Expert Name</label>
                                     <input
                                         type="text"
                                         className="form-control"
-                                        id="fname"
-                                        name="fname"
+                                        id="expname"
+                                        name="expname"
                                         value={formData.expname}
                                         onChange={handleChange}
                                         required   
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="lname">Certification</label>
+                                    <label htmlFor="certification">Certification</label>
                                     <input
                                         type="text"
                                         className="form-control"
-                                        id="lname"
-                                        name="lname"
+                                        id="certification"
+                                        name="certification"
                                         value={formData.certification}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="mob_number">Skills</label>
+                                    <label htmlFor="skills">Skills</label>
                                     <input
                                         type="tel"
                                         className="form-control"
-                                        id="mob_number"
-                                        name="mob_number"
+                                        id="skills"
+                                        name="skills"
                                         value={formData.skills}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="experience">Experience</label>
+                                    <input
+                                        type="tel"
+                                        className="form-control"
+                                        id="experience"
+                                        name="experience"
+                                        value={formData.experience}
                                         onChange={handleChange}
                                         required
                                     />

@@ -40,14 +40,16 @@ const ProductDetails = (props) => {
     const handleAddToCart = async (event) => {
 
             event.preventDefault();
+            console.log("customer id "+custid);
             if(custid>0){
                
             try {
+                console.log("product adding to cart "+custid);
                 var response = await axios.post("http://localhost:8282/add-to-cart", {
                     "custid": custid,
                     "proid": product.proid
                 });
-        
+                console.log("product added to cart "+custid);
                 if (response.status === 200 ) {
                     console.log("response data" );
                     window.alert("Product '"+product.proname+"' added to Cart !");

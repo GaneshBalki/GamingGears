@@ -2,26 +2,25 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom'; // Import useParams hook
 
-import expertlogo from '../images/expert.png'
-import ExpertService from '../service/ExpertService';
-import Assembly from './Assembly';
+import expertlogo from '../../images/expert.png'
+import ExpertService from '../../service/ExpertService';
 
-const ExpertDetails = (props) => {
-    const { expid } = useParams(); // Access the 'pid' property
-    // console.log('pid:', expid);
-    // console.log('props:', props);
-    // console.log('useParams:', useParams());
+import { useUser } from '../UserContext';
+import Assembly from '../Assembly';
+
+const ExpertHome = (props) => {
+  const {custid}=useUser();
     const [expert, setExpert] = React.useState(null);
 
     React.useEffect(() => {
-        ExpertService.getExpertById(expid)
+        ExpertService.getExpertById(custid)
             .then((response) => {
                 setExpert(response.data);
             })
             .catch((error) => {
                 console.error(error);
             });
-    }, [expid]);
+    }, [custid]);
 
     if (!expert || !expert.status) {
         return <p>Loading...</p>;
@@ -44,7 +43,9 @@ const ExpertDetails = (props) => {
                         <pre></pre>
                         <h5>Experience : {expert.experience} yrs</h5>
                         <pre></pre>
-                        <h5>Skills : {expert.skills} yrs</h5>
+                        <h5>Skills : {expert.skills} </h5>
+                        <pre></pre>
+                        <h5>Commission : &#8377; {expert.commission} </h5>
                         <pre></pre>
                         <h5>Unit Sold : {expert.sells}</h5>
                         <pre></pre>
@@ -63,9 +64,10 @@ const ExpertDetails = (props) => {
          
         </div>
         <pre></pre>
+        
         <Assembly expid={expert.expid}></Assembly>    
         </div>
     );
 }
 
-export default ExpertDetails;
+export default ExpertHome;

@@ -1,11 +1,11 @@
 import React from 'react';
-import cabinet from '../images/Cat/cabinet.png'
-import cooler from '../images/Cat/cooler.jpg'
-import monitor from '../images/Cat/monitor.jpg'
-import controller from '../images/Cat/controller.jpg'
-import gconsole from '../images/Cat/console.jpg'
-import keyboard from '../images/Cat/keyboard.jpg'
-import processor from '../images/Cat/pro.jpg'
+import cabinet from '../../images/Cat/cabinet.png'
+import cooler from '../../images/Cat/cooler.jpg'
+import monitor from '../../images/Cat/monitor.jpg'
+import controller from '../../images/Cat/controller.jpg'
+import gconsole from '../../images/Cat/console.jpg'
+import keyboard from '../../images/Cat/keyboard.jpg'
+import processor from '../../images/Cat/pro.jpg'
 import { Link } from 'react-router-dom';
 
 function HomeCategory() {

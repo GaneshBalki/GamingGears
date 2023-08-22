@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseurl="http://localhost:8282/getcart";
+const baseurl="http://localhost:8282/get-cart-product";
 class ExpertService{
     
     getCart(custid){

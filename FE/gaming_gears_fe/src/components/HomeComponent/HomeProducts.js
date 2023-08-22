@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './HomeProduct.css';
-import ProductService from '../service/ProductService';
+import ProductService from '../../service/ProductService';
 class HomeProducts extends Component {
     constructor(props) {
         super(props);

@@ -28,7 +28,7 @@ public class ExpertController {
 		return iexpertService.getAllExperts();
 			}
 	
-	@PostMapping("/experts/{expid}")
+	@PostMapping("/add-expert")
 	public ResponseEntity<String> insertExpert( @RequestBody Expert e) {
 		  iexpertService.addExpert(e);
 		  return ResponseEntity.ok("added successfully");
