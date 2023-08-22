@@ -22,7 +22,6 @@ function Cart(props) {
         console.error(error);
       });
 
-      searcharr.map((cart, index) => (totalamt=totalamt+cart.price));
   };
 
   return (
@@ -74,7 +73,7 @@ function Cart(props) {
                     ))}
                   </div>
                  
-                  <h1>total price {totalamt}</h1>
+                 
                 </div>
               </div>
             </div>

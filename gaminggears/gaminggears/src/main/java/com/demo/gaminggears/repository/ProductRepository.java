@@ -11,7 +11,7 @@ import java.util.List;
 	@Repository
 	public interface ProductRepository extends JpaRepository<Product, Integer>{
 	    
-		@Query(value="select * from product",nativeQuery = true)
+		@Query(value="select * from product limit 8",nativeQuery = true)
 				List<Product> getAllProduct();
 		
 		@Query(value = "SELECT * FROM product WHERE catid = ?1", nativeQuery = true)

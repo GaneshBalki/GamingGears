@@ -15,8 +15,8 @@ public class ProductService implements IProductService {
 
 	@Override
 	public List<Product> getAllProducts() {
-		List<Product> plist= productRepository.findAll();
-		
+		//List<Product> plist= productRepository.findAll();
+		List<Product> plist= productRepository.getAllProduct();
 		//System.out.println(plist);
 		return plist;
 		

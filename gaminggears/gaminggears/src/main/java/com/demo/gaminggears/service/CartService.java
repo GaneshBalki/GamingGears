@@ -15,37 +15,52 @@ import com.demo.gaminggears.repository.CustomerRepository;
 import com.demo.gaminggears.repository.ProductRepository;
 
 @Service
-public class CartService implements ICartService{
-	@Autowired
-	CartRepository cartRepository;
-	@Autowired
-	ProductRepository productRepository;
-	@Autowired
-	CustomerRepository customerRepository;
-	@Override
-	public void addtoCart(CartBody cartBody) {
-		// TODO Auto-generated method stub
-		System.out.println("customer id "+cartBody.getCustid());
-		if(cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid()).size() > 0) {
-			Product p = productRepository.findById(cartBody.getProid()).orElse(null);
-			List<Cart> existsCart = cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid());
-			existsCart.get(1).setQty(existsCart.get(1).getQty()+1);
-			existsCart.get(1).setPrice(p.getPrice()*existsCart.get(1).getQty());
-			System.out.println("expert xart"+existsCart.get(1));
-			cartRepository.updateCart(existsCart.get(1).getQty(),existsCart.get(1).getCartid());
-		}else {
-			Product p = productRepository.findById(cartBody.getProid()).orElse(null);
-			System.out.println(p);
-			Customer c = customerRepository.findById(cartBody.getCustid()).orElse(null);
-			Cart newCart = new Cart(c, p, 1, p.getPrice());
-			cartRepository.save(newCart);
-		}
-	}
+public class CartService implements ICartService {
+    @Autowired
+    CartRepository cartRepository;
+    
+    @Autowired
+    ProductRepository productRepository;
+    
+    @Autowired
+    CustomerRepository customerRepository;
+    
+    @Override
+    public void addtoCart(CartBody cartBody) {
+        System.out.println("customer id " + cartBody.getCustid());
+        
+        // Check if the product is already in the cart
+        List<Cart> existingCarts = cartRepository.existsByCustIdProdId(cartBody.getCustid(), cartBody.getProid());
+        
+        if (!existingCarts.isEmpty()) {
+            Product p = productRepository.findById(cartBody.getProid()).orElse(null);
+            
+            // Check if an item with the same product id exists in the cart
+            Cart existingCart = existingCarts.get(0); // Assuming the first item in the list
+            existingCart.setQty(existingCart.getQty() + 1);
+            existingCart.setPrice(p.getPrice() * existingCart.getQty());
+            
+            cartRepository.save(existingCart);
+            // Update the cart item in the database
+            // Add code here to update the cart item in the repository
+        } else {
+            Product p = productRepository.findById(cartBody.getProid()).orElse(null);
+            System.out.println(p);
+            
+            Customer c = customerRepository.findById(cartBody.getCustid()).orElse(null);
+            
+            // Create a new cart item
+            Cart newCart = new Cart(c, p, 1, p.getPrice());
+            
+            // Save the new cart item in the database
+            cartRepository.save(newCart);
+        }
+    }
 
-	@Override
-	public List<Cart> getCart(int custID) {
-		// TODO Auto-generated method stub
-		return cartRepository.findAllByCustId(custID);
-	}
-
+    @Override
+    public List<Cart> getCart(int custID) {
+        return cartRepository.findAllByCustId(custID);
+    }
+    
+    // Add an update method here to update the cart item in the repository
 }
