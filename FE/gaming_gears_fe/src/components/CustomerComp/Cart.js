@@ -60,8 +60,8 @@ function Cart(props) {
                               <div style={{ width: '50px' }}>
                                 <h5 className="fw-normal mb-0">{cart.qty}</h5>
                               </div>
-                              <div style={{ width: '80px' }}>
-                                <h5 className="mb-0">&#8377; {cart.price}</h5>
+                              <div style={{ width: '180px' }}>
+                                <h5 className="mb-0">&#8377; {cart.qty*cart.price}</h5>
                               </div>
                               <a href="#!" style={{ color: '#cecece' }}>
                                 <i className="fas fa-trash-alt"></i>
