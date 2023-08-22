@@ -17,7 +17,7 @@ const ProductDetails = (props) => {
     var name;
     var id;
 
-    React.useEffect(() => {
+    useEffect(() => {
         ProductService.getProductById(pid)
             .then((response) => {
                 setProduct(response.data);
@@ -40,6 +40,8 @@ const ProductDetails = (props) => {
     const handleAddToCart = async (event) => {
 
             event.preventDefault();
+            if(custid>0){
+               
             try {
                 var response = await axios.post("http://localhost:8282/add-to-cart", {
                     "custid": custid,
@@ -50,11 +52,15 @@ const ProductDetails = (props) => {
                     console.log("response data" );
                   
                 } else {
-                    setErrorMessage('Invalid email or password');
+                    setErrorMessage('failed to add product');
                     console.log('Authentication failed');
                 }
             } catch (error) {
                 console.error(error);
+            }
+            }else{
+                window.alert("Please login !!!");
+                navigate("/customerlogin")
             }
         };
         
@@ -65,6 +71,9 @@ const ProductDetails = (props) => {
         <div className="container mt-5" style={{ background: '#f8f9fa' }}>
             <div className="row" >
                 <div className="col-md-6">
+                {errorMessage && (
+                        <div className="alert alert-danger mt-3">{errorMessage}</div>
+                    )}
                     <pre></pre>
                     <pre></pre>
                     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">

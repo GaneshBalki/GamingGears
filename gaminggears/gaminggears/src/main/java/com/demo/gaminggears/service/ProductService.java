@@ -31,7 +31,7 @@ public class ProductService implements IProductService {
 	}
 
 	@Override
-	public Product getById(int pid) {
+	public Product getProductById(int pid) {
 		// TODO Auto-generated method stub
 		
 		return productRepository.findById(pid).orElse(null);

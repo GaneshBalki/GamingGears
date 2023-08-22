@@ -18,20 +18,24 @@ import com.demo.gaminggears.repository.ProductRepository;
 public class CartService implements ICartService{
 	@Autowired
 	CartRepository cartRepository;
+	@Autowired
 	ProductRepository productRepository;
+	@Autowired
 	CustomerRepository customerRepository;
 	@Override
 	public void addtoCart(CartBody cartBody) {
 		// TODO Auto-generated method stub
-		if(cartRepository.existsByCustIdProdId(cartBody.getCustId(),cartBody.getProid()) != null) {
+		System.out.println("customer id "+cartBody.getCustid());
+		if(cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid()) != null) {
 			Product p = productRepository.getById(cartBody.getProid());
-			Cart existsCart = cartRepository.existsByCustIdProdId(cartBody.getCustId(),cartBody.getProid());
+			Cart existsCart = cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid());
 			existsCart.setQty(existsCart.getQty()+1);
 			existsCart.setPrice(p.getPrice()*existsCart.getQty());
 			cartRepository.updateCart(existsCart.getQty(),existsCart.getCartid());
 		}else {
 			Product p = productRepository.getById(cartBody.getProid());
-			Customer c = customerRepository.getById(cartBody.getCustId());
+			System.out.println(p);
+			Customer c = customerRepository.getById(cartBody.getCustid());
 			Cart newCart = new Cart(c, p, 1, p.getPrice());
 			cartRepository.save(newCart);
 		}

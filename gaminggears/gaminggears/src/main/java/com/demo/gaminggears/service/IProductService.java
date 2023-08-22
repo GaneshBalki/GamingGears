@@ -12,7 +12,7 @@ public interface IProductService {
 
 	void deleteById(int pid);
 
-	Product getById(int pid);
+	Product getProductById(int pid);
 
 	List<Product> getProductsByCategory(int catid);
 

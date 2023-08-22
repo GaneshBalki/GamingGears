@@ -17,8 +17,8 @@ import javax.persistence.UniqueConstraint;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "custid")
-    private int custid;
+    @Column(name = "custId")
+    private int custId;
     private String fname;
     private String lname;
     private String mobNumber;
@@ -53,11 +53,11 @@ public class Customer {
 
     // Getters and Setters
     public int getCustId() {
-        return custid;
+        return custId;
     }
 
     public void setCustId(int custId) {
-        this.custid = custId;
+        this.custId = custId;
     }
 
     public String getFname() {
@@ -129,7 +129,7 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "custId=" + custid +
+                "custId=" + custId +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", mobNumber='" + mobNumber + '\'' +

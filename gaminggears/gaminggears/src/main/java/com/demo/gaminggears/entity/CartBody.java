@@ -1,39 +1,31 @@
 package com.demo.gaminggears.entity;
 
 public class CartBody {
-    private int custId;
-    private int proid;
-
-    public CartBody() {
-        // Default constructor
-    }
-
-    public CartBody(int custId, int proid) {
-        this.custId = custId;
-        this.proid = proid;
-    }
-
-    public int getCustId() {
-        return custId;
-    }
-
-    public void setCustId(int custId) {
-        this.custId = custId;
-    }
-
-    public int getProid() {
-        return proid;
-    }
-
-    public void setProid(int proid) {
-        this.proid = proid;
-    }
-
-    @Override
-    public String toString() {
-        return "CartBody{" +
-                "custId=" + custId +
-                ", proid=" + proid +
-                '}';
-    }
+	private int custid;
+	private int proid;
+	public CartBody() {
+		super();
+	}
+	public CartBody(int custid, int proid) {
+		super();
+		this.custid = custid;
+		this.proid = proid;
+	}
+	public int getCustid() {
+		return custid;
+	}
+	public void setCustid(int custid) {
+		this.custid = custid;
+	}
+	public int getProid() {
+		return proid;
+	}
+	public void setProid(int proid) {
+		this.proid = proid;
+	}
+	@Override
+	public String toString() {
+		return "CartBody [custid=" + custid + ", proid=" + proid + "]";
+	}
+	
 }
