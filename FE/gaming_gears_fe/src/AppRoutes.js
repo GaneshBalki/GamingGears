@@ -2,7 +2,6 @@ import Cart from "./components/Cart.js";
 import CustomerLogin from "./components/CustomerLogin.js";
 import CustomerRegistration from "./components/CustomerRegistration.js";
 import DistributorHome from "./components/DistributorHome.js";
-import { Expert } from "./components/Expert.js";
 import ExpertDetails from "./components/ExpertDetails.js";
 import { FetchData } from "./components/FetchData";
 import ForgotPassword from "./components/ForgotPassword.js";
@@ -10,6 +9,7 @@ import { Home } from "./components/Home";
 import ProductDetails from "./components/ProductDetails.js";
 import ProductsByCat from "./components/ProductsByCat.js";
 import SearchResults from "./components/SearchBarComponents/SearchResults.jsx";
+import Expert from './components/Expert.js'
 
 const AppRoutes = [
   {
@@ -18,7 +18,7 @@ const AppRoutes = [
   },
   {
     path: '/expert',
-    element: <Expert />
+    element: <Expert></Expert>
   },
   {
     path: '/fetch-data',

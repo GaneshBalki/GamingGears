@@ -50,6 +50,7 @@ const ProductDetails = (props) => {
         
                 if (response.status === 200 ) {
                     console.log("response data" );
+                    window.alert("Product '"+product.proname+"' added to Cart !");
                   
                 } else {
                     setErrorMessage('failed to add product');
