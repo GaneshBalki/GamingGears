@@ -18,12 +18,12 @@ public class Cart {
     private int cartid;
 
     @ManyToOne
-    @JoinColumn(name = "custId")
-    private Customer custId;
+    @JoinColumn(name = "custid")
+    private Customer custid;
 
     @ManyToOne
-    @JoinColumn(name = "proId")
-    private Product proId;
+    @JoinColumn(name = "proid")
+    private Product prodid;
 
     private int qty;
     private double price;
@@ -32,10 +32,10 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(int cartid, Customer custId, Product proId, int qty, double price) {
-        this.cartid = cartid;
-        this.custId = custId;
-        this.proId = proId;
+    public Cart( Customer custId, Product proId, int qty, double price) {
+//        this.cartid = cartid;
+        this.custid = custId;
+        this.prodid = proId;
         this.qty = qty;
         this.price = price;
     }
@@ -50,19 +50,19 @@ public class Cart {
     }
 
     public Customer getCustId() {
-        return custId;
+        return custid;
     }
 
     public void setCustId(Customer custId) {
-        this.custId = custId;
+        this.custid = custId;
     }
 
     public Product getProId() {
-        return proId;
+        return prodid;
     }
 
     public void setProId(Product proId) {
-        this.proId = proId;
+        this.prodid = proId;
     }
 
     public int getQty() {
@@ -85,8 +85,8 @@ public class Cart {
     public String toString() {
         return "Cart{" +
                 "cartid=" + cartid +
-                ", custId=" + custId +
-                ", proId=" + proId +
+                ", custId=" + custid +
+                ", proId=" + prodid +
                 ", qty=" + qty +
                 ", price=" + price +
                 '}';
