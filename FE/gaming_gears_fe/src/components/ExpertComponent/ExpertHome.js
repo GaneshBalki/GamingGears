@@ -6,7 +6,7 @@ import expertlogo from '../../images/expert.png'
 import ExpertService from '../../service/ExpertService';
 
 import { useUser } from '../UserContext';
-import Assembly from '../Assembly';
+import Assembly from './Assembly';
 
 const ExpertHome = (props) => {
   const {custid}=useUser();

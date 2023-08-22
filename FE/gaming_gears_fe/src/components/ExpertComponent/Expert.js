@@ -50,6 +50,8 @@ const Expert = () => {
   return (
     <div className="container pt-5">
       <div className="container">
+
+        {/* here we are using multiple conditional rendering to user user is not logged in he will redirect to login page  */}
         {
           hasMatch ? (
 
@@ -60,10 +62,16 @@ const Expert = () => {
             </button>
           ) : (
             <button type="button" className="btn btn-primary">
-              <Link to={`/add-expert/${custid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+              {
+                custid > 0 ? (<Link to={`/add-expert/${custid}`} className="text-reset" style={{ textDecoration: 'none' }}>
 
-                Become an Expert
-              </Link>
+                  Become an Expert
+                </Link>) : (<Link to={`/customerlogin`} className="text-reset" style={{ textDecoration: 'none' }}>
+
+                  Become an Expert
+                </Link>)
+              }
+
             </button>
           )
         }

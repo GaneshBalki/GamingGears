@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams hook
 import expertlogo from '../../images/expert.png'
 import ExpertService from '../../service/ExpertService';
-import Assembly from '../Assembly';
+import Assembly from './Assembly';
 
 const ExpertDetails = (props) => {
     const { expid } = useParams(); // Access the 'pid' property
