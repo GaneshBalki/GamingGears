@@ -10,8 +10,11 @@ const CustomerLogin = () => {
       <div className="row" >
 
         <div className="col-md-7 d-flex justify-content-center align-items-center" style={{ backgroundColor: '#0074cf ', height: '450px', color: 'white' }}>
-        <img src={logo} className="w-100" alt="logo" style={{ height: 70, objectFit: 'contain' }} />
-                                    
+        {/* <img src={logo} className="w-100" alt="logo" style={{ height: 70, objectFit: 'contain' }} /> */}
+        <div>
+        <h1 style={{fontSize:'7rem',fontFamily:''}}>GamingGears.</h1>
+        <h1 style={{fontSize:'2rem',width:'100%'}}>Follow Your Gaming Passion</h1>
+        </div>                         
                   </div>
 
 

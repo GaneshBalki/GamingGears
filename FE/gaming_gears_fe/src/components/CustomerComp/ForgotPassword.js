@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'; // Import useParams hook
-const ForgotPassword = (props) => {
+import { useParams } from 'react-router-dom';
+const ForgotPassword = () => {
   const [password , setPassword] = useState('');
   const [message, setMessage] = useState('');
   const { email } = useParams();

@@ -21,8 +21,8 @@ const SignIn = () => {
             if (response.status == 200 && response.data.email==email && response.data.pass==password) {
                 console.log("response data" + response.data.fname)
                 setCustid(response.data.custId);
-                alert(response.data.custId);
-                 navigate('/');
+                alert("Welcome "+response.data.fname+" !!!");
+                navigate('/');
             }
             else {
                 setErrorMessage('Invalid email or password');
@@ -30,7 +30,7 @@ const SignIn = () => {
             }
         }
         catch (err) {
-            alert("User Registation Failed");
+                 alert("User Registation Failed");
         }
     }
     return (

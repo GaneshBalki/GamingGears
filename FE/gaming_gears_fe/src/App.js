@@ -7,17 +7,11 @@ import Footer from './components/LayoutComponent/Footer'
 import { UserProvider } from './components/UserContext';
 function App() {
 
-  function authHandler() {
-    console.log("authHandler called");
-
-    alert("Login karo");
-  }
-
 
   return (
     <UserProvider>
           <div className="App">
-            <NavMenu login={authHandler}></NavMenu>
+            <NavMenu></NavMenu>
 
             <Routes>
               {AppRoutes.map((route, index) => {
