@@ -38,7 +38,7 @@ function NavMenu() {
             <NavItem>
               {custid ? (
                 <li>
-                  <NavLink onClick={handleLogout}>Logout</NavLink>
+                  <NavLink tag={Link} onClick={handleLogout}>Logout</NavLink>
                 </li>
               ) : (
                 <li>

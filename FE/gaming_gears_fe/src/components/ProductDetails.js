@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+
 import ProductService from '../service/ProductService';
 import { useParams } from 'react-router-dom'; // Import useParams hook
 import { useUser } from './UserContext';
-import { useCart } from './CartContext';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios for making HTTP requests
 
 
 const ProductDetails = (props) => {
     const { pid } = useParams(); // Access the 'pid' property for url
     const [product, setProduct] = React.useState(null);
-    const { addToCart } = useCart();
     const { custid } = useUser();
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     var price;
     var name;
@@ -35,16 +36,29 @@ const ProductDetails = (props) => {
 
     }
     console.log(price, name, id)
-    const handleAddToCart = () => {
-        if (custid > 0) {
-            addToCart({ id, name, price });
-            alert("Product '" + name + "' Added to Cart !")
-        } else {
-            window.alert("You Need TO Login First !!!");
-            navigate('/customerlogin');
-        }
+    
+    const handleAddToCart = async (event) => {
 
-    };
+            event.preventDefault();
+            try {
+                var response = await axios.post("http://localhost:8282/add-to-cart", {
+                    "custid": custid,
+                    "proid": product.proid
+                });
+        
+                if (response.status === 200 ) {
+                    console.log("response data" );
+                  
+                } else {
+                    setErrorMessage('Invalid email or password');
+                    console.log('Authentication failed');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        
+
 
 
     return (

@@ -5,7 +5,6 @@ import './App.css';
 import NavMenu from './components/LayoutComponent/NavMenu';
 import Footer from './components/LayoutComponent/Footer'
 import { UserProvider } from './components/UserContext';
-import { CartProvider } from './components/CartContext';
 function App() {
 
   function authHandler() {
@@ -17,8 +16,6 @@ function App() {
 
   return (
     <UserProvider>
-      <CartProvider>
-       
           <div className="App">
             <NavMenu login={authHandler}></NavMenu>
 
@@ -30,12 +27,7 @@ function App() {
             </Routes>
             <Footer></Footer>
           </div>
-       
-      </CartProvider>
     </UserProvider>
   );
-
-
 }
-
 export default App;
