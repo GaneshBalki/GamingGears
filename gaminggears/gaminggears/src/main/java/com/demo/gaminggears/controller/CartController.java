@@ -27,7 +27,7 @@ public class CartController {
 		iCartService.addtoCart(cartBody);
 		return ResponseEntity.ok("added successfully");
 	}
-	@GetMapping("/getcart/{custID}")
+	@GetMapping("/get-cart-product/{custID}")
 	public List<Cart> getCart(@PathVariable int custID){
 		return iCartService.getCart(custID);
 	}
