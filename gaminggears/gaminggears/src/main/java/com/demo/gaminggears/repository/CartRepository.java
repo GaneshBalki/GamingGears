@@ -15,7 +15,7 @@ public interface CartRepository extends JpaRepository<Cart, Integer>{
 	List<Cart> findAllByCustId(int custiD);
 	
 	@Query(value = "SELECT * FROM cart WHERE custid = ?1 and proid =?2", nativeQuery = true)
-	Cart existsByCustIdProdId(int custid, int proid);
+	List<Cart> existsByCustIdProdId(int custid, int proid);
 	
 	@Query(value = "Update cart SET qty=?1  WHERE cartid=?2 ", nativeQuery = true)
 	void updateCart(int qty, int cartid);

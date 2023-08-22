@@ -28,10 +28,10 @@ public class CartService implements ICartService{
 		System.out.println("customer id "+cartBody.getCustid());
 		if(cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid()) != null) {
 			Product p = productRepository.getById(cartBody.getProid());
-			Cart existsCart = cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid());
-			existsCart.setQty(existsCart.getQty()+1);
-			existsCart.setPrice(p.getPrice()*existsCart.getQty());
-			cartRepository.updateCart(existsCart.getQty(),existsCart.getCartid());
+			List<Cart> existsCart = cartRepository.existsByCustIdProdId(cartBody.getCustid(),cartBody.getProid());
+			existsCart.get(1).setQty(existsCart.get(1).getQty()+1);
+			existsCart.get(1).setPrice(p.getPrice()*existsCart.get(1).getQty());
+			cartRepository.updateCart(existsCart.get(1).getQty(),existsCart.get(1).getCartid());
 		}else {
 			Product p = productRepository.getById(cartBody.getProid());
 			System.out.println(p);
