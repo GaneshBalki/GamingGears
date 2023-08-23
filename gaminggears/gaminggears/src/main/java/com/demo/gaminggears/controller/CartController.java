@@ -32,8 +32,8 @@ public class CartController {
 		return iCartService.getCart(custID);
 	}
 	
-	@PostMapping("/delete-from-cart")
-	public ResponseEntity<String> deleteFromCart(@RequestBody int cartid){
+	@PostMapping("/cart/{cartid}")
+	public ResponseEntity<String> deleteFromCart(@PathVariable int cartid){
 		iCartService.deleteFromCart(cartid);
 		return ResponseEntity.ok("deleted successfully");
 	}
