@@ -49,7 +49,7 @@ const ExpertHome = (props) => {
                         <pre></pre>
                         <h5>Unit Sold : {expert.sells}</h5>
                         <pre></pre>
-                        <button className="btn btn-primary">Request </button>
+                       
                        
                        
                     </div>

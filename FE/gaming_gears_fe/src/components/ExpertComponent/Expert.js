@@ -8,11 +8,7 @@ import { useUser } from '../UserContext';
 const Expert = () => {
   const { custid } = useUser();
   const [hasMatch, setHasMatch] = useState(false);
-  const [expertData, setExpertData] = useState({
-    expertarr: [],
-    searcharr: [],
-    searchtext: "",
-  });
+  const [searcharr, setSearcharr] = useState([]);
 
   useEffect(() => {
     fetchExpertData();
@@ -20,21 +16,22 @@ const Expert = () => {
 
   useEffect(() => {
     // Filter the experts and update hasMatch here
-    const filteredExperts = expertData.searcharr.filter((expert) => expert.expid == custid && expert.status > 0);
+    const filteredExperts = searcharr.filter((expert) => expert.expid == custid && expert.status > 0);
     setHasMatch(filteredExperts.length > 0);
 
     // Log the updated value of hasMatch
     console.log("Updated hasMatch:", hasMatch);
-  }, [custid, expertData.searcharr]);
+  }, [custid, searcharr]);
 
   const fetchExpertData = () => {
     ExpertService.getExperts()
       .then((response) => {
-        setExpertData({
-          ...expertData,
-          expertarr: [...response.data],
-          searcharr: [...response.data],
-        });
+        const expertarr = response.data;
+        // Filter the expertarr based on their status only active expert can be visible condition
+        const filteredExpertArr = expertarr.filter((e) => e.status > 0);
+  
+        setSearcharr([...filteredExpertArr]);
+       
       })
       .catch();
   };
@@ -76,13 +73,8 @@ const Expert = () => {
           )
         }
       </div>
-      <pre></pre>
-      <pre></pre>
-      <pre></pre>
-      <pre></pre>
-
-      <div className="row">
-        {expertData.searcharr.map((expert) => (
+      <div className="row" style={{marginTop:'50px'}}>
+        {searcharr.map((expert) => (
           <div key={expert.expid} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex">
             {console.log(expert.expid)}
             <div className="card flex-fill border-0 card-hover" style={{ background: '#f8f9fa' }}>
