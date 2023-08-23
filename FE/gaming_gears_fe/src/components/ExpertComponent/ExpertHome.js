@@ -7,6 +7,7 @@ import ExpertService from '../../service/ExpertService';
 
 import { useUser } from '../UserContext';
 import Assembly from './Assembly';
+import RequestsList from './RequestsList';
 
 const ExpertHome = (props) => {
   const {custid}=useUser();
@@ -29,7 +30,7 @@ const ExpertHome = (props) => {
     return (
  <div className="container mt-5" >
     <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0',height: '280px'  }}>
-          <div className="row" >
+            <div className="row" >
                 <div className="col-md-6 ">
                 <img src={expertlogo} className="d-block" style={{ height: '250px',paddingTop:'20px'}} alt="Slide 1" />
 
@@ -51,21 +52,24 @@ const ExpertHome = (props) => {
                         <pre></pre>
                        
                        
-                       
+                        
                     </div>
-                   
+                    
                 </div>
             </div>
-            <pre></pre>
-                     
+            <div className="row" >
+                <div className="col-md-6 ">
+                <RequestsList></RequestsList>
+                </div>
+             </div>        
             {/* buid unit lists */}
-               
+           
                   
          
         </div>
         <pre></pre>
         
-        <Assembly expid={expert.expid}></Assembly>    
+        {/* <Assembly expid={expert.expid}></Assembly>     */}
         </div>
     );
 }

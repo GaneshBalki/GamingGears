@@ -4,7 +4,7 @@ import expertlogo from '../../images/expert.png'
 import ExpertService from '../../service/ExpertService';
 import Assembly from './Assembly';
 
-const ExpertDetails = (props) => {
+const ExpertDetails = () => {
     const { expid } = useParams(); // Access the 'pid' property
     const [expert, setExpert] = React.useState(null);
 
@@ -44,18 +44,11 @@ const ExpertDetails = (props) => {
                         <h5>Unit Sold : {expert.sells}</h5>
                         <pre></pre>
                         <button className="btn btn-primary">Request </button>
-                       
-                       
                     </div>
                    
                 </div>
             </div>
             <pre></pre>
-                     
-            {/* buid unit lists */}
-               
-                  
-         
         </div>
         <pre></pre>
         <Assembly expid={expert.expid}></Assembly>    
