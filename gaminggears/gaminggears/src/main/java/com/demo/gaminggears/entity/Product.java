@@ -44,9 +44,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(int proid, String proname, Category catid, Brand brandid, double price,
+    public Product( String proname, Category catid, Brand brandid, double price,
                    String url1, String url2, String url3, String url4, String description, Distributor disid) {
-        this.proid = proid;
+        //this.proid = proid;
         this.proname = proname;
         this.catid = catid;
         this.brandid = brandid;

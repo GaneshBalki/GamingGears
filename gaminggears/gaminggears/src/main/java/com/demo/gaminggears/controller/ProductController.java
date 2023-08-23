@@ -41,7 +41,7 @@ public class ProductController {
 		
 	}
 	
-	@PostMapping("/products/{pid}")
+	@PostMapping("/products")
 	public ResponseEntity<String> insertProduct( @RequestBody Product p) {
 		  productService.addProduct(p);
 		  return ResponseEntity.ok("added successfully");

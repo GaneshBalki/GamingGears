@@ -31,8 +31,8 @@ public class Askexpert {
         // Default constructor
     }
 
-    public Askexpert(int queId, Customer custId, Expert expId, String que, int status, String resolution) {
-        this.queId = queId;
+    public Askexpert( Customer custId, Expert expId, String que, int status, String resolution) {
+        //this.queId = queId;
         this.custid = custId;
         this.expid = expId;
         this.que = que;
