@@ -66,7 +66,7 @@ public class CartService implements ICartService {
 	public void deleteFromCart(int cartid) {
 		// TODO Auto-generated method stub
 		List<Cart> existedCarts = cartRepository.findAllByCustId(cartid);
-		 if (existedCarts.size()>1) {
+		 if (existedCarts.get(0).getQty()>1) {
 	            
 	            
 	            // Check if an item with the same product id exists in the cart
