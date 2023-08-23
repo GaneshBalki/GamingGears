@@ -2,13 +2,25 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from './UserContext';
+import { useUser } from '../UserContext';
 const SignIn = () => {
     const { setCustid } = useUser();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
+
+    const [customerId, setCustomerId] = useState(null);
+   
+
+//   React.useEffect(() => {
+//     // Check if a customer ID is stored in localStorage
+//     const storedCustomerId = localStorage.getItem('customerId');
+//     if (storedCustomerId) {
+//       setCustomerId(parseInt(storedCustomerId)); // Parse the stored value to an integer
+//     }
+//   }, []);
+
     async function save(event) {
         event.preventDefault();
         try {
@@ -20,7 +32,18 @@ const SignIn = () => {
 
             if (response.status == 200 && response.data.email==email && response.data.pass==password) {
                 console.log("response data" + response.data.fname)
-                setCustid(response.data.custId);
+               // setCustid(response.data.custId);
+
+               const custid = response.data.custId; // Replace with your customer ID
+               sessionStorage.setItem('customerid', custid.toString());
+
+
+            //    // Convert to string before storing
+            //     // setCustomerId(customerId)
+                 
+            //     const custidnew=response.data.custId.toString();
+            //     localStorage.setItem('customerId', custidnew);
+            //     const custidnew1 = localStorage.getItem('customerId');
                 alert("Welcome "+response.data.fname+" !!!");
                 navigate('/');
             }

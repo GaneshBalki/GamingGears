@@ -1,50 +1,48 @@
 import React, { Component } from 'react';
-
-import logo2 from '../../images/logo2.png'
 import HomeProducts from './HomeProducts';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 import '../AAA.css'
 import HomeCategory from './HomeCategory';
+import logo from '../../images/logo1.png'
 import CarouselComponent from './CarouselComponent';
 export class Home extends Component {
   static displayName = Home.name;
 
   render() {
     return (
-     
+
       <div>
-        
-        
+
+
         {/* corosole */}
-
-
-      <CarouselComponent></CarouselComponent>
+        <CarouselComponent></CarouselComponent>
 
         {/* <!-- category --> */}
-       <HomeCategory></HomeCategory>
+        <HomeCategory></HomeCategory>
         {/* <!-- category --> */}
-       
-
-        {/* offersbar */}
-        <nav class="navbar navbar-light bg-light">
-          <form class="container-fluid justify-content-start">
-            <button class="btn btn-outline-success me-2" type="button">Offers</button>
-            <img src={logo2} className="rounded mx-auto d-block" alt="..." height={50} />
-          </form>
-        </nav>
 
 
+        {/* offerbar */}
+        <div>
+          <nav className="navbar navbar-light bg-light align-items-center" style={{ height: '140px' }}>
+            <div className="container-fluid d-flex justify-content-center ">
+             <img src={logo} alt='logo' style={{width:'130px'}}></img>
+            </div>
+          </nav>
+        </div>
 
-        {/* Product 1 */}
+
+
+
+        {/* Products */}
         <HomeProducts></HomeProducts>
-        {/* Product 1 */}
+        {/* Products */}
 
 
 
-        
-       
-        
+
+
+
 
       </div>
 

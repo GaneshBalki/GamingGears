@@ -4,9 +4,7 @@ import './HomeProduct.css';
 import ProductService from '../../service/ProductService';
 
 function ProductsByCat() {
-    const [prodarr, setProdarr] = useState([]);
     const [searcharr, setSearcharr] = useState([]);
-    const [searchtext, setSearchtext] = useState("");
     const { catid } = useParams();
     useEffect(() => {
         fetchdata();
@@ -16,7 +14,6 @@ function ProductsByCat() {
         
         ProductService.getProductByCatId(catid)
             .then((response) => {
-                setProdarr([...response.data]);
                 setSearcharr([...response.data]);
             })
             .catch();
