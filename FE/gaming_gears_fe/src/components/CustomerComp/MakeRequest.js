@@ -14,19 +14,16 @@ function MakeRequest() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
     // Make a POST request to the backend
     axios.post('http://localhost:8282/make-req-exp', {
         "custid": custid,
         "expid": expid,
-        "que": request,
-        "status": 0,
-        "resolution": 'request sent to expert',
+        "que": request
       })
       .then((response) => {
         if (response.status === 200) {
           setResponse(response.data);
-          window.alert('Request submitted');
+         
         } else {
           window.alert('Request submission failed');
         }
@@ -38,29 +35,30 @@ function MakeRequest() {
   
 
   return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',marginTop:'9rem' }}>
+  <h2>Make a Request</h2>
+
+  <div className="form-group" style={{ width: '700px',marginTop:'2rem' }}>
+    <label htmlFor="requestInput" style={{paddingBottom:'10px'}}>Request:</label>
+    <input
+      type="text"
+      id="requestInput"
+      className="form-control"
+      placeholder="Enter your request"
+      value={request}
+      onChange={handleChange}
+    />
+  </div>
+  <button type="submit" className="btn btn-primary" onClick={handleSubmit} style={{marginTop:'3em'}}>Submit</button>
+
+  {response && (
     <div>
-      <h2>Make a Request</h2>
-
-      <div className="form-group">
-        <label htmlFor="requestInput">Request:</label>
-        <input
-          type="text"
-          id="requestInput"
-          className="form-control"
-          placeholder="Enter your request"
-          value={request}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
-
-      {response && (
-        <div>
-          <h3>Response:</h3>
-          <p>{response}</p>
-        </div>
-      )}
+      <h3>Response:</h3>
+      <p>{response}</p>
     </div>
+  )}
+</div>
+
   );
 }
 

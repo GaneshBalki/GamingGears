@@ -12,6 +12,7 @@ import ExpertHome from "./components/ExpertComponent/ExpertHome.js";
 import ExpertRegistration from "./components/ExpertComponent/ExpertRegistration.js";
 import ExpertDetails from "./components/ExpertComponent/ExpertDetails.js";
 import MakeRequest from "./components/CustomerComp/MakeRequest.js";
+import DistributorLogin from "./components/DistributorComponent/DistributorLogin.js";
 
 const AppRoutes = [
   {
@@ -55,8 +56,8 @@ const AppRoutes = [
     element: <Cart></Cart>
   },
   {
-    path: '/distributor',
-    element: <DistributorHome></DistributorHome>
+    path: '/distributor-login',
+    element: <DistributorLogin></DistributorLogin>
   },
   {
     path: '/my-experts/:custid',
@@ -69,6 +70,10 @@ const AppRoutes = [
   {
     path: '/make-req/:expid',
     element: <MakeRequest></MakeRequest>
+  },
+  {
+    path: '/distributor-home',
+    element: <DistributorHome></DistributorHome>
   }
 ];
 

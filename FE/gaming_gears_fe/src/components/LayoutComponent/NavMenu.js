@@ -93,7 +93,7 @@ function NavMenu() {
               <NavLink tag={Link} className="text-dark" to="/expert">Expert</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} className="text-dark" to="/distributor">Become Seller</NavLink>
+              <NavLink tag={Link} className="text-dark" to="/distributor-login">Become Seller</NavLink>
             </NavItem>
             <NavItem>
 

@@ -2,6 +2,8 @@ package com.demo.gaminggears.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "Askexpert")
 public class Askexpert {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "queid")
     private int queId;
 
