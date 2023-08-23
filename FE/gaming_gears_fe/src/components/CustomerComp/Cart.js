@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import './Cart.css'; // Import a separate CSS file for styling
 import CustomerService from '../../service/CustomerService';
 import { useUser } from '../UserContext';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Cart(props) {
   const [searcharr, setSearcharr] = useState([]);
   var [total, setTotal] = useState(0);
   var totalamt = 0;
   const { custid } = useUser();
+  const navigate =useNavigate()
 
   useEffect(() => {
     fetchdata();
@@ -35,6 +38,21 @@ function Cart(props) {
       });
 
   };
+
+ 
+  
+  async function handleDelete(event, cartItem) {
+    event.preventDefault();
+    try {
+      await axios.delete(`http://localhost:8282/cart/${cartItem.cartid}`);
+      // Refresh the cart data
+      fetchdata();
+    } catch (err) {
+      console.error('Error deleting item from cart', err);
+    }
+  }
+
+
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
@@ -84,7 +102,12 @@ function Cart(props) {
                               <div style={{ width: '180px' }}>
                                 <h5 className="mb-0">&#8377; {cart.qty * cart.price}</h5>
                               </div>
-                              <a href="#!" style={{ color: '#cecece' }}>
+                              
+                              <a
+                                href="#"
+                                onClick={(event) => handleDelete(event, cart)}
+                                style={{ color: '#cecece' }}
+                              >
                                 <i className="fas fa-trash-alt"></i>
                               </a>
                             </div>

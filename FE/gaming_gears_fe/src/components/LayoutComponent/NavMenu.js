@@ -53,7 +53,7 @@ function NavMenu() {
     //   setCustidNumber(5)
     //   window.location.reload();
     // }
-    window.alert("logged in")
+    //window.alert("logged in")
 
   }, []); 
 
