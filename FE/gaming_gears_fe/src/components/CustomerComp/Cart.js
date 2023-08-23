@@ -1,5 +1,5 @@
-import React, { useState, useEffect, } from 'react';
-import './Cart.css'; // Import a separate CSS file for styling
+import React, { useState, useEffect } from 'react';
+import './Cart.css';
 import CustomerService from '../../service/CustomerService';
 import { useUser } from '../UserContext';
 import { Link } from 'react-router-dom';
@@ -8,14 +8,14 @@ import { useNavigate } from 'react-router-dom';
 
 function Cart(props) {
   const [searcharr, setSearcharr] = useState([]);
-  var [total, setTotal] = useState(0);
-  var totalamt = 0;
+  const [total, setTotal] = useState(0);
   const { custid } = useUser();
-  const navigate =useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchdata();
   }, []);
+
   useEffect(() => {
     // Calculate the total price whenever searcharr changes
     const calculateTotalPrice = () => {
@@ -28,6 +28,7 @@ function Cart(props) {
 
     calculateTotalPrice();
   }, [searcharr]);
+
   const fetchdata = () => {
     CustomerService.getCart(custid)
       .then((response) => {
@@ -36,14 +37,12 @@ function Cart(props) {
       .catch((error) => {
         console.error(error);
       });
-
   };
 
- 
-  
   async function handleDelete(event, cartItem) {
     event.preventDefault();
     try {
+      // Send a request to your API to delete the item from the cart
       await axios.delete(`http://localhost:8282/cart/${cartItem.cartid}`);
       // Refresh the cart data
       fetchdata();
@@ -51,8 +50,6 @@ function Cart(props) {
       console.error('Error deleting item from cart', err);
     }
   }
-
-
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
@@ -64,9 +61,9 @@ function Cart(props) {
                 <div className="row">
                   <div className="col-lg-12">
                     <h5 className="mb-3">
-                      <a href="/" className="text-body">
+                      <Link to="/" className="text-body">
                         <i className="fas fa-long-arrow-alt-left me-2"></i>Continue shopping
-                      </a>
+                      </Link>
                     </h5>
                     <hr />
                     {searcharr.map((cart, index) => (
@@ -74,10 +71,12 @@ function Cart(props) {
                         <div className="card-body">
                           <div className="d-flex justify-content-between">
                             <div className="d-flex flex-row align-items-center">
-
                               <div>
-                                <Link to={`/products/${cart.proId.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
-
+                                <Link
+                                  to={`/products/${cart.proId.proid}`}
+                                  className="text-reset"
+                                  style={{ textDecoration: 'none' }}
+                                >
                                   <img
                                     src={cart.proId.url1}
                                     className="img-fluid rounded-3"
@@ -85,15 +84,16 @@ function Cart(props) {
                                     style={{ width: '65px' }}
                                   />
                                 </Link>
-
                               </div>
                               <div className="ms-3">
-                                <Link to={`/products/${cart.proId.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
-
+                                <Link
+                                  to={`/products/${cart.proId.proid}`}
+                                  className="text-reset"
+                                  style={{ textDecoration: 'none' }}
+                                >
                                   <h5>{cart.proId.proname}</h5>
                                 </Link>
                               </div>
-
                             </div>
                             <div className="d-flex flex-row align-items-center">
                               <div style={{ width: '50px' }}>
@@ -102,9 +102,8 @@ function Cart(props) {
                               <div style={{ width: '180px' }}>
                                 <h5 className="mb-0">&#8377; {cart.qty * cart.price}</h5>
                               </div>
-                              
                               <a
-                                href="#"
+                                href="/"
                                 onClick={(event) => handleDelete(event, cart)}
                                 style={{ color: '#cecece' }}
                               >
@@ -115,9 +114,8 @@ function Cart(props) {
                         </div>
                       </div>
                     ))}
+                    <h5>Total Amount &#8377; {total}</h5>
                   </div>
-
-                  <h5>Total Amount &#8377; {total}</h5>
                 </div>
               </div>
             </div>

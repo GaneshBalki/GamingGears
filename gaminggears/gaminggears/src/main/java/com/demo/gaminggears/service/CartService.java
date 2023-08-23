@@ -65,12 +65,12 @@ public class CartService implements ICartService {
 	@Override
 	public void deleteFromCart(int cartid) {
 		// TODO Auto-generated method stub
-		List<Cart> existedCarts = cartRepository.findAllByCustId(cartid);
-		 if (existedCarts.get(0).getQty()>1) {
+		Cart existedCarts = cartRepository.findById(cartid).orElse(null);
+		 if (existedCarts.getQty()>1) {
 	            
-	            
+	            //System.out.println("cart quantity "+existedCarts.get(0).getQty());
 	            // Check if an item with the same product id exists in the cart
-	            Cart existingCart = existedCarts.get(0); // Assuming the first item in the list
+	            Cart existingCart = existedCarts; // Assuming the first item in the list
 	            existingCart.setQty(existingCart.getQty() - 1);
 	            existingCart.setPrice(existingCart.getProId().getPrice() * existingCart.getQty());
 	            
