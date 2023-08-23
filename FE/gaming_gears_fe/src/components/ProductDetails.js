@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'; // Import useParams hook
 import { useUser } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import axios for making HTTP requests
+import CustomerService from '../service/CustomerService';
 
 
 const ProductDetails = (props) => {
@@ -13,9 +13,6 @@ const ProductDetails = (props) => {
     const { custid } = useUser();
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    var price;
-    var name;
-    var id;
 
     useEffect(() => {
         ProductService.getProductById(pid)
@@ -29,47 +26,27 @@ const ProductDetails = (props) => {
 
     if (!product) {
         return <p>Loading...</p>;
-    } else {
-        price = product.price;
-        name = product.proname;
-        id = product.proid;
-
-    }
-    console.log(price, name, id)
-    
+    } 
     const handleAddToCart = async (event) => {
-
-            event.preventDefault();
-            console.log("customer id "+custid);
-            if(custid>0){
-               
+        event.preventDefault();
+        console.log("customer id " + custid);
+        if (custid > 0) {
             try {
-                console.log("product adding to cart "+custid);
-                var response = await axios.post("http://localhost:8282/add-to-cart", {
-                    "custid": custid,
-                    "proid": product.proid
-                });
-                console.log("product added to cart "+custid);
-                if (response.status === 200 ) {
-                    console.log("response data" );
-                    window.alert("Product '"+product.proname+"' added to Cart !");
-                  
+                const response = await CustomerService.addToCart(custid, product.proid);
+                if (response.status === 200) {
+                    window.alert("Product '" + product.proname + "' added to Cart !");
                 } else {
-                    setErrorMessage('failed to add product');
-                    console.log('Authentication failed');
+                    setErrorMessage('Failed to add product');
                 }
             } catch (error) {
-                console.error(error);
+                console.error('Error adding product to cart', error);
             }
-            }else{
-                window.alert("Please login !!!");
-                navigate("/customerlogin")
-            }
-        };
-        
-
-
-
+        } else {
+            window.alert("Please login !!!");
+            navigate("/customerlogin");
+        }
+    };
+    
     return (
         <div className="container mt-5" style={{ background: '#f8f9fa' }}>
             <div className="row" >
@@ -131,7 +108,6 @@ const ProductDetails = (props) => {
             </div>
             <pre></pre>
             <pre></pre>
-
             <pre></pre>
             <pre></pre>
 

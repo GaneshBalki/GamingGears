@@ -50,6 +50,13 @@ function Cart(props) {
       console.error('Error deleting item from cart', err);
     }
   }
+  async function handlePut(event, cartItem) {
+    event.preventDefault();
+//window.alert(cartItem.proId.proid)
+   CustomerService.addToCart(cartItem.custId.custId,cartItem.proId.proid);
+   fetchdata();
+     
+  }
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
@@ -86,8 +93,7 @@ function Cart(props) {
                                 </Link>
                               </div>
                               <div className="ms-3">
-                                <Link
-                                  to={`/products/${cart.proId.proid}`}
+                                <Link to={`/products/${cart.proId.proid}`}
                                   className="text-reset"
                                   style={{ textDecoration: 'none' }}
                                 >
@@ -96,19 +102,16 @@ function Cart(props) {
                               </div>
                             </div>
                             <div className="d-flex flex-row align-items-center">
-                              <div style={{ width: '50px' }}>
-                                <h5 className="fw-normal mb-0">{cart.qty}</h5>
-                              </div>
+                              <a href="/" onClick={(event) => handleDelete(event, cart)} style={{ color: 'red' }}>
+                                 <i class="fas fa-minus"></i>
+                              </a>
+                              <input id="form1"  name="quantity" value={cart.qty} type="text" class="form-control form-control-sm" style={{width: "50px",boxShadow: 'none',textAlign:"center"}} readOnly={true} />
+                              <a href="/" onClick={(event) => handlePut(event, cart)} style={{ color: 'green' }}>
+                               <i class="fas fa-plus"></i>
+                              </a>
                               <div style={{ width: '180px' }}>
                                 <h5 className="mb-0">&#8377; {cart.qty * cart.price}</h5>
-                              </div>
-                              <a
-                                href="/"
-                                onClick={(event) => handleDelete(event, cart)}
-                                style={{ color: '#cecece' }}
-                              >
-                                <i className="fas fa-trash-alt"></i>
-                              </a>
+                              </div> 
                             </div>
                           </div>
                         </div>
