@@ -49,7 +49,7 @@ List<Distributor> dislist =distributorRepository.findAll();
 	@Override
 	public Distributor getDistributorbyID(int disid) {
 		// TODO Auto-generated method stub
-		return distributorRepository.getById(disid);
+		return distributorRepository.findById(disid).orElse(null);
 	}
 
 }
