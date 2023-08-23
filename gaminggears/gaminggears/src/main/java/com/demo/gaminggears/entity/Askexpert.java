@@ -39,7 +39,16 @@ public class Askexpert {
         this.status = status;
         this.resolution = resolution;
     }
-
+    
+    public Askexpert( Customer custId, Expert expId, String que) {
+        //this.queId = queId;
+        this.custid = custId;
+        this.expid = expId;
+        this.que = que;
+        this.status = 0;
+        this.resolution = "yet to resolved";
+    }
+    
     // Getters and Setters
     public int getQueId() {
         return queId;

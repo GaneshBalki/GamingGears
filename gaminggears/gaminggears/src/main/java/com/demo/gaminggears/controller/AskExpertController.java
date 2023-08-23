@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.gaminggears.entity.Askexpert;
+import com.demo.gaminggears.entity.AskexpertBody;
 import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.service.IAskExpertService;
 import com.demo.gaminggears.service.IProductService;
@@ -34,7 +35,7 @@ public class AskExpertController {
 	}
 	
 	@PostMapping("/make-req-exp")
-	public ResponseEntity<String> insertQuery( @RequestBody Askexpert q) {
+	public ResponseEntity<String> insertQuery( @RequestBody AskexpertBody q) {
 		  iAskExpertService.addQuery(q);
 		  return ResponseEntity.ok("added successfully");
 	}
