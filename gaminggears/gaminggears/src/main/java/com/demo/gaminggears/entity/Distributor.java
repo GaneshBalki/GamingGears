@@ -17,11 +17,7 @@ public class Distributor {
     @Column(name = "disid")
     private int disid;
     private String disname;
-
-    @ManyToOne
-    @JoinColumn(name = "addressid")
-    private Address addressId;
-
+    private String address;
     private String licence;
     private String storename;
     private String mobile;
@@ -32,10 +28,10 @@ public class Distributor {
     public Distributor() {
     }
 
-    public Distributor(int disid, String disname, Address addressId, String licence, String storename, String mobile, String email, String pass) {
-        this.disid = disid;
+    public Distributor( String disname, String addressId, String licence, String storename, String mobile, String email, String pass) {
+        //this.disid = disid;
         this.disname = disname;
-        this.addressId = addressId;
+        this.address = addressId;
         this.licence = licence;
         this.storename = storename;
         this.mobile = mobile;
@@ -60,12 +56,12 @@ public class Distributor {
         this.disname = disname;
     }
 
-    public Address getAddressId() {
-        return addressId;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
+    public void setAddress(String addressId) {
+        this.address = addressId;
     }
 
     public String getLicence() {
@@ -113,7 +109,7 @@ public class Distributor {
         return "Distributor{" +
                 "disid=" + disid +
                 ", disname='" + disname + '\'' +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 ", licence='" + licence + '\'' +
                 ", storename='" + storename + '\'' +
                 ", mobile='" + mobile + '\'' +
