@@ -5,19 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "Distributor")
+@Table(name = "Distributor", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Distributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "disid")
     private int disid;
     private String disname;
-    private String address;
+    private String address; // Assuming this is a String, update if it's a different type
     private String licence;
     private String storename;
     private String mobile;
@@ -28,10 +27,9 @@ public class Distributor {
     public Distributor() {
     }
 
-    public Distributor( String disname, String addressId, String licence, String storename, String mobile, String email, String pass) {
-        //this.disid = disid;
+    public Distributor(String disname, String address, String licence, String storename, String mobile, String email, String pass) {
         this.disname = disname;
-        this.address = addressId;
+        this.address = address;
         this.licence = licence;
         this.storename = storename;
         this.mobile = mobile;
@@ -60,8 +58,8 @@ public class Distributor {
         return address;
     }
 
-    public void setAddress(String addressId) {
-        this.address = addressId;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getLicence() {
@@ -109,7 +107,7 @@ public class Distributor {
         return "Distributor{" +
                 "disid=" + disid +
                 ", disname='" + disname + '\'' +
-                ", address=" + address +
+                ", address='" + address + '\'' +
                 ", licence='" + licence + '\'' +
                 ", storename='" + storename + '\'' +
                 ", mobile='" + mobile + '\'' +
