@@ -18,11 +18,12 @@ const DistriSignIn = () => {
                     "pass": password
                 });
 
-            if (response.status == 200 && response.data.email==email && response.data.pass==password) {
+            if (response.status == 200 && response.data.email == email && response.data.pass == password) {
                 console.log("response data" + response.data.fname)
-                setDisid(response.data.custId);
-                alert("Welcome , "+response.data.disname+" !");
-                 navigate('/distributor-home');
+                // setDisid(response.data.disid);
+                alert("Welcome , " + response.data.disname + " !");
+                sessionStorage.setItem('disid', response.data.disid.toString());
+                navigate('/distributor-home');
             }
             else {
                 setErrorMessage('Invalid email or password');
@@ -37,7 +38,7 @@ const DistriSignIn = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-9">
-                {errorMessage && (
+                    {errorMessage && (
                         <div className="alert alert-danger mt-3">{errorMessage}</div>
                     )}
                     <h2 className="mb-3">Sign In</h2>
@@ -75,14 +76,14 @@ const DistriSignIn = () => {
                         <br></br>
                         <button type="submit" className="btn btn-primary">
                             Sign in
-                        </button> 
+                        </button>
                         <pre></pre>
                         <Link to={`/forgot-password/${email}`} className="text-reset" style={{ textDecoration: 'none' }}>
                             forgot password ?</Link> |
                         <Link to={`/distibutor-registration`} className="text-reset" style={{ textDecoration: 'none' }}>
-                             Create Account</Link>
+                            Create Account</Link>
                     </form>
-                    
+
                 </div>
             </div>
         </div>
