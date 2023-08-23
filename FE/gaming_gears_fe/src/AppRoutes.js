@@ -11,6 +11,7 @@ import Expert from './components/ExpertComponent/Expert.js'
 import ExpertHome from "./components/ExpertComponent/ExpertHome.js";
 import ExpertRegistration from "./components/ExpertComponent/ExpertRegistration.js";
 import ExpertDetails from "./components/ExpertComponent/ExpertDetails.js";
+import MakeRequest from "./components/CustomerComp/MakeRequest.js";
 
 const AppRoutes = [
   {
@@ -64,6 +65,10 @@ const AppRoutes = [
   {
     path: '/add-expert/:custid',
     element: <ExpertRegistration></ExpertRegistration>
+  },
+  {
+    path: '/make-req/:expid',
+    element: <MakeRequest></MakeRequest>
   }
 ];
 

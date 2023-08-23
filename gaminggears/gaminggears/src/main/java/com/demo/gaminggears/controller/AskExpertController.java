@@ -33,7 +33,7 @@ public class AskExpertController {
 		
 	}
 	
-	@PostMapping("/ask-expert-req/")
+	@PostMapping("/make-req-exp")
 	public ResponseEntity<String> insertQuery( @RequestBody Askexpert q) {
 		  iAskExpertService.addQuery(q);
 		  return ResponseEntity.ok("added successfully");

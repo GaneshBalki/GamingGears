@@ -8,7 +8,6 @@ const Expert = () => {
   const { custid } = useUser();
   const [hasMatch, setHasMatch] = useState(false);
   const [searcharr, setSearcharr] = useState([]);
-
   useEffect(() => {
     fetchExpertData();
   }, []);
@@ -21,13 +20,13 @@ const Expert = () => {
     // Log the updated value of hasMatch
     console.log("Updated hasMatch:", hasMatch);
   }, [custid, searcharr]);
-
+   
   const fetchExpertData = () => {
     ExpertService.getExperts()
       .then((response) => {
         const expertarr = response.data;
         // Filter the expertarr based on their status only active expert can be visible condition
-        const filteredExpertArr = expertarr.filter((e) => e.status > 0);
+        const filteredExpertArr = expertarr.filter((e) => e.status > 0 );
   
         setSearcharr([...filteredExpertArr]);
        

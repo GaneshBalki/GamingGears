@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NavMenu.css';
 import logo1 from '../../images/logo1.png';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -13,6 +13,7 @@ function NavMenu() {
   const [results, setResults] = useState([]);
   const { custid, setCustid } = useUser();
   const [custidNumber,setCustidNumber]=useState(1);
+  const navigate=useNavigate();
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
   };
@@ -63,6 +64,7 @@ function NavMenu() {
       // The user clicked "OK" (yes) in the confirmation dialog
       sessionStorage.removeItem('customerid');
       setCustid(0);
+      navigate("/")
     }
   };
 

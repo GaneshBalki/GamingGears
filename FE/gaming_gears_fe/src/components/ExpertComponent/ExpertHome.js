@@ -101,12 +101,13 @@ const ExpertHome = (props) => {
                 </div>
             )}
         </div>
-        <Assembly expid={4}></Assembly>   
+        
     </div>
     
 </div>
 
             <pre></pre>
+            <Assembly expid={custid}></Assembly>
         </div>
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams hook
+import { Link, useParams } from 'react-router-dom'; // Import useParams hook
 import expertlogo from '../../images/expert.png'
 import ExpertService from '../../service/ExpertService';
 import Assembly from './Assembly';
@@ -43,7 +43,10 @@ const ExpertDetails = () => {
                         <pre></pre>
                         <h5>Unit Sold : {expert.sells}</h5>
                         <pre></pre>
+                        <Link to={`/make-req/${expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                               
                         <button className="btn btn-primary">Request </button>
+                        </Link>
                     </div>
                    
                 </div>
@@ -55,5 +58,4 @@ const ExpertDetails = () => {
         </div>
     );
 }
-
 export default ExpertDetails;
