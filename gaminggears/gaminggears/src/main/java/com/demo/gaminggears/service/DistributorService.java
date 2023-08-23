@@ -46,5 +46,10 @@ List<Distributor> dislist =distributorRepository.findAll();
 		}
 		return null;
 	}
+	@Override
+	public Distributor getDistributorbyID(int disid) {
+		// TODO Auto-generated method stub
+		return distributorRepository.getById(disid);
+	}
 
 }

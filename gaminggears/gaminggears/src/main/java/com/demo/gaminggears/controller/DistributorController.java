@@ -44,6 +44,12 @@ public class DistributorController {
 		return dislist;
 		
 	}
+	@GetMapping("/distributor-home/{disid}")
+	public Distributor getDistributorbyID(@PathVariable int disid) {
+		Distributor dislist=distributorService.getDistributorbyID(disid);
+		return dislist;
+		
+	}
 	@PostMapping("/dislogin")
 	public Distributor dislogin(@RequestBody Login dislogin) {
 		

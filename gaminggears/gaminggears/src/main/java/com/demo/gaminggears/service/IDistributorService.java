@@ -13,6 +13,8 @@ public interface IDistributorService {
 	Distributor forgetPassDistributor(String email);
 
 	void registerDistributor(Distributor dis);
+
+	Distributor getDistributorbyID(int disid);
 	
 	
 }
