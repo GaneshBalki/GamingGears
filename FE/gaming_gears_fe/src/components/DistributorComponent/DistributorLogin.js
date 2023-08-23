@@ -12,7 +12,7 @@ const DistributorLogin = () => {
         <div className="col-md-7 d-flex justify-content-center align-items-center" style={{   backgroundImage: 'linear-gradient(35deg,lightyellow,lightblue)', height: '450px', color: '#333333' }}>
         <div>
         <h1 style={{fontSize:'5rem',fontFamily:''}}>GamingGears.</h1>
-        <h1 style={{fontSize:'1.5rem',width:'100%'}}>Become a Bussinessman, Join Us Now !</h1>
+        <h1 style={{fontSize:'1.5rem',width:'100%'}}>Become a Businessman, Join Us Now !</h1>
         </div>                        
                   </div>
 

@@ -62,7 +62,7 @@ public class DistributorController {
 		return distributorService.forgetPassDistributor(email);
 		
 	}
-	@PostMapping("/distributor")
+	@PostMapping("/register-distributor")
 	public ResponseEntity<String> dislogin(@RequestBody Distributor dis) {
 		
 		distributorService.registerDistributor(dis);

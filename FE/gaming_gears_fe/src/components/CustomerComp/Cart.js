@@ -59,7 +59,7 @@ function Cart(props) {
   }
 
   return (
-    <section className="h-100 h-custom" style={{ backgroundColor: '#eee' }}>
+    <section className="h-100 h-custom" style={{ backgroundImage: 'linear-gradient(35deg, #e0e0e0, white)' }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col">

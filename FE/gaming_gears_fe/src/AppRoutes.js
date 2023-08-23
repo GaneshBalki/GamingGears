@@ -13,6 +13,7 @@ import ExpertRegistration from "./components/ExpertComponent/ExpertRegistration.
 import ExpertDetails from "./components/ExpertComponent/ExpertDetails.js";
 import MakeRequest from "./components/CustomerComp/MakeRequest.js";
 import DistributorLogin from "./components/DistributorComponent/DistributorLogin.js";
+import DistributorRegistration from "./components/DistributorComponent/DistributorRegistration.js";
 
 const AppRoutes = [
   {
@@ -74,6 +75,10 @@ const AppRoutes = [
   {
     path: '/distributor-home',
     element: <DistributorHome></DistributorHome>
+  },
+  {
+    path: '/distibutor-registration',
+    element: <DistributorRegistration></DistributorRegistration>
   }
 ];
 
