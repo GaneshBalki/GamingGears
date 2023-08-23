@@ -61,6 +61,30 @@ public class CartService implements ICartService {
     public List<Cart> getCart(int custID) {
         return cartRepository.findAllByCustId(custID);
     }
+
+	@Override
+	public void deleteFromCart(int cartid) {
+		// TODO Auto-generated method stub
+		List<Cart> existedCarts = cartRepository.findAllByCustId(cartid);
+		 if (existedCarts.size()>1) {
+	            
+	            
+	            // Check if an item with the same product id exists in the cart
+	            Cart existingCart = existedCarts.get(0); // Assuming the first item in the list
+	            existingCart.setQty(existingCart.getQty() - 1);
+	            existingCart.setPrice(existingCart.getProId().getPrice() * existingCart.getQty());
+	            
+	            cartRepository.save(existingCart);
+	            // Update the cart item in the database
+	            // Add code here to update the cart item in the repository
+	        } else {
+	           
+	           
+	            // Save the new cart item in the database
+	            cartRepository.deleteById(cartid);
+	        }
+		
+	}
     
     // Add an update method here to update the cart item in the repository
 }

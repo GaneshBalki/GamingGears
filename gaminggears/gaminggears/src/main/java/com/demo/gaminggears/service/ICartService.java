@@ -11,6 +11,8 @@ public interface ICartService {
 
 	List<Cart> getCart(int custID);
 
+	void deleteFromCart(int cartid);
+
 	
 
 }
