@@ -45,6 +45,7 @@ const SignIn = () => {
             //     localStorage.setItem('customerId', custidnew);
             //     const custidnew1 = localStorage.getItem('customerId');
                 alert("Welcome "+response.data.fname+" !!!");
+             
                 navigate('/');
             }
             else {
@@ -56,6 +57,7 @@ const SignIn = () => {
                  alert("User Registation Failed");
         }
     }
+ 
     return (
         <div className="container">
             <div className="row justify-content-center">

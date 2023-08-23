@@ -20,9 +20,9 @@ const DistriSignIn = () => {
 
             if (response.status == 200 && response.data.email == email && response.data.pass == password) {
                 console.log("response data" + response.data.fname)
-                // setDisid(response.data.disid);
+                 setDisid(response.data.disid);
                 alert("Welcome , " + response.data.disname + " !");
-                sessionStorage.setItem('disid', response.data.disid.toString());
+                // sessionStorage.setItem('disid', response.data.disid.toString());
                 navigate('/distributor-home');
             }
             else {

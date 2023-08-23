@@ -6,7 +6,7 @@ class DistributorService{
         return axios.get(`http://localhost:8282/distributor-home/${disid}`)
     }
     getDistributorProducts(disid){
-        return axios.get(`http://localhost:8282/distributor-products/${disid}`)
+        return axios.get(`http://localhost:8282/distributor/products/${disid}`)
     }
 
 }

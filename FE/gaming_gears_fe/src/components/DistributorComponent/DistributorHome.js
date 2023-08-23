@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useDistributor } from './DistributorContext';
 import DistributorService from '../../service/DistributorService';
 
 const DistributorHome = () => {
     const [products, setProducts] = useState([]);
     const [distributorInfo, setDistributorInfo] = useState(null);
-    const { setDisid } = useDistributor();
 
     const { disid } = useDistributor();
     const [newProduct, setNewProduct] = useState({
@@ -25,25 +23,12 @@ const DistributorHome = () => {
             });
     }, [disid]);
 
-
-    useEffect(() => {
-        const storedDisid = sessionStorage.getItem('disid');
-        if (storedDisid !== null) {
-            const disidNumber = parseInt(storedDisid, 10); // Convert back to a number
-            setDisid(disidNumber);
-
-            console.log('Customer ID:', disidNumber);
-        } else {
-            console.log('Customer ID not found in sessionStorage.');
-        }
-
-    }, []);
-
     useEffect(() => {
 
         DistributorService.getDistributorProducts(disid)
             .then((response) => {
                 setProducts([...response.data]);
+
             })
             .catch((error) => {
                 console.error('Error fetching products:', error);
@@ -75,7 +60,7 @@ const DistributorHome = () => {
                 <div className="col-md-12">
                     <div className="distributor-profile" style={{ display: 'flex', alignItems: 'flex-start' }}>
                         {distributorInfo ? (
-                            <h3>{distributorInfo.disname}</h3>
+                            <h3 style={{ color: 'rgba(51, 51, 51, 0.8)'}}>Namaste, {distributorInfo.disname}</h3>
                         ) : (
                             <p>Loading distributor info...</p>
                         )}
@@ -83,18 +68,19 @@ const DistributorHome = () => {
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col-md-8">
+            <div className="row" style={{marginTop:'2rem'}}>
+                <div className="col-md-6">
                     <h2>Your Products</h2>
-                    <ul>
+                    <ul style={{ listStyleType: 'none', padding: '2rem' }}>
                         {products.map((product) => (
-                            <li key={product.id}>
-                                <h3>{product.name}</h3>
-                                <p>{product.description}</p>
-                                <p>Price: ${product.price}</p>
+                            <li key={product.proid} style={{ borderBottom: '1px solid #ddd', marginBottom: '10px', paddingBottom: '10px' }}>
+                                <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{product.proname}  </span>
+                                {/* <p style={{ fontSize: '1rem', marginBottom: '5px' }}>{product.description}</p> */}
+                                <p style={{ fontSize: '1rem', color: '#0074cf', fontWeight: 'bold' }}>Price: ₹ {product.price}</p>
                             </li>
                         ))}
                     </ul>
+
                 </div>
                 {/*  <div className="col-md-4">
                     <h2>Add a New Product</h2>

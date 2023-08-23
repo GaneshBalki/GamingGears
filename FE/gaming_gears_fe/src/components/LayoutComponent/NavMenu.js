@@ -55,7 +55,7 @@ function NavMenu() {
     //   window.location.reload();
     // }
     //window.alert("logged in")
-
+ 
   }, []); 
 
   const handleLogout = () => {
