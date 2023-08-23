@@ -43,6 +43,12 @@ public class ProductService implements IProductService {
 		return productRepository.getProductsByCategory(catid);
 	}
 
+	@Override
+	public List<Product> getProductsbyDis(int disid) {
+		// TODO Auto-generated method stub
+		return productRepository.getProductsbyDis(disid);
+	}
+
 
 
 	

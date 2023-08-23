@@ -16,4 +16,6 @@ public interface IProductService {
 
 	List<Product> getProductsByCategory(int catid);
 
+	List<Product> getProductsbyDis(int disid);
+
 }

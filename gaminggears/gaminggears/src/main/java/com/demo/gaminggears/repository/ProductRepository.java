@@ -16,5 +16,8 @@ import java.util.List;
 		
 		@Query(value = "SELECT * FROM product WHERE catid = ?1", nativeQuery = true)
 	    List<Product> getProductsByCategory(int catid);
+		
+		@Query(value = "SELECT * FROM product WHERE disid = ?1", nativeQuery = true)
+		List<Product> getProductsbyDis(int disid);
 	}
 

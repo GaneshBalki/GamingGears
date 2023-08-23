@@ -56,9 +56,14 @@ public class ProductController {
 	@GetMapping("/products/{pid}")
 	public Product getProduct(@PathVariable int pid) {
 		return productService.getProductById(pid);
-	
 		
 	}
+	
+	@GetMapping("/distributor/products/{disid}")
+	public List<Product> getProductsbyDis (@PathVariable int disid){
+		return productService.getProductsbyDis(disid);
+	}
+	
 	
 	@GetMapping("category-products/{catid}")
 	public List<Product> getProductsByCategory(@PathVariable int catid){
