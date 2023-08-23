@@ -21,7 +21,7 @@ const DistriSignIn = () => {
             if (response.status == 200 && response.data.email==email && response.data.pass==password) {
                 console.log("response data" + response.data.fname)
                 setDisid(response.data.custId);
-                alert(response.data.custId);
+                alert("Welcome , "+response.data.disname+" !");
                  navigate('/distributor-home');
             }
             else {
@@ -79,7 +79,7 @@ const DistriSignIn = () => {
                         <pre></pre>
                         <Link to={`/forgot-password/${email}`} className="text-reset" style={{ textDecoration: 'none' }}>
                             forgot password ?</Link> |
-                        <Link to={`/customer-registration`} className="text-reset" style={{ textDecoration: 'none' }}>
+                        <Link to={`/distibutor-registration`} className="text-reset" style={{ textDecoration: 'none' }}>
                              Create Account</Link>
                     </form>
                     
