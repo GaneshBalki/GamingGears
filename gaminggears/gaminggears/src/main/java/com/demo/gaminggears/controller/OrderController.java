@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +23,8 @@ public class OrderController {
 	@Autowired
 	IOrderService iOrderService;
 	
-	@GetMapping("/buyproducts")
-	public List<Orders> getAllOrderbyCustID(int custid){
+	@GetMapping("/order/history/{custid}")
+	public List<Orders> getAllOrderbyCustID(@PathVariable int custid){
 		List<Orders> olist = iOrderService.getAllOrderbyCustID(custid);
 		return olist;
 	}

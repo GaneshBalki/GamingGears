@@ -15,6 +15,7 @@ import MakeRequest from "./components/CustomerComp/MakeRequest.js";
 import DistributorLogin from "./components/DistributorComponent/DistributorLogin.js";
 import DistributorRegistration from "./components/DistributorComponent/DistributorRegistration.js";
 import BuyNow from "./components/CustomerComp/BuyNow.js";
+import OrderHistory from "./components/CustomerComp/OrderHistory.js";
 
 const AppRoutes = [
   {
@@ -84,6 +85,10 @@ const AppRoutes = [
   {
     path: '/buynow/:proid',
     element: <BuyNow></BuyNow>
+  },
+  {
+    path: '/order/history',
+    element: <OrderHistory></OrderHistory>
   }
 ];
 

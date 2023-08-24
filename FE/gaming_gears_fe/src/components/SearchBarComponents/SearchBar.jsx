@@ -32,7 +32,7 @@ function SearchBar({ setResults }) {
                 setResults(result);
             });
     };
-
+  
     const handleChange = (value) => {
         setInput(value)
         fetchData(value)

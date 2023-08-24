@@ -27,5 +27,9 @@ class ExpertService {
         }
         return response;
     }
+
+    getOrders(custid){
+        return axios.get(`http://localhost:8282/order/history/${custid}`)
+    }
 }
 export default new ExpertService();

@@ -13,6 +13,7 @@ function App() {
     <DistributorProvider>
     <UserProvider>
           <div className="App">
+           
             <NavMenu></NavMenu>
 
             <Routes>
@@ -22,6 +23,7 @@ function App() {
               })}
             </Routes>
             <Footer></Footer>
+           
           </div>
     </UserProvider>
     </DistributorProvider>

@@ -53,10 +53,11 @@ function MakeRequest() {
 
   {response && (
     <div>
-      <h3>Response:</h3>
-      <p>{response}</p>
+      <h3></h3>
+      <p>Request Sent to Expert !!!</p>
     </div>
-  )}
+  )
+}
 </div>
 
   );

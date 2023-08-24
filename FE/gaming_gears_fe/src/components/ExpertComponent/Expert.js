@@ -73,7 +73,7 @@ const Expert = () => {
           )
         }
       </div>
-      <div className="row" style={{marginTop:'50px'}}>
+      <div className="row" >
         {searcharr.map((expert) => (
           <div key={expert.expid} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex">
             {console.log(expert.expid)}

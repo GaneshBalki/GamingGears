@@ -1,51 +1,81 @@
-/* CSS file (e.g., BuyNow.css) */
+/* BuyNow.css */
+
+/* Container styles */
 .buy-now-container {
-    max-width: 700px;
-    height: 420px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
   
+  /* Title styles */
   .buy-now-title {
+    font-size: 28px;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  /* Description styles */
+  .buy-now-description {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Product details styles */
+  .product-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .product-name {
     font-size: 24px;
     color: #333;
+    margin-bottom: 10px;
   }
   
-  .buy-now-description {
-    font-size: 16px;
-    color: #666;
+  .product-price {
+    font-size: 20px;
+    color: #e74c3c;
   }
   
-  .product-details {
-    margin-top: 50px;
+  /* Address input styles */
+  .address-input {
+    margin-bottom: 20px;
+  }
+  
+  .address-input label {
+    font-size: 18px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .address-input input {
+    width: 100%;
     padding: 10px;
-    background-color: #fff;
+    font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
   
-  .product-name {
-    font-size: 20px;
-    color: #333;
-  }
-  
-  .product-price {
-    font-size: 18px;
-    color: #007bff;
-  }
-  
+  /* Buy button styles */
   .buy-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 12px 24px;
+    font-size: 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
   }
   
   .buy-button:hover {
