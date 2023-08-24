@@ -69,21 +69,26 @@ function BuyNow() {
         )}
 
         {/* Address Input */}
+        
         <div className="address-input">
             <label htmlFor="address">Address:</label>
+            
             <input
                 type="text"
                 id="address"
                 name="address"
                 value={address}
                 onChange={handleChange}
+                required={true}
             />
+           
         </div>
 
         {/* Add a button or form to complete the purchase */}
         <div className="purchase-options">
             <button className="buy-button" onClick={handlePurchase}>Buy Now</button>
         </div>
+        
     </div>
 
     );

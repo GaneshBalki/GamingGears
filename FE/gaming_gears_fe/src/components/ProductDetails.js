@@ -84,7 +84,7 @@ const ProductDetails = (props) => {
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="product-details">
+                    <div className="product-details" style={{ width: '100%', height: '100%' }} >
                         <pre></pre>
                         <pre></pre>
 

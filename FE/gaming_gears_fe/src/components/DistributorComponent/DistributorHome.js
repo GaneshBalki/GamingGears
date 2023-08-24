@@ -7,11 +7,6 @@ const DistributorHome = () => {
     const [distributorInfo, setDistributorInfo] = useState(null);
 
     const { disid } = useDistributor();
-    const [newProduct, setNewProduct] = useState({
-        name: '',
-        description: '',
-        price: 0,
-    });
 
     React.useEffect(() => {
         DistributorService.getDistributorById(disid)
@@ -35,24 +30,9 @@ const DistributorHome = () => {
             });
     }, []);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setNewProduct({ ...newProduct, [name]: value });
-    };
 
-    const handleAddProduct = () => {
-        // // Make a POST request to add the new product
-        // axios.post('http://your-api-url.com/distributor/products/add', newProduct)
-        //   .then((response) => {
-        //     // Refresh the list of products
-        //     setProducts([...products, response.data]);
-        //     // Clear the input fields
-        //     setNewProduct({ name: '', description: '', price: 0 });
-        //   })
-        //   .catch((error) => {
-        //     console.error('Error adding product:', error);
-        //   });
-    };
+
+
 
     return (
         <div className="container">
@@ -60,7 +40,7 @@ const DistributorHome = () => {
                 <div className="col-md-12">
                     <div className="distributor-profile" style={{ display: 'flex', alignItems: 'flex-start' }}>
                         {distributorInfo ? (
-                            <h3 style={{ color: 'rgba(51, 51, 51, 0.8)'}}>Namaste, {distributorInfo.disname}</h3>
+                            <h3 style={{ color: 'rgba(51, 51, 51, 0.8)' }}>Namaste, {distributorInfo.disname}</h3>
                         ) : (
                             <p>Loading distributor info...</p>
                         )}
@@ -68,21 +48,56 @@ const DistributorHome = () => {
                 </div>
             </div>
 
-            <div className="row" style={{marginTop:'2rem'}}>
+            <div className="row" style={{ marginTop: '2rem' }}>
+
+
                 <div className="col-md-6">
                     <h2>Your Products</h2>
-                    <ul style={{ listStyleType: 'none', padding: '2rem' }}>
+                    <ul className="list-group">
                         {products.map((product) => (
-                            <li key={product.proid} style={{ borderBottom: '1px solid #ddd', marginBottom: '10px', paddingBottom: '10px' }}>
-                                <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{product.proname}  </span>
-                                {/* <p style={{ fontSize: '1rem', marginBottom: '5px' }}>{product.description}</p> */}
-                                <p style={{ fontSize: '1rem', color: '#0074cf', fontWeight: 'bold' }}>Price: ₹ {product.price}</p>
+                            <li
+                                key={product.proid}
+                                className="list-group-item"
+                                style={{
+                                    marginBottom: '20px',
+                                    padding: '20px',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    textAlign: 'left',
+                                    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+                                    borderRadius: '5px',
+                                    height: 'fit-content'
+                                }}
+                            >
+                                <div style={{ flex: 1 }}>
+                                    <h3 style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
+                                        {product.proname}
+                                    </h3>
+
+                                </div>
+                                <div style={{ flex: 1, textAlign: 'right' }}>
+                                    <p
+                                        style={{
+                                            fontSize: '0.9rem',
+                                            color: '#0074cf',
+                                            fontWeight: 'bold',
+                                            marginBottom: '0',
+                                        }}
+                                    >
+                                        Price: ₹ {product.price}
+                                    </p>
+
+                                </div>
                             </li>
                         ))}
                     </ul>
 
                 </div>
-                {/*  <div className="col-md-4">
+
+                <div className="col-md-1">
+
+                </div>
+                <div className="col-md-4" style={{ textAlign: 'left' }}>
                     <h2>Add a New Product</h2>
                     <div className="form-group">
                         <label>Name:</label>
@@ -90,8 +105,8 @@ const DistributorHome = () => {
                             type="text"
                             name="name"
                             className="form-control"
-                            value={newProduct.name}
-                            onChange={handleChange}
+
+
                         />
                     </div>
                     <div className="form-group">
@@ -100,8 +115,7 @@ const DistributorHome = () => {
                             type="text"
                             name="description"
                             className="form-control"
-                            value={newProduct.description}
-                            onChange={handleChange}
+
                         />
                     </div>
                     <div className="form-group">
@@ -110,14 +124,45 @@ const DistributorHome = () => {
                             type="number"
                             name="price"
                             className="form-control"
-                            value={newProduct.price}
-                            onChange={handleChange}
+
                         />
                     </div>
-                    <button className="btn btn-primary" onClick={handleAddProduct}>
+
+                    <div className="form-group">
+                        <label>Product Image 1</label>
+                        <input
+                            type="file"
+                            name="image1"
+                            className="form-control"
+                            accept="image/*"
+
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Product Image 2</label>
+                        <input
+                            type="file"
+                            name="image2"
+                            className="form-control"
+                            accept="image/*"
+
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Product Image 3</label>
+                        <input
+                            type="file"
+                            name="image3"
+                            className="form-control"
+                            accept="image/*"
+
+                        />
+                    </div>
+
+                    <button className="btn btn-primary" style={{marginTop:'0.9rem'}}>
                         Add Product
                     </button>
-                </div> */}
+                </div>
             </div>
         </div>
     );
