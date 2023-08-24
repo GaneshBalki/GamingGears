@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import SearchResultsList from "./SearchResultsList";
 
 
 function SearchBar({ setResults }) {
+
+    const parentStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        // Add any other styling you need for the parent div
+    };
+
+
     const [input, setInput] = useState("")
+    const [results, setResultss] = useState([])
     const fetchData = (value) => {
         fetch("http://localhost:8282/products")
             .then((response) => response.json())
             .then((json) => {
-                const results = json.filter((product) => {
+                const result = json.filter((product) => {
                     return (
                         value &&
                         product &&
@@ -17,9 +27,9 @@ function SearchBar({ setResults }) {
 
                     );
                 });
-
-                console.log(results)
-                setResults(results);
+                setResultss(result)
+                console.log(result)
+                setResults(result);
             });
     };
 
@@ -28,8 +38,8 @@ function SearchBar({ setResults }) {
         fetchData(value)
     }
     return (
-        <div style={{ width: '350px', borderRadius: '0', border: '1px solid #ced4da', boxShadow: 'none', outline: 'none', marginLeft: '150px' }}>
-            <div className="d-flex">
+        <div style={{ width: '350px', borderRadius: '0', border: '1px solid #ced4da', boxShadow: 'none', outline: 'none' }}>
+            <div className="d-flex" >
                 <input className="form-control me-2 search-bar" type="search" placeholder="Search..." aria-label="Search"
                     style={{ width: '350px', borderRadius: '0', boxShadow: 'none', outline: 'none', border: 'none' }}
                     value={input} onChange={(e) => handleChange(e.target.value)}
@@ -43,6 +53,11 @@ function SearchBar({ setResults }) {
                         </svg>
 
                     </Link>
+                </div>
+                <div >
+
+                    <SearchResultsList results={results}></SearchResultsList>
+
                 </div>
             </div>
 

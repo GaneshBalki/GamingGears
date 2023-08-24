@@ -8,6 +8,7 @@ const SearchResults = (props) => {
     const [results, setResults] = useState([]);
 
     useEffect(() => {
+
         fetch("http://localhost:8282/products")
             .then((response) => response.json())
             .then((json) => {
@@ -26,7 +27,9 @@ const SearchResults = (props) => {
                 console.error("Error fetching data:", error);
             });
     }, [input]);
-
+  if( results.length === 0){
+      return(<p>Not Found....</p>)
+  }
     return (
         <div className="container pt-5">
           

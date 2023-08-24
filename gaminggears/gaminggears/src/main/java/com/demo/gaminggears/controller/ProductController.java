@@ -34,18 +34,28 @@ public class ProductController {
 	@Autowired (required = true)
 	IProductService productService;
 	
-	@GetMapping("/products")
+	@GetMapping("/products/home")
 	public List<Product>   displayAllProducts() {
 		List<Product> plist=productService.getAllProducts();
 		return plist;
 		
 	}
 	
+	@GetMapping("/products")
+	public List<Product>   searchProducts() {
+		List<Product> plist=productService.getSearchProducts();
+		return plist;
+		
+	}
+	
+	
 	@PostMapping("/products")
 	public ResponseEntity<String> insertProduct( @RequestBody Product p) {
 		  productService.addProduct(p);
 		  return ResponseEntity.ok("added successfully");
 	}
+	
+	
 	
 	@DeleteMapping("/products/{pid}")
 	public ResponseEntity<String> deleteProduct(@PathVariable int pid) {

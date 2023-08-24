@@ -8,10 +8,9 @@ const footerStyle = {
 };
 
 const containerStyle = {
-  // minHeight: '80vh', // Set minimum height to 60% viewport height
-  // minHeight: '20rem',
   display: 'flex',
   flexDirection: 'column',
+  
 };
 
 function Footer() {

@@ -18,4 +18,6 @@ public interface IProductService {
 
 	List<Product> getProductsbyDis(int disid);
 
+	List<Product> getSearchProducts();
+
 }

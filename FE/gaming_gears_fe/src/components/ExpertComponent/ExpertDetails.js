@@ -3,11 +3,12 @@ import { Link, useParams } from 'react-router-dom'; // Import useParams hook
 import expertlogo from '../../images/expert.png'
 import ExpertService from '../../service/ExpertService';
 import Assembly from './Assembly';
+import { useUser } from '../UserContext';
 
 const ExpertDetails = () => {
     const { expid } = useParams(); // Access the 'pid' property
     const [expert, setExpert] = React.useState(null);
-
+    const { custid } = useUser();
     React.useEffect(() => {
         ExpertService.getExpertById(expid)
             .then((response) => {
@@ -43,10 +44,16 @@ const ExpertDetails = () => {
                         <pre></pre>
                         <h5>Unit Sold : {expert.sells}</h5>
                         <pre></pre>
-                        <Link to={`/make-req/${expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>
-                               
-                        <button className="btn btn-primary">Request </button>
-                        </Link>
+                        {
+                            custid>0 ?(<Link to={`/make-req/${expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>     
+                            <button className="btn btn-primary">Request </button>
+                            </Link>)
+                            :
+                            (<Link to={`/customerlogin`} className="text-reset" style={{ textDecoration: 'none' }}>     
+                            <button className="btn btn-primary">Request </button>
+                            </Link>)
+                        }
+                        
                     </div>
                    
                 </div>

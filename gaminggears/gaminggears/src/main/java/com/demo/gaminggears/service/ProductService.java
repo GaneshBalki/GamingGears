@@ -21,6 +21,14 @@ public class ProductService implements IProductService {
 		return plist;
 		
 	}
+	@Override
+	public List<Product> getSearchProducts() {
+		//List<Product> plist= productRepository.findAll();
+		List<Product> plist= productRepository.getSearchedProduct();
+		//System.out.println(plist);
+		return plist;
+		
+	}
 
 	public void addProduct(Product p) {
 	        productRepository.save(p);
@@ -48,6 +56,7 @@ public class ProductService implements IProductService {
 		// TODO Auto-generated method stub
 		return productRepository.getProductsbyDis(disid);
 	}
+
 
 
 

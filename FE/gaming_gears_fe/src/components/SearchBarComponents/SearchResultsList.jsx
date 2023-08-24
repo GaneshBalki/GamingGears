@@ -6,7 +6,7 @@ const SearchResultsList = ({results}) => {
   
 
   return (
-    <div className='results-list' style={{ width: '350px', borderRadius: '0',  boxShadow: 'none', outline: 'none', marginLeft: '348px',border: 'none' }}>{
+    <div className='results-list' style={{ width: '350px', borderRadius: '0',  boxShadow: 'none', outline: 'none', marginLeft: '12.65rem',border: 'none' }}>{
      results.map((result,id)=>{
         
         return  <Link to={`/products/${result.proid}`} className="text-reset search-result" 

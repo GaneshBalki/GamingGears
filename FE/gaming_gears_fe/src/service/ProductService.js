@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseurl="http://localhost:8282/products";
+const baseurl="http://localhost:8282/products/home";
 class ProductService{
     getproducts(){
         return axios.get(baseurl);
