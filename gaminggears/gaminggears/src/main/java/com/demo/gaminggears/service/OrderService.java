@@ -35,7 +35,7 @@ public class OrderService implements IOrderService{
 		// TODO Auto-generated method stub
 		Customer c = customerRepository.findById(ob.getCustid()).orElse(null);
 		Product p = productRepository.findById(ob.getProid()).orElse(null);
-		Orders o = new Orders(c,p,LocalDateTime.now().toString(),ob.getStatus(),"CashOnDelivery",ob.getPrice(),""+c.getCustId()+LocalDateTime.now().toString());
+		Orders o = new Orders(c,p,LocalDateTime.now().toString(),ob.getStatus(),"CashOnDelivery",ob.getPrice(),""+c.getCustId()+LocalDateTime.now().toString(),ob.getAddress());
 		orderRepository.save(o);
 	}
 

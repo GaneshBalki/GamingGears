@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class OrderController {
 		List<Orders> olist = iOrderService.getAllOrderbyCustID(custid);
 		return olist;
 	}
-	@PutMapping("/buy/now")
+	@PostMapping("/buy/now")
 	public ResponseEntity<String> addtoOrder(@RequestBody OrdersBody ob){
 		iOrderService.addtoOrder(ob);
 		return ResponseEntity.ok("added successfully");

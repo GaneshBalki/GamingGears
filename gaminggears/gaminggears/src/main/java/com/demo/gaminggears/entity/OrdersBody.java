@@ -5,15 +5,17 @@ public class OrdersBody {
 	private int proid;
 	private int price;
 	private int status;
+	private String address;
 	public OrdersBody() {
 		super();
 	}
-	public OrdersBody(int custid, int proid, int price, int status) {
+	public OrdersBody(int custid, int proid, int price, int status, String address) {
 		super();
 		this.custid = custid;
 		this.proid = proid;
 		this.price = price;
 		this.status = status;
+		this.address = address;
 	}
 	public int getCustid() {
 		return custid;
@@ -38,6 +40,13 @@ public class OrdersBody {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	@Override
 	public String toString() {

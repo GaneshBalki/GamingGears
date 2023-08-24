@@ -32,12 +32,13 @@ public class Orders {
     private String paymentmode;
     private int price;
     private String transactionid;
+    private String address;
 
     // Constructors
     public Orders() {
     }
 
-    public Orders( Customer custid, Product proid, String odate, int status, String paymentmode, int amount, String transactionid) {
+    public Orders( Customer custid, Product proid, String odate, int status, String paymentmode, int amount, String transactionid,String address) {
         //this.orderid = orderid;
         this.custid = custid;
         this.proid = proid;
@@ -46,6 +47,7 @@ public class Orders {
         this.paymentmode = paymentmode;
         this.price = amount;
         this.transactionid = transactionid;
+        this.address = address;
     }
 
     // Getters and Setters
@@ -57,7 +59,23 @@ public class Orders {
         this.orderid = orderid;
     }
 
-    public Customer getCustid() {
+    public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Customer getCustid() {
         return custid;
     }
 
@@ -97,13 +115,6 @@ public class Orders {
         this.paymentmode = paymentmode;
     }
 
-    public int getAmount() {
-        return price;
-    }
-
-    public void setAmount(int amount) {
-        this.price = amount;
-    }
 
     public String getTransactionid() {
         return transactionid;
