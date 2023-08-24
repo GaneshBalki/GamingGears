@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +16,7 @@ import javax.persistence.Table;
 public class Orders {
     @Id
     @Column(name = "orderid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderid;
     
     @ManyToOne
@@ -24,24 +27,24 @@ public class Orders {
     @JoinColumn(name = "proid")
     private Product proid;
     
-    private Date odate;
+    private String odate;
     private int status;
     private String paymentmode;
-    private double amount;
-    private int transactionid;
+    private int price;
+    private String transactionid;
 
     // Constructors
     public Orders() {
     }
 
-    public Orders(int orderid, Customer custid, Product proid, Date odate, int status, String paymentmode, double amount, int transactionid) {
-        this.orderid = orderid;
+    public Orders( Customer custid, Product proid, String odate, int status, String paymentmode, int amount, String transactionid) {
+        //this.orderid = orderid;
         this.custid = custid;
         this.proid = proid;
         this.odate = odate;
         this.status = status;
         this.paymentmode = paymentmode;
-        this.amount = amount;
+        this.price = amount;
         this.transactionid = transactionid;
     }
 
@@ -70,11 +73,11 @@ public class Orders {
         this.proid = proid;
     }
 
-    public Date getOdate() {
+    public String getOdate() {
         return odate;
     }
 
-    public void setOdate(Date odate) {
+    public void setOdate(String odate) {
         this.odate = odate;
     }
 
@@ -94,19 +97,19 @@ public class Orders {
         this.paymentmode = paymentmode;
     }
 
-    public double getAmount() {
-        return amount;
+    public int getAmount() {
+        return price;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmount(int amount) {
+        this.price = amount;
     }
 
-    public int getTransactionid() {
+    public String getTransactionid() {
         return transactionid;
     }
 
-    public void setTransactionid(int transactionid) {
+    public void setTransactionid(String transactionid) {
         this.transactionid = transactionid;
     }
 
@@ -119,7 +122,7 @@ public class Orders {
                 ", odate=" + odate +
                 ", status=" + status +
                 ", paymentmode='" + paymentmode + '\'' +
-                ", amount=" + amount +
+                ", amount=" + price +
                 ", transactionid=" + transactionid +
                 '}';
     }
