@@ -1,6 +1,6 @@
 
 import ProductService from '../service/ProductService';
-import { useParams } from 'react-router-dom'; // Import useParams hook
+import { Link, useParams } from 'react-router-dom'; // Import useParams hook
 import { useUser } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
@@ -26,7 +26,7 @@ const ProductDetails = (props) => {
 
     if (!product) {
         return <p>Loading...</p>;
-    } 
+    }
     const handleAddToCart = async (event) => {
         event.preventDefault();
         console.log("customer id " + custid);
@@ -35,6 +35,7 @@ const ProductDetails = (props) => {
                 const response = await CustomerService.addToCart(custid, product.proid);
                 if (response.status === 200) {
                     window.alert("Product '" + product.proname + "' added to Cart !");
+                    navigate("/cart");
                 } else {
                     setErrorMessage('Failed to add product');
                 }
@@ -46,12 +47,12 @@ const ProductDetails = (props) => {
             navigate("/customerlogin");
         }
     };
-    
+
     return (
         <div className="container mt-5" style={{ background: '#f8f9fa' }}>
             <div className="row" >
                 <div className="col-md-6">
-                {errorMessage && (
+                    {errorMessage && (
                         <div className="alert alert-danger mt-3">{errorMessage}</div>
                     )}
                     <pre></pre>
@@ -98,10 +99,13 @@ const ProductDetails = (props) => {
                         <h4>&#8377; {product.price}</h4>
                         <pre></pre>
 
-                        <button className="btn btn-primary" onClick={handleAddToCart} >Add to Cart</button>
+                        <button className="btn btn-primary" onClick={handleAddToCart} ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </svg> Add to Cart</button>
                         <span style={{ margin: '0 10px' }}></span>
-                        <button className="btn btn-primary">Buy Now</button>
-
+                        <Link to={`/buynow/${product.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                            <button className="btn btn-primary">Buy Now</button>
+                        </Link>
                     </div>
 
                 </div>

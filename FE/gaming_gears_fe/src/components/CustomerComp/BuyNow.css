@@ -1,0 +1,54 @@
+/* CSS file (e.g., BuyNow.css) */
+.buy-now-container {
+    max-width: 700px;
+    height: 420px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buy-now-title {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .buy-now-description {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .product-details {
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .product-name {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .product-price {
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  .buy-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-button:hover {
+    background-color: #0056b3;
+  }
+  

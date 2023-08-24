@@ -14,6 +14,7 @@ import ExpertDetails from "./components/ExpertComponent/ExpertDetails.js";
 import MakeRequest from "./components/CustomerComp/MakeRequest.js";
 import DistributorLogin from "./components/DistributorComponent/DistributorLogin.js";
 import DistributorRegistration from "./components/DistributorComponent/DistributorRegistration.js";
+import BuyNow from "./components/CustomerComp/BuyNow.js";
 
 const AppRoutes = [
   {
@@ -79,6 +80,10 @@ const AppRoutes = [
   {
     path: '/distibutor-registration',
     element: <DistributorRegistration></DistributorRegistration>
+  },
+  {
+    path: '/buynow/:proid',
+    element: <BuyNow></BuyNow>
   }
 ];
 
