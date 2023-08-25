@@ -17,19 +17,37 @@ const ExpertHome = (props) => {
             .catch((error) => {
                 console.error('Error fetching expert data:', error);
             });
-        // Fetch expert requests with status 0
-        axios.get(`http://localhost:8282/get-expert-req/${custid}`)
-            .then((response) => {
-                const reqArr = response.data.filter((e) => e.status === 0);
-                setRequests([...reqArr]);
-            })
-            .catch((error) => {
-                console.error('Error fetching requests:', error);
-            });
+            fetchdata();
+   
     }, [custid]);
+
+    const fetchdata=()=>{
+             // Fetch expert requests with status 0
+             axios.get(`http://localhost:8282/get-expert-req/${custid}`)
+             .then((response) => {
+                 const reqArr = response.data.filter((e) => e.status === 0);
+                 setRequests([...reqArr]);
+             })
+             .catch((error) => {
+                 console.error('Error fetching requests:', error);
+             });
+    }
     if (!expert || !expert.status) {
         return <p>Loading...</p>;
     }
+
+    async function removerequest(event, request) {
+        event.preventDefault();
+        window.alert("delete "+request.queId)
+        try {
+          
+          await axios.delete(`http://localhost:8282/expert/request/rmv/${request.queId}`);
+          
+          fetchdata();
+        } catch (err) {
+          console.error('Error deleting request', err);
+        }
+      }
     return (
         <div className="container mt-5">
             <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px' }}>
@@ -78,8 +96,9 @@ const ExpertHome = (props) => {
                                                 <small>Requested by: {request.custid.fname}</small>
                                             </div>
                                             <div>
-                                                <button className="btn btn-primary" style={{ marginRight: '30px' }}>Accept</button>
-                                                <button className="btn btn-danger" style={{ marginRight: '30px' }}>Reject</button>
+                                                <button className="btn btn-danger" style={{ marginRight: '30px' }} 
+                                                onClick={(event) => removerequest(event, request)}
+                                              >Remove</button>
                                             </div>
                                         </div>
                                     </div>
