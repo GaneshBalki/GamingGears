@@ -21,19 +21,24 @@ useEffect(() => {
         });
 }, [custid]);
   return (
-    <div className="order-history-container">
+    <div className="order-history-container" style={{width:'100%'}}>
       <h1 className="order-history-title">Order History</h1>
-      <ul className="order-list">
+      <div className="order-list">
         {orders.map((order, index) => (
-          <li key={index} className="order-item">
-            <p className="order-date">Order ID: {order.proid.proname}</p>
-            <p className="order-date">Adderess: {order.address}</p>
-          
-            <p className="order-total">Total: ${order.price}</p>
-            {/* Add more order details as needed */}
-          </li>
+          <div key={index} className="order-item" >
+            <p className="order-date">Order : <br/>{order.proid.proname}</p>
+            <p className="order-date">Adderess: <br/>{order.address}</p>
+             {order.status==0?(
+              <p className="order-date">Delivery Status:<br/>Delivery in Process</p>
+             ):
+             (
+              <p className="order-date">Delivery Status:<br/>Order Delivered</p>
+             )}
+            <p className="order-total">Total: &#8377;  {order.price}</p>
+         
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
