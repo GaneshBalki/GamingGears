@@ -5,6 +5,7 @@ import DistributorService from '../../service/DistributorService';
 const DistributorHome = () => {
     const [products, setProducts] = useState([]);
     const [distributorInfo, setDistributorInfo] = useState(null);
+    const [totalsales,setTotalsales]=useState(0);
 
     const { disid } = useDistributor();
 
@@ -16,6 +17,16 @@ const DistributorHome = () => {
             .catch((error) => {
                 console.error(error);
             });
+
+        //    findTotalSale
+        DistributorService.findTotalSales(disid).
+        then((response)=>{
+            setTotalsales(response.data);
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+
     }, [disid]);
 
     useEffect(() => {
@@ -97,7 +108,13 @@ const DistributorHome = () => {
                 <div className="col-md-1">
 
                 </div>
+                
                 <div className="col-md-4" style={{ textAlign: 'left' }}>
+                    <div>
+                       <h5>Totals Sales</h5>
+                       {totalsales}
+                    </div>
+                    <div>
                     <h2>Add a New Product</h2>
                     <div className="form-group">
                         <label>Name:</label>
@@ -162,6 +179,8 @@ const DistributorHome = () => {
                     <button className="btn btn-primary" style={{marginTop:'0.9rem'}}>
                         Add Product
                     </button>
+                    </div>
+                    
                 </div>
             </div>
         </div>

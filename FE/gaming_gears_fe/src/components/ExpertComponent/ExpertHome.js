@@ -38,7 +38,6 @@ const ExpertHome = (props) => {
 
     async function removerequest(event, request) {
         event.preventDefault();
-        window.alert("delete "+request.queId)
         try {
           
           await axios.delete(`http://localhost:8282/expert/request/rmv/${request.queId}`);
@@ -50,7 +49,7 @@ const ExpertHome = (props) => {
       }
     return (
         <div className="container mt-5">
-            <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px' }}>
+            <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px',position:'relative' }}>
                 <div className="row" >
                     <div className="col-md-6 ">
                         <img src={expertlogo} className="d-block" style={{ height: '250px', paddingTop: '20px' }} alt="Slide 1" />
