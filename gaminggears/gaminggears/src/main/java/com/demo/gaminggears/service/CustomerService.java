@@ -37,7 +37,13 @@ List<Customer> custlist =customerRepository.findAll();
 	@Override
 	public void forgetPassword(Login custlogin) {
 		
-		customerRepository.updatePassword(custlogin.getEmail(), custlogin.getPass());
+		List<Customer> clist = customerRepository.getCustomerByEmail(custlogin.getEmail()) ;
+		if(!clist.isEmpty()) {
+			clist.get(0).setPass(custlogin.getPass());
+			customerRepository.save(clist.get(0));	
+		}
+		
+		
 	}
 	
 	
