@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.gaminggears.entity.Customer;
+import com.demo.gaminggears.entity.DisSalesStats;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.repository.DistributorRepository;
@@ -34,22 +36,23 @@ public class DistributorService implements IDistributorService{
 		// TODO Auto-generated method stub
 		distributorRepository.save(dis);
 	}
-	public Distributor forgetPassDistributor(String disemail) {
+	public void forgetPassDistributor(Login dislogin) {
 		// TODO Auto-generated method stub
-List<Distributor> dislist =distributorRepository.findAll();
-		
-		for(Distributor d : dislist) {
-			if(d.getEmail().equalsIgnoreCase(disemail)) {
-				System.out.println(d);
-				return d;
-			}
-		}
-		return null;
+		List<Distributor> dislist = distributorRepository.getDistributorByEmail(dislogin.getEmail()) ;
+		if(!dislist.isEmpty()) {
+			dislist.get(0).setPass(dislogin.getPass());
+			distributorRepository.save(dislist.get(0));	
+		};
 	}
 	@Override
 	public Distributor getDistributorbyID(int disid) {
 		// TODO Auto-generated method stub
 		return distributorRepository.findById(disid).orElse(null);
+	}
+	@Override
+	public List<DisSalesStats> getDisSalesStats(int disid) {
+		// TODO Auto-generated method stub
+		return distributorRepository.getDisSalesStats(disid);
 	}
 
 }

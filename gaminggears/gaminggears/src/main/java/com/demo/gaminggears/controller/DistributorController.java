@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.gaminggears.entity.DisSalesStats;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.entity.Product;
@@ -57,19 +58,23 @@ public class DistributorController {
 		
 	}
 	@PostMapping("/disforgetpass")
-	public Distributor dislogin(@RequestBody String email) {
+	public ResponseEntity<String> forgetPassDistributor(@RequestBody Login dislogin) {
 		
-		return distributorService.forgetPassDistributor(email);
-		
+		 distributorService.forgetPassDistributor(dislogin);
+		 return ResponseEntity.ok("Password changed successfully");
 	}
 	@PostMapping("/register-distributor")
-	public ResponseEntity<String> dislogin(@RequestBody Distributor dis) {
+	public ResponseEntity<String> registerDistributor(@RequestBody Distributor dis) {
 		
 		distributorService.registerDistributor(dis);
 		return ResponseEntity.ok("added successfully");
 		
 	}
 	
+	@GetMapping("/distributor/sales/{disid}")
+	public List<DisSalesStats> getDisSalesStats(@PathVariable int disid){
+		return distributorService.getDisSalesStats(disid);
+	}
 	/*
 	@GetMapping("/products/{pid}")
 	public ResponseEntity<Product>   getById(@PathVariable int pid) {
