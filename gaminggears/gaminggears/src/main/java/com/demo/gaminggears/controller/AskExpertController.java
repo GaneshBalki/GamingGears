@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,12 @@ public class AskExpertController {
 	public ResponseEntity<String> insertQuery( @RequestBody AskexpertBody q) {
 		  iAskExpertService.addQuery(q);
 		  return ResponseEntity.ok("added successfully");
+	}
+	
+	@DeleteMapping("/expert/request/rmv/{queId}")
+	public ResponseEntity<String> DeleteQuery(@PathVariable int queId){
+		iAskExpertService.DeleteQuery(queId);
+		  return ResponseEntity.ok("deleted successfully");
 	}
 	
 }

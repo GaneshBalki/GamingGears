@@ -11,4 +11,6 @@ public interface IAskExpertService {
 
 	void addQuery(AskexpertBody q);
 
+	void DeleteQuery(int queId);
+
 }
