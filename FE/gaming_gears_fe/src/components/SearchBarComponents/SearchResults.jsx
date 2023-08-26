@@ -35,7 +35,7 @@ const SearchResults = (props) => {
           
             <div className="row">
                 {/* ProductCards */}
-                
+               
                 {results.map((product) => (
                     <div key={product.id} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex ">
                         <div className="card flex-fill border-0 card-hover" style={{ background: '#f8f9fa' }}>

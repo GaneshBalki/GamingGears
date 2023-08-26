@@ -32,7 +32,7 @@ const DeliveryAddressPage = () => {
   }
 
   return (
-    <div>
+    <form>
       <h2 className="title">Delivery Address</h2>
       <div className="address-form">
         <div className="input-row">
@@ -43,6 +43,7 @@ const DeliveryAddressPage = () => {
             placeholder="Name"
             value={formData.name}
             onChange={handleInputChange}
+            required={true}
           />
           <input
             type="text"
@@ -60,6 +61,7 @@ const DeliveryAddressPage = () => {
           placeholder="Pincode"
           value={formData.pincode}
           onChange={handleInputChange}
+          required={true}
         />
         <input
           type="text"
@@ -68,6 +70,7 @@ const DeliveryAddressPage = () => {
           placeholder="Locality"
           value={formData.locality}
           onChange={handleInputChange}
+          required={true}
         />
         <input
           type="text"
@@ -76,6 +79,7 @@ const DeliveryAddressPage = () => {
           placeholder="Area/Street"
           value={formData.street}
           onChange={handleInputChange}
+          required={true}
         />
         <input
           type="text"
@@ -84,6 +88,7 @@ const DeliveryAddressPage = () => {
           placeholder="City"
           value={formData.city}
           onChange={handleInputChange}
+          required={true}
         />
         <input
           type="text"
@@ -92,6 +97,7 @@ const DeliveryAddressPage = () => {
           placeholder="State"
           value={formData.state}
           onChange={handleInputChange}
+          required={true}
         />
         <button className="deliver-button" onClick={handleDeliveryClick}>
         Deliver Here
@@ -99,7 +105,7 @@ const DeliveryAddressPage = () => {
 
         
       </div>
-    </div>
+    </form>
   );
 };
 

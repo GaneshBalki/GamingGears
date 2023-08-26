@@ -14,7 +14,6 @@ import ExpertDetails from "./components/ExpertComponent/ExpertDetails.js";
 import MakeRequest from "./components/CustomerComp/MakeRequest.js";
 import DistributorLogin from "./components/DistributorComponent/DistributorLogin.js";
 import DistributorRegistration from "./components/DistributorComponent/DistributorRegistration.js";
-import BuyNow from "./components/CustomerComp/BuyNow.js";
 import OrderHistory from "./components/CustomerComp/OrderHistory.js";
 import DeliveryAddressPage from "./components/CustomerComp/DeliveryAddressPage.js";
 import Payment from "./components/CustomerComp/Payment.js";
@@ -83,10 +82,7 @@ const AppRoutes = [
     path: '/distibutor-registration',
     element: <DistributorRegistration></DistributorRegistration>
   },
-  {
-    path: '/buynow/:proid',
-    element: <BuyNow></BuyNow>
-  },
+  
   {
     path: '/order/history',
     element: <OrderHistory></OrderHistory>
@@ -98,7 +94,8 @@ const AppRoutes = [
   {
     path: '/payment',
     element: <Payment></Payment>
-  }
+  },
+ 
 ];
 
 export default AppRoutes;

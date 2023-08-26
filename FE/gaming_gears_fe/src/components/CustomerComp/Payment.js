@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 const Payment = () => {
   const [searcharr, setSearcharr] = useState([]);
   const [total, setTotal] = useState(0);
@@ -14,7 +15,7 @@ const Payment = () => {
   const { custid } = useUser();
   const { address } = useAddress();
   const [paymentMode, setPaymentMode] = useState("COD");
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [paymentData, setPaymentData] = useState({
     cardNumber: '',
     cardHolderName: '',
@@ -31,7 +32,6 @@ const Payment = () => {
   };
 
   const fetchdata = () => {
-
     CustomerService.getCart(custid)
       .then((response) => {
         setSearcharr([...response.data]);
@@ -41,85 +41,68 @@ const Payment = () => {
       });
   };
 
-
-
   const handlePaymentModeChange = (e) => {
     setPaymentMode(e.target.value);
   };
 
-  useEffect(() => {
-    fetchdata();
-    const calculateTotalPrice = () => {
-      let totalPrice = 0;
-      let totalItemincart = 0;
-      for (const cartItem of searcharr) {
-        totalPrice += cartItem.qty * cartItem.price;
-        totalItemincart += cartItem.qty
+  // useEffect(() => {
+  //   fetchdata();
+  //   const calculateTotalPrice = () => {
+  //     let totalPrice = 0;
+  //     let totalItemincart = 0;
+  //     for (const cartItem of searcharr) {
+  //       totalPrice += cartItem.qty * cartItem.price;
+  //       totalItemincart += cartItem.qty;
+  //     }
+  //     setTotal(totalPrice);
+  //     setTotalItem(totalItemincart);
+  //   };
 
-      }
-      setTotal(totalPrice);
-
-      setTotalItem(totalItemincart);
-
-    };
-
-    calculateTotalPrice();
-  }, [searcharr]);
+  //   calculateTotalPrice();
+  // }, [searcharr]);
 
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      var response = await axios.post("http://localhost:8282/makepayment",
+      window.alert(custid + " " + " " + address + " " + paymentMode);
+      const response = await axios.post("http://localhost:8282/products/purchase/cart",
         {
           "custid": custid,
           "address": address,
-          "paymentmode":paymentMode
+          "paymentmode": paymentMode,
         });
-
-      if (response.status === 200 ) {
-        const custid = response.data.custId; // Replace with your customer ID
-
-        sessionStorage.setItem('customerid', custid.toString());
+ 
+      if (response.status === 200) {
+       
         navigate('/order/history');
         toast.success("Payment Successful", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 3000,
         });
-
       } else {
-        toast.success("Payment Cancelled", {
+        toast.error("Payment Failed error", {
           position: toast.POSITION.TOP_RIGHT,
           autoClose: 3000,
         });
-
       }
-
-    }
-    catch (err) {
-      toast.error("Login Failed", {
+    } catch (err) {
+      toast.error("Payment Failed", {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 3000,
       });
     }
-    console.log('Payment Data:', paymentData);
-
-    // You can also navigate to a success page or handle errors here.
   };
 
   return (
     <div className="payment-container">
-
       <div className="purchase-summary">
         <h2 className="summary-title">Purchase Summary</h2>
-        {/* Add your purchase summary content here */}
-        <p>Total Items: {totalItem}</p>
-        <p>Total Amount: {total}</p>
+        {/* <p>Total Items: {totalItem}</p>
+        <p>Total Amount: {total}</p> */}
       </div>
 
       <div className="payment-details">
-
-        {/* ... (Payment form as in your previous code) */}
         <label>Select Payment</label><br></br>
         <select
           style={{
@@ -131,17 +114,15 @@ const Payment = () => {
             backgroundColor: '#fff',
             color: '#333',
             outline: 'none',
-            textAlign: 'center'
+            textAlign: 'center',
           }}
-          onChange={handlePaymentModeChange}>
-
+          onChange={handlePaymentModeChange}
+        >
           <option value="COD">COD</option>
           <option value="Online">PayNow</option>
         </select>
 
-
         {paymentMode === "Online" && (
-
           <form className="payment-form" onSubmit={handlePaymentSubmit}>
             <h2 className="payment-title">Payment Details</h2>
             <div className="form-group">
@@ -197,16 +178,15 @@ const Payment = () => {
             <button className="payment-button" type="submit">
               Pay Now
             </button>
-          </form>)}
+          </form>
+        )}
 
         {paymentMode === "COD" && (
           <button className="payment-button" type="submit" onClick={handlePaymentSubmit}>
-            Pay Letter
-          </button>)
-        }
-
+            Pay Later
+          </button>
+        )}
       </div>
-
     </div>
   );
 };

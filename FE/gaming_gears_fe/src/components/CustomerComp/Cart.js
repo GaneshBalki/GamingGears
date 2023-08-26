@@ -139,16 +139,20 @@ function Cart(props) {
                       </div>
                     ))}
                     <h5>Total Amount &#8377; {total}</h5>
+                    {searcharr.length &&
                     <button type="button" class="btn btn-primary btn-lg btn-block">
+                    
+                    
                     <Link
                                   to={`/buy/product/cart/deliveryaddr/${custid}`}
                                   className="text-reset"
                                   style={{ textDecoration: 'none' }}
                                 >
                       Buy Now
+                     
+                      
                       </Link>
-                      </button>
-
+                      </button>}
                   </div>
                 </div>
               </div>

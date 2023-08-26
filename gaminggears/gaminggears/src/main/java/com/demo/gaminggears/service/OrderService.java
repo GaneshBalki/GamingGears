@@ -52,6 +52,7 @@ public class OrderService implements IOrderService{
 		for (Cart cart : cartlist) {
 			Orders o = new Orders(cart.getCustId(), cart.getProId(), LocalDateTime.now().toString(), 0, ob.getPaymentmode(), cart.getPrice(),ob.getCustid()+""+LocalDateTime.now().toString(), ob.getAddress());
 			orderRepository.save(o);
+			cartRepository.delete(cart);
 		}
 	}
 
