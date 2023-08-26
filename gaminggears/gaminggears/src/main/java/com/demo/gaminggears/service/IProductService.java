@@ -2,7 +2,10 @@ package com.demo.gaminggears.service;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.ProductNew;
 
 public interface IProductService {
 
@@ -19,5 +22,7 @@ public interface IProductService {
 	List<Product> getProductsbyDis(int disid);
 
 	List<Product> getSearchProducts();
+
+	ResponseEntity<ProductNew> addProductByDist(ProductNew product);
 
 }

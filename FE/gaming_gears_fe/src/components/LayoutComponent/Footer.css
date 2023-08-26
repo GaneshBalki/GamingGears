@@ -1,8 +1,8 @@
 .Footer {
   
     padding: 20px;
-  position: relative; /* Set to relative */
+  position: relative; 
   width: 100%;
-  margin-top: auto; /* Push the footer to the bottom */
+  margin-top: auto; 
 }
   

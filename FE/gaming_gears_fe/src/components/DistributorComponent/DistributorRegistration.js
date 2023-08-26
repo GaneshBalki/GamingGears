@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const DistributorRegistration = () => {
     const [formData, setFormData] = useState({
         disname: '',
@@ -29,17 +30,30 @@ const DistributorRegistration = () => {
                 "pass": formData.pass
             });
 
+
             if (response.status === 200) {
-                console.log("Registration successful");
-                navigate('/customerlogin');
-            } else {
+               
+                navigate('/distributor-login');
+                toast.success("Registration successful", {
+                  position: toast.POSITION.TOP_RIGHT, // You can change the position
+                  autoClose: 3000, // You can control how long the toast is displayed (in milliseconds)
+                });
+              } else {
                 setErrorMessage('Invalid email or password');
                 console.log('Registration failed');
-            }
+               
+              }
+    
         } catch (err) {
-            console.error('User Registration Failed:', err);
-            alert("User Registration Failed");
+            console.error('Registration Failed:', err);
+            toast.error("Registration failed", {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 3000,
+              });
+           
         }
+        
+
     }
 
     const handleChange = (e) => {

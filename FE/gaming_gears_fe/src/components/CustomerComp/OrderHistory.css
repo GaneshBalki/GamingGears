@@ -5,7 +5,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -59,7 +59,7 @@
   
   .order-date {
     font-style: italic;
-    color: #888;
+    color: #f8f9fa;
     text-align: left;
     flex-basis: 50%;
   }

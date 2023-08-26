@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useUser } from '../UserContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductService from '../../service/ProductService';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import './BuyNow.css'
 function BuyNow() {
@@ -31,12 +32,15 @@ function BuyNow() {
     }, [proid]);
 
     async function handlePurchase() {
+         
         try {
             console.log("product adding to cart " + custid);
+            
+
             var response = await axios.post("http://localhost:8282/buy/now", {
                 "custid": custid,
                 "proid": proid,
-                "amount": product.price,
+                "price": product.price,
                 "status": 0,
                 "address":address
             });
@@ -45,6 +49,10 @@ function BuyNow() {
             if (response.status === 200) {
                 console.log("response data");
                 navigate("/order/history")
+                toast.success("Thanks For Purchase !!!", {
+                    position: toast.POSITION.TOP_RIGHT, 
+                    autoClose: 3000,
+                  });
             } else {
 
                 console.log('Authentication failed');
@@ -52,7 +60,7 @@ function BuyNow() {
         } catch (error) {
             console.error(error);
         }
-        alert('Thank you for your purchase!');
+        
     }
 
     return (
@@ -67,8 +75,6 @@ function BuyNow() {
                 <p className="product-price">Price: ₹ {product.price}</p>
             </div>
         )}
-
-        {/* Address Input */}
         
         <div className="address-input">
             <label htmlFor="address">Address:</label>
@@ -84,7 +90,7 @@ function BuyNow() {
            
         </div>
 
-        {/* Add a button or form to complete the purchase */}
+       
         <div className="purchase-options">
             <button className="buy-button" onClick={handlePurchase}>Buy Now</button>
         </div>

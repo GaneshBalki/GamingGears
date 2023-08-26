@@ -2,9 +2,9 @@ package com.demo.gaminggears.service;
 
 import java.util.List;
 
-import com.demo.gaminggears.entity.DisSalesStats;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
+import com.demo.gaminggears.entity.SalesStatisticsDTO;
 
 public interface IDistributorService {
 	List<Distributor> getAllDistributors();
@@ -17,7 +17,7 @@ public interface IDistributorService {
 
 	Distributor getDistributorbyID(int disid);
 
-	List<DisSalesStats> getDisSalesStats(int disid);
+	List<SalesStatisticsDTO> getDisSalesStats(int disid);
 	
 	
 }

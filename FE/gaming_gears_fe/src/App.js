@@ -6,6 +6,8 @@ import NavMenu from './components/LayoutComponent/NavMenu';
 import Footer from './components/LayoutComponent/Footer'
 import { UserProvider } from './components/UserContext';
 import { DistributorProvider } from './components/DistributorComponent/DistributorContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
 
@@ -15,7 +17,7 @@ function App() {
           <div className="App">
            
             <NavMenu></NavMenu>
-
+            <ToastContainer />
             <Routes>
               {AppRoutes.map((route, index) => {
                 const { element, ...rest } = route;

@@ -24,7 +24,7 @@ const ExpertDetails = () => {
     }
 
     return (
- <div className="container mt-5" >
+ <div className="container " >
     <div className="container mt-5"  style={{ backgroundColor: '#f0f0f0',height: '280px'  }}>
           <div className="row" >
                 <div className="col-md-6 ">

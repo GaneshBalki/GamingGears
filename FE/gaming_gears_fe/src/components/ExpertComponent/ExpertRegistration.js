@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../UserContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ExpertRegistration = () => {
     const {custid}=useUser();
     const [formData, setFormData] = useState({
@@ -17,22 +19,27 @@ const ExpertRegistration = () => {
     async function save(event) {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8282/add-expert", {
+
+            const response = await axios.post("http://localhost:8282/become/expert", {
                 expid: custid,
                 expname: formData.expname,
                 certification: formData.certification,
-                skills: formData.skills,
+                skill: formData.skills,
                 sells: 0,
                 experience: formData.experience,
-                commission: 0,
-                isExpert: 0,
-                status: 0,
+                commision: 0,
+                isExpert: 1,
+                status:1
             });
-
+           
             if (response.status === 200) {
                 console.log("Registration successful");
-                window.alert("Thanks For Registration, your request will be approved very soon");
+               
                 navigate('/expert');
+                toast.success("Thanks For Registration, your request will be approved very soon", {
+                    position: toast.POSITION.TOP_RIGHT, // You can change the position
+                    autoClose: 3000, // You can control how long the toast is displayed (in milliseconds)
+                  });
             } else {
                 setErrorMessage('Invalid email or password');
                 console.log('Registration failed');

@@ -1,5 +1,6 @@
 package com.demo.gaminggears.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.gaminggears.entity.OrderProductBody;
+import com.demo.gaminggears.entity.Orderproducts;
 import com.demo.gaminggears.entity.Orders;
 import com.demo.gaminggears.entity.OrdersBody;
 import com.demo.gaminggears.service.IOrderService;
@@ -33,5 +36,16 @@ public class OrderController {
 		iOrderService.addtoOrder(ob);
 		return ResponseEntity.ok("added successfully");
 	}
+	
+//	@PostMapping("/product/purchase")
+//    public Orderproducts createOrder(@RequestBody OrderProductBody ord) {
+//        Orderproducts order=new Orderproducts(ord.getCustId(),ord.getProductIds(),LocalDateTime.now().toString(),0,"CashOnDelivery",ord.getTotalprice(),ord.getCustomerId()+""+LocalDateTime.now().toString(),"Pune");
+//        
+//        Orderproducts savedOrder = iOrderService.save(order);
+//
+//        // Return the saved order or any other response as needed
+//        return savedOrder;
+//    }
+
 	
 }

@@ -48,7 +48,7 @@ const ExpertHome = (props) => {
         }
       }
     return (
-        <div className="container mt-5">
+        <div className="container">
             <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px',position:'relative' }}>
                 <div className="row" >
                     <div className="col-md-6 ">

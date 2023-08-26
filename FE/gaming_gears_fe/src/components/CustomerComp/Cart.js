@@ -11,6 +11,7 @@ function Cart(props) {
   const [total, setTotal] = useState(0);
   const { custid } = useUser();
   const navigate = useNavigate();
+  const productIds = searcharr.map(cartItem => cartItem.proId.proid);
 
   useEffect(() => {
     fetchdata();
@@ -52,12 +53,30 @@ function Cart(props) {
   }
   async function handlePut(event, cartItem) {
     event.preventDefault();
-//window.alert(cartItem.proId.proid)
-   CustomerService.addToCart(cartItem.custId.custId,cartItem.proId.proid);
-   fetchdata();
-     
+    //window.alert(cartItem.proId.proid)
+    CustomerService.addToCart(cartItem.custId.custId, cartItem.proId.proid);
+    fetchdata();
+
   }
 
+
+  const handleBuyNow = async () => {
+    try {
+      const dataToSend = {
+        "custId": custid,    
+        "productIds": productIds,
+        "totalprice": total
+      };
+      const response = await axios.post('http://localhost:8282/products/purchase/cart', dataToSend);
+      console.log('Buy Now response:', response.data);
+  
+      
+      navigate('/');
+    } catch (error) {
+      console.error('Error while processing the Buy Now request:', error);
+    }
+  };
+  
   return (
     <section className="h-100 h-custom" style={{ backgroundImage: 'linear-gradient(35deg, #e0e0e0, white)' }}>
       <div className="container py-5 h-100">
@@ -103,21 +122,24 @@ function Cart(props) {
                             </div>
                             <div className="d-flex flex-row align-items-center">
                               <a href="/" onClick={(event) => handleDelete(event, cart)} style={{ color: 'red' }}>
-                                 <i class="fas fa-minus"></i>
+                                <i class="fas fa-minus"></i>
                               </a>
-                              <input id="form1"  name="quantity" value={cart.qty} type="text" class="form-control form-control-sm" style={{width: "50px",boxShadow: 'none',textAlign:"center"}} readOnly={true} />
+                              <input id="form1" name="quantity" value={cart.qty} type="text" class="form-control form-control-sm" style={{ width: "50px", boxShadow: 'none', textAlign: "center" }} readOnly={true} />
                               <a href="/" onClick={(event) => handlePut(event, cart)} style={{ color: 'green' }}>
-                               <i class="fas fa-plus"></i>
+                                <i class="fas fa-plus"></i>
                               </a>
                               <div style={{ width: '180px' }}>
                                 <h5 className="mb-0">&#8377; {cart.qty * cart.price}</h5>
-                              </div> 
+                              </div>
+
                             </div>
                           </div>
                         </div>
                       </div>
                     ))}
                     <h5>Total Amount &#8377; {total}</h5>
+                    <button type="button" class="btn btn-primary btn-lg btn-block">Buy Now</button>
+
                   </div>
                 </div>
               </div>

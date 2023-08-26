@@ -5,7 +5,8 @@ import { useUser } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import CustomerService from '../service/CustomerService';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetails = (props) => {
     const { pid } = useParams(); // Access the 'pid' property for url
@@ -34,10 +35,18 @@ const ProductDetails = (props) => {
             try {
                 const response = await CustomerService.addToCart(custid, product.proid);
                 if (response.status === 200) {
-                    window.alert("Product '" + product.proname + "' added to Cart !");
-                    navigate("/cart");
+                   navigate("/cart");
+                    toast.success(product.proname+", Added to Cart !", {
+                        position: toast.POSITION.TOP_RIGHT, // You can change the position
+                        autoClose: 900, // You can control how long the toast is displayed (in milliseconds)
+                      });
+                  
                 } else {
                     setErrorMessage('Failed to add product');
+                    toast.error("Failed to Add", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 3000,
+                      });
                 }
             } catch (error) {
                 console.error('Error adding product to cart', error);

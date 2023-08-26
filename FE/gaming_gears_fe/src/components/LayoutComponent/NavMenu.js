@@ -78,8 +78,8 @@ function NavMenu() {
 
   return (
     <header>
-      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light  >
-        <NavbarBrand tag={Link} to="/"> <img src={logo1} height="35" alt="MDB Logo" /></NavbarBrand>
+      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light style={{height:'4.5rem',fontSize:'1.1rem'}} >
+        <NavbarBrand tag={Link} to="/"> <img src={logo1} height="40" alt="MDB Logo" /></NavbarBrand>
 
         <SearchBar setResults={setResults}></SearchBar>
 
@@ -90,11 +90,11 @@ function NavMenu() {
               {custid > 0 ? (
 
                 <div className="dropdown" style={{ boxShadow: 'none' }}>
-                  <span className="btn dropdown-toggle" onMouseOver={toggleDropdown} style={{ outline: 'none', cursor: 'pointer', boxShadow: 'none' }}>
+                  <span className="btn dropdown-toggle" onMouseOver={toggleDropdown} style={{ outline: 'none', cursor: 'pointer', boxShadow: 'none',fontSize:'1.1rem' }}>
                     My Account
                   </span>
                   {dropdownOpen && (
-                    <ul className="dropdown-menu" style={{ display: 'block' }} onMouseLeave={() => setDropdownOpen(false)}>
+                    <ul className="dropdown-menu" style={{ display: 'block',fontSize:'1.1rem' }} onMouseLeave={() => setDropdownOpen(false)}>
                       {/* <li>
                         <NavLink tag={Link} ><i className="fa fa-user" style={{color:'#3498db'}}></i>   My Profile</NavLink>
                       </li> */}
@@ -121,7 +121,7 @@ function NavMenu() {
             </NavItem>
             <NavItem> 
               {disid>0?(
-                <NavLink tag={Link} className="text-dark" to="/distributor-home">Become Seller</NavLink>
+                <NavLink tag={Link} className="text-dark" to="/distributor-home"> Seller</NavLink>
               ):
               (
                 <NavLink tag={Link} className="text-dark" to="/distributor-login">Become Seller</NavLink>

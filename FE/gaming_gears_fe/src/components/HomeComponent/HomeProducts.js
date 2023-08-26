@@ -23,7 +23,7 @@ function HomeProducts() {
             <div className="row">
                 {/* ProductCards */}
                 {searcharr.map((product) => (
-                    <div key={product.id} className="col-lg-3 col-md- col-sm-12 mb-4 d-flex ">
+                    <div key={product.id} className="col-lg-3 col-md- col-sm-11 mb-4 d-flex ">
                         <div className="card flex-fill border-0 card-hover" style={{ background: '#f8f9fa' }}>
                             <div className="bg-image hover-zoom ripple ripple-surface ripple-surface-light " data-mdb-ripple-color="light">
                                 <Link to={`/products/${product.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>

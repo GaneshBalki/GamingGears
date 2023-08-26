@@ -20,8 +20,17 @@ useEffect(() => {
             alert("Error in purchase")
         });
 }, [custid]);
+
+if(!orders.length >0){
+  return(
+  <div className="empty-orders">
+      <h2>You haven't purchased anything yet</h2>
+      <p>Explore our products and start shopping!</p>
+  </div>)
+}
+
   return (
-    <div className="order-history-container" style={{width:'100%'}}>
+    <div className="order-history-container" style={{width:'100%',background: '#f8f9fa',}}>
       <h1 className="order-history-title">Order History</h1>
       <div className="order-list">
         {orders.map((order, index) => (

@@ -32,7 +32,7 @@ public class OrderService implements IOrderService{
 
 	@Override
 	public void addtoOrder(OrdersBody ob) {
-		// TODO Auto-generated method stub
+		System.out.println("order price : "+ob.getPrice());
 		Customer c = customerRepository.findById(ob.getCustid()).orElse(null);
 		Product p = productRepository.findById(ob.getProid()).orElse(null);
 		Orders o = new Orders(c,p,LocalDateTime.now().toString(),ob.getStatus(),"CashOnDelivery",ob.getPrice(),""+c.getCustId()+LocalDateTime.now().toString(),ob.getAddress());

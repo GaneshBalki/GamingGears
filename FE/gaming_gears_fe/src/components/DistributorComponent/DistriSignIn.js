@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDistributor } from './DistributorContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const DistriSignIn = () => {
     const { setDisid } = useDistributor();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
+    
     async function save(event) {
         event.preventDefault();
         try {
@@ -19,11 +22,15 @@ const DistriSignIn = () => {
                 });
 
             if (response.status == 200 && response.data.email == email && response.data.pass == password) {
-                console.log("response data" + response.data.fname)
-                 setDisid(response.data.disid);
-                alert("Welcome , " + response.data.disname + " !");
+               
+                setDisid(response.data.disid);
+                
                 // sessionStorage.setItem('disid', response.data.disid.toString());
                 navigate('/distributor-home');
+                toast.success("Welcome "+response.data.fname+" !!!", {
+                    position: toast.POSITION.TOP_RIGHT, 
+                    autoClose: 3000,
+                  });
             }
             else {
                 setErrorMessage('Invalid email or password');

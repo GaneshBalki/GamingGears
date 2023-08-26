@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
+
+
 const CustomerRegistration = () => {
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fname: '',
         lname: '',
@@ -12,31 +21,39 @@ const CustomerRegistration = () => {
         isExpert: '0',
         address: ''
     });
-
-    const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate();
+   
+    
 
     async function save(event) {
         event.preventDefault();
+
         try {
             const response = await axios.post("http://localhost:8282/addcustomer", {
-                fname: formData.fname,
-                lname: formData.lname,
-                mob_number: formData.mob_number,
-                email: formData.email,
-                pass: formData.pass,
-                user_status: formData.user_status,
-                isExpert: formData.isExpert,
-                address: formData.address,
+                "fname": formData.fname,
+                "lname": formData.lname,
+                "mob_number": formData.mob_number,
+                "email": formData.email,
+                "pass": formData.pass,
+                "user_status": formData.user_status,
+                "isExpert": formData.isExpert,
+                "address": formData.address,
             });
 
             if (response.status === 200) {
-                console.log("Registration successful");
+               
                 navigate('/customerlogin');
-            } else {
+                
+
+                toast.success("Registration successful", {
+                  position: toast.POSITION.TOP_RIGHT, 
+                  autoClose: 3000, 
+                });
+              } else {
                 setErrorMessage('Invalid email or password');
                 console.log('Registration failed');
-            }
+                
+              }
+              
         } catch (err) {
             console.error('User Registration Failed:', err);
             alert("User Registration Failed");

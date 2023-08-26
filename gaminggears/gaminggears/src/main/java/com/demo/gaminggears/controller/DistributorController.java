@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.demo.gaminggears.entity.DisSalesStats;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.SalesStatisticsDTO;
 import com.demo.gaminggears.service.DistributorService;
 import com.demo.gaminggears.service.IDistributorService;
 import com.demo.gaminggears.service.ProductService;
@@ -72,7 +72,7 @@ public class DistributorController {
 	}
 	
 	@GetMapping("/distributor/sales/{disid}")
-	public List<DisSalesStats> getDisSalesStats(@PathVariable int disid){
+	public List<SalesStatisticsDTO> getDisSalesStats(@PathVariable int disid){
 		return distributorService.getDisSalesStats(disid);
 	}
 	/*

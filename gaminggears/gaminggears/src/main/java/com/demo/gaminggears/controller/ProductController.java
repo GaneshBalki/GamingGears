@@ -1,5 +1,6 @@
 package com.demo.gaminggears.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -18,21 +19,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.gaminggears.entity.Brand;
+import com.demo.gaminggears.entity.Category;
+import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.ProductNew;
+import com.demo.gaminggears.service.IDistributorService;
 import com.demo.gaminggears.service.IProductService;
 import com.demo.gaminggears.service.ProductService;
 
 
 
-@CrossOrigin(origins = "*")
+
 @RestController
+@CrossOrigin(origins = "*")
 public class ProductController {
 	
 	@Autowired (required = true)
 	IProductService productService;
+	
+	@Autowired
+	IDistributorService distributorService;
 	
 	@GetMapping("/products/home")
 	public List<Product>   displayAllProducts() {
@@ -80,33 +92,39 @@ public class ProductController {
 		return productService.getProductsByCategory(catid);
 		
 	}
+	 
 	
-	/*
-	@GetMapping("/products/{pid}")
-	public ResponseEntity<Product>   getById(@PathVariable int pid) {
-		Product p=productService.getById(pid);
-		if(p!=null) {
-		   return ResponseEntity.ok(p);
-		}
-		else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
+	@PostMapping("/anand")
+	public ResponseEntity<ProductNew> addProduct(@RequestPart("proname") String proname,
+            @RequestPart("description") String description,
+            @RequestPart("price") double price,
+            @RequestPart("url1") MultipartFile url1,
+            @RequestPart("url2") MultipartFile url2,
+            @RequestPart("url3") MultipartFile url3,
+            @RequestPart("catid") int catid,
+            @RequestPart("brandid") int brandid,
+            @RequestPart("disid") int disid
+    ) throws IOException {
 		
-	}
-	
-	
-	@PutMapping("/products/{pid}")
-	public ResponseEntity<String> updateProduct(@RequestBody Product p) {
-		productService.updateProduct(p);
-		return ResponseEntity.ok("modified successfully");
-	}
-	
-	@GetMapping("/products/price/{lpr}/{hpr}")
-	public ResponseEntity<List<Product>> getByPrice(@PathVariable int lpr,@PathVariable int hpr) {
-		List<Product> plist=productService.getByPrice(lpr,hpr);
-		return ResponseEntity.ok(plist);
 		
+		ProductNew product = new ProductNew();
+		System.out.println("*****************"+proname+"*************");
+        product.setProname(proname);
+        product.setDescription(description);
+        product.setPrice(price);
+        product.setImage1(url1.getBytes());
+        product.setImage2(url2.getBytes());
+        product.setImage3(url3.getBytes());
+        // Set the Category, Brand, and Distributor based on IDs
+        
+        product.setCatid(new Category(catid,"CPUcabinat")); 
+        product.setBrandid(new Brand(brandid,"Zebronics"));   // Assuming you have a Brand entity
+        Distributor dis=distributorService.getDistributorbyID(disid);
+        product.setDisid(dis); // Assuming you have a Distributor entity
+
+        
+	    return productService.addProductByDist(product);
 	}
 	
-*/
+
 }

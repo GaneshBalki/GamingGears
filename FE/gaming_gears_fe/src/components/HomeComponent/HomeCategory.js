@@ -12,7 +12,7 @@ function HomeCategory() {
   return (
     <div className="container my-5" style={{ backgroundColor: '#f8f9fa' }}>
       <div className="row">
-        <div className="col-lg-3 col-md-4 col-sm-12 mb-4 d-flex">
+        <div className="col-lg-3 col-md-4 col-sm-11 mb-4 d-flex">
           <div className="card flex-fill border-0" style={{ background: '#f8f9fa', width: '100%' }}>
             <a href="#" className="text-center d-flex flex-column justify-content-center" style={{ textDecoration: 'none' }}>
             <Link to={`/category-products/${224}`} className="text-reset" style={{ textDecoration: 'none' }}>

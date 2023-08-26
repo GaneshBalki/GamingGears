@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.gaminggears.entity.Customer;
-import com.demo.gaminggears.entity.DisSalesStats;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
+import com.demo.gaminggears.entity.SalesStatisticsDTO;
 import com.demo.gaminggears.repository.DistributorRepository;
 
 @Service
@@ -50,9 +50,9 @@ public class DistributorService implements IDistributorService{
 		return distributorRepository.findById(disid).orElse(null);
 	}
 	@Override
-	public List<DisSalesStats> getDisSalesStats(int disid) {
+	public List<SalesStatisticsDTO> getDisSalesStats(int disid) {
 		// TODO Auto-generated method stub
-		return distributorRepository.getDisSalesStats(disid);
+		return distributorRepository.findSalesStatisticsByDistributorId(disid);
 	}
 
 }
