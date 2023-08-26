@@ -34,12 +34,14 @@ const SignIn = () => {
                   } else {
                     setErrorMessage('Invalid email or password');
                     
-                    
                   }
 
         }
         catch (err) {
-                 alert("login Failed");
+            toast.error("Login Failed", {
+                position: toast.POSITION.TOP_RIGHT, 
+                autoClose: 3000,
+              });
         }
     }
  

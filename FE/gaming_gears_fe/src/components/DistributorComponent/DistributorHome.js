@@ -27,7 +27,7 @@ const DistributorHome = () => {
         DistributorService.findTotalSales(disid).
             then((response) => {
                 setSales([...response.data]);
-                window.alert("hello2")
+                // window.alert("hello2")
             })
             .catch((error) => {
                 console.error(error);
@@ -180,7 +180,7 @@ window.alert("hello adding product")
 
 
                     <div>
-                        <h1>hello</h1>
+                        <h1></h1>
                         {
                             sales.map((e) => {
                                 <li>
@@ -243,6 +243,7 @@ window.alert("hello adding product")
                                 name="url1"
                                 className="form-control"
                                 accept="image/*"
+                                size="1000000" 
                                 onChange={handleInputChange}
 
                             />
@@ -254,6 +255,7 @@ window.alert("hello adding product")
                                 name="url2"
                                 className="form-control"
                                 accept="image/*"
+                                size="1000000" 
                                 onChange={handleInputChange}
 
                             />
@@ -265,6 +267,7 @@ window.alert("hello adding product")
                                 name="url3"
                                 className="form-control"
                                 accept="image/*"
+                                size="1000000" 
                                 onChange={handleInputChange}
 
                             />

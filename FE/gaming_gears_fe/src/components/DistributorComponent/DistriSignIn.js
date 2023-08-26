@@ -27,7 +27,7 @@ const DistriSignIn = () => {
                 
                 // sessionStorage.setItem('disid', response.data.disid.toString());
                 navigate('/distributor-home');
-                toast.success("Welcome "+response.data.fname+" !!!", {
+                toast.success("Welcome "+response.data.disname+" !!!", {
                     position: toast.POSITION.TOP_RIGHT, 
                     autoClose: 3000,
                   });

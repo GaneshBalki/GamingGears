@@ -61,6 +61,7 @@ function Cart(props) {
 
 
   const handleBuyNow = async () => {
+    // window.alert("in cart buy")
     try {
       const dataToSend = {
         "custId": custid,    
@@ -68,11 +69,11 @@ function Cart(props) {
         "totalprice": total
       };
       const response = await axios.post('http://localhost:8282/products/purchase/cart', dataToSend);
+      //  window.alert("afetr axios")
       console.log('Buy Now response:', response.data);
-  
-      
       navigate('/');
     } catch (error) {
+      // window.alert("got exception")
       console.error('Error while processing the Buy Now request:', error);
     }
   };
@@ -138,7 +139,7 @@ function Cart(props) {
                       </div>
                     ))}
                     <h5>Total Amount &#8377; {total}</h5>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Buy Now</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={handleBuyNow}>Buy Now</button>
 
                   </div>
                 </div>
