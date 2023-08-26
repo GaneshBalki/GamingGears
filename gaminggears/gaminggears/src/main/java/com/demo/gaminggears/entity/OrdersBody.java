@@ -2,10 +2,15 @@ package com.demo.gaminggears.entity;
 
 public class OrdersBody {
 	private int custid;
+	
 	private int proid;
 	private int price;
 	private int status;
 	private String address;
+	private String name;
+    private String mobileno;
+    private String deliverydate;
+    private String paymentmode;
 	public OrdersBody() {
 		super();
 	}
@@ -16,6 +21,48 @@ public class OrdersBody {
 		this.price = price;
 		this.status = status;
 		this.address = address;
+	}
+	
+	
+	public OrdersBody(int custid, String address, String paymentmode) {
+		super();
+		this.custid = custid;
+		this.address = address;
+		this.paymentmode = paymentmode;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMobileno() {
+		return mobileno;
+	}
+	public void setMobileno(String mobileno) {
+		this.mobileno = mobileno;
+	}
+	public String getDeliverydate() {
+		return deliverydate;
+	}
+	public void setDeliverydate(String deliverydate) {
+		this.deliverydate = deliverydate;
+	}
+	public String getPaymentmode() {
+		return paymentmode;
+	}
+	public void setPaymentmode(String paymentmode) {
+		this.paymentmode = paymentmode;
+	}
+	public OrdersBody(int custid, String address, String name, String mobileno, String deliverydate,
+			String paymentmode) {
+		super();
+		this.custid = custid;
+		this.address = address;
+		this.name = name;
+		this.mobileno = mobileno;
+		this.deliverydate = deliverydate;
+		this.paymentmode = paymentmode;
 	}
 	public int getCustid() {
 		return custid;

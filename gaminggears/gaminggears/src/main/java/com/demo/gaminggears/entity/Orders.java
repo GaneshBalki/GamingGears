@@ -30,15 +30,19 @@ public class Orders {
     private String odate;
     private int status;
     private String paymentmode;
-    private int price;
+    private double price;
     private String transactionid;
     private String address;
+    private String name;
+    private String mobileno;
+    private String deliverydate;
+    
 
     // Constructors
     public Orders() {
     }
 
-    public Orders( Customer custid, Product proid, String odate, int status, String paymentmode, int amount, String transactionid,String address) {
+    public Orders( Customer custid, Product proid, String odate, int status, String paymentmode, double amount, String transactionid,String address) {
         //this.orderid = orderid;
         this.custid = custid;
         this.proid = proid;
@@ -59,11 +63,11 @@ public class Orders {
         this.orderid = orderid;
     }
 
-    public int getPrice() {
+    public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

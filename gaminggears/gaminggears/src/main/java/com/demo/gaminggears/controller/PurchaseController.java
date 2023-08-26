@@ -15,14 +15,14 @@ public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
 
-    @PostMapping("/products/purchase/cart")
-    public ResponseEntity<String> handleBuyNow(@RequestBody PurchaseRequest request) {
-        try {
-            purchaseService.processPurchase(request);
-            return ResponseEntity.ok("Purchase successful");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error processing purchase");
-        }
-    }
+//    @PostMapping("/products/purchase/cart")
+//    public ResponseEntity<String> handleBuyNow(@RequestBody PurchaseRequest request) {
+//        try {
+//            purchaseService.processPurchase(request);
+//            return ResponseEntity.ok("Purchase successful");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(500).body("Error processing purchase");
+//        }
+//    }
 }
 

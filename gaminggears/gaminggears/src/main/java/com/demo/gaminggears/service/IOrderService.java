@@ -12,6 +12,8 @@ public interface IOrderService {
 
 	void addtoOrder(OrdersBody ob);
 
+	void addtoOrderfromCart(OrdersBody ob);
+
 //	Orderproducts save(Orderproducts order);
 
 }

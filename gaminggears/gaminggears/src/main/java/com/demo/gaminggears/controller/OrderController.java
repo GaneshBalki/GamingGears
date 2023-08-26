@@ -19,7 +19,7 @@ import com.demo.gaminggears.entity.Orders;
 import com.demo.gaminggears.entity.OrdersBody;
 import com.demo.gaminggears.service.IOrderService;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin (origins = "*")
 @RestController
 public class OrderController {
 
@@ -34,6 +34,12 @@ public class OrderController {
 	@PostMapping("/buy/now")
 	public ResponseEntity<String> addtoOrder(@RequestBody OrdersBody ob){
 		iOrderService.addtoOrder(ob);
+		return ResponseEntity.ok("added successfully");
+	}
+	
+	@PostMapping("/products/purchase/cart")
+	public ResponseEntity<String> addtoOrderfromCart(@RequestBody OrdersBody ob){
+		iOrderService.addtoOrderfromCart(ob);
 		return ResponseEntity.ok("added successfully");
 	}
 	

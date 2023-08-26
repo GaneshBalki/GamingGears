@@ -1,5 +1,6 @@
 package com.demo.gaminggears.entity;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,8 @@ public class Purchase {
     private Long id;
 
     private Long custId;
+    
+    @ElementCollection
     private List<Long> productIds;
     private double totalprice;
 
