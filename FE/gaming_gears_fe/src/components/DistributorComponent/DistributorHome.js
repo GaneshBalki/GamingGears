@@ -273,7 +273,7 @@ window.alert("hello adding product")
                             />
                         </div>
                         <div className="form-group">
-                            <label>Category ID:</label>
+                            <label>Category</label>
                             <input
                                 type="text"
                                 name="catid"
@@ -283,7 +283,7 @@ window.alert("hello adding product")
                             />
                         </div>
                         <div className="form-group">
-                            <label>Brand ID:</label>
+                            <label>Brand</label>
                             <input
                                 type="text"
                                 name="brandid"

@@ -16,7 +16,8 @@ import DistributorLogin from "./components/DistributorComponent/DistributorLogin
 import DistributorRegistration from "./components/DistributorComponent/DistributorRegistration.js";
 import BuyNow from "./components/CustomerComp/BuyNow.js";
 import OrderHistory from "./components/CustomerComp/OrderHistory.js";
-
+import DeliveryAddressPage from "./components/CustomerComp/DeliveryAddressPage.js";
+import Payment from "./components/CustomerComp/Payment.js";
 const AppRoutes = [
   {
     index: true,
@@ -89,6 +90,14 @@ const AppRoutes = [
   {
     path: '/order/history',
     element: <OrderHistory></OrderHistory>
+  },
+  {
+    path: '/buy/product/cart/deliveryaddr/:custid',
+    element: <DeliveryAddressPage></DeliveryAddressPage>
+  },
+  {
+    path: '/payment',
+    element: <Payment></Payment>
   }
 ];
 

@@ -16,7 +16,7 @@ function BuyNow() {
     const [cardNumber, setCardNumber] = useState("");
     const [expirationDate, setExpirationDate] = useState("");
     const [cvv, setCVV] = useState("");
-
+    
     const handlePaymentModeChange = (e) => {
         setPaymentMode(e.target.value);
     };
@@ -124,7 +124,7 @@ function BuyNow() {
                         onChange={handlePaymentModeChange}>
                        
                         <option value="COD">COD</option>
-                        <option value="Online">Online</option>
+                        <option value="Online">PayNow</option>
                     </select>
                 <div className="address-input" style={{textAlign:'left'}}>
                     
