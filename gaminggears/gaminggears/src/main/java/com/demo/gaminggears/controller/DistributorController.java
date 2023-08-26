@@ -75,46 +75,5 @@ public class DistributorController {
 	public List<SalesStatisticsDTO> getDisSalesStats(@PathVariable int disid){
 		return distributorService.getDisSalesStats(disid);
 	}
-	/*
-	@GetMapping("/products/{pid}")
-	public ResponseEntity<Product>   getById(@PathVariable int pid) {
-		Product p=productService.getById(pid);
-		if(p!=null) {
-		   return ResponseEntity.ok(p);
-		}
-		else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-		
-	}
 	
-	@PostMapping("/products/{pid}")
-	public ResponseEntity<String> insertProduct( @RequestBody Product p) {
-		  productService.addProduct(p);
-		  return ResponseEntity.ok("added successfully");
-	}
-	
-	
-	
-	@DeleteMapping("/products/{pid}")
-	public ResponseEntity<String> deleteProduct(@PathVariable int pid) {
-		productService.deleteById(pid);
-		return ResponseEntity.ok("deleted successfully");
-		
-	}
-	
-	@PutMapping("/products/{pid}")
-	public ResponseEntity<String> updateProduct(@RequestBody Product p) {
-		productService.updateProduct(p);
-		return ResponseEntity.ok("modified successfully");
-	}
-	
-	@GetMapping("/products/price/{lpr}/{hpr}")
-	public ResponseEntity<List<Product>> getByPrice(@PathVariable int lpr,@PathVariable int hpr) {
-		List<Product> plist=productService.getByPrice(lpr,hpr);
-		return ResponseEntity.ok(plist);
-		
-	}
-	
-*/
 }

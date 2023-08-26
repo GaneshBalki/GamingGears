@@ -33,7 +33,8 @@ function HomeProducts() {
                                 <div className="mask">
                                     <div className="d-flex justify-content-start align-items-end h-100">
                                         <h5>
-                                            <span className="badge bg-primary ms-2">New</span>
+                                            {/* <span className="badge bg-primary ms-2">New</span> */}
+                                          <pre></pre>
                                         </h5>
                                     </div>
                                 </div>

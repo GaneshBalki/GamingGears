@@ -35,7 +35,7 @@ const ProductDetails = (props) => {
             try {
                 const response = await CustomerService.addToCart(custid, product.proid);
                 if (response.status === 200) {
-                   navigate("/cart");
+                    navigate("/cart");
                     toast.success(product.proname+", Added to Cart !", {
                         position: toast.POSITION.TOP_RIGHT, // You can change the position
                         autoClose: 900, // You can control how long the toast is displayed (in milliseconds)
@@ -92,8 +92,8 @@ const ProductDetails = (props) => {
                         </button>
                     </div>
                 </div>
-                <div className="col-md-6">
-                    <div className="product-details" style={{ width: '100%', height: '100%' }} >
+                <div className="col-md-6" >
+                    <div className="product-details" style={{ width: '100%', height: '100%' ,outline:'none'}} >
                         <pre></pre>
                         <pre></pre>
 

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ForgotPassword = () => {
   const [password , setPassword] = useState('');
   const [message, setMessage] = useState('');
   const { email } = useParams();
+  const navigate = useNavigate();
 console.log("user email"+email)
   const handleChange = (e) => {
     setPassword(e.target.value);
@@ -21,7 +25,13 @@ console.log("user email"+email)
       });
 
       if (response.status === 200 && response.data == "ok") {
-        setMessage('Password reset instructions sent to your email.');
+        navigate('/customerlogin');
+                
+
+                toast.success("Password changed !", {
+                  position: toast.POSITION.TOP_RIGHT, 
+                  autoClose: 3000, 
+                });
       } else {
         setMessage('Failed to send password reset instructions.');
       }

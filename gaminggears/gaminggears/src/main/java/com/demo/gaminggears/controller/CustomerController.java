@@ -35,7 +35,7 @@ public class CustomerController {
 		
 	}
 	
-	@PutMapping("/forgot-password")
+	@PostMapping("/forgot-password")
 	public ResponseEntity<String> forgetPassword(@RequestBody Login custlogin) {
 		customerService.forgetPassword(custlogin);
 		return ResponseEntity.ok("ok");

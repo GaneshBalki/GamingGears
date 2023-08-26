@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Link, useParams } from 'react-router-dom';
 const SearchResults = (props) => {
-    const { input } = useParams(); // Call useParams as a function
+    const { input } = useParams(); // Called param to extract input given by user from url
 
     console.log("value entered " + input);
     const [results, setResults] = useState([]);

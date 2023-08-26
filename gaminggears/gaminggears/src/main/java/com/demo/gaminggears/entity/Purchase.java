@@ -15,7 +15,10 @@ public class Purchase {
     private Long id;
 
     private Long custId;
+<<<<<<< HEAD
     
+=======
+>>>>>>> 617f23608934c36b53b59a48faabdb475bab6c26
     @ElementCollection
     private List<Long> productIds;
     private double totalprice;

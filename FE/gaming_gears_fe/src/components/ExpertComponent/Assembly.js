@@ -189,13 +189,13 @@ const Assembly = (props) => {
                                 </tr>
 
 
-                                <tr>
+                                {/* <tr>
                                     <th scope="row"></th>
                                     <td></td>
                                     <td>
                                         <h5>Total Price</h5>
                                     </td>
-                                    <td>
+                                    {/* <td>
                                         &#8377;{' '}
                                         {item.cpu.price +
                                             item.cpucooler.price +
@@ -205,7 +205,8 @@ const Assembly = (props) => {
                                             item.processor.price +
                                             item.ram.price +
                                             item.ssd.price}
-                                    </td>
+                                    </td> 
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th scope="row"></th>
@@ -213,8 +214,9 @@ const Assembly = (props) => {
                                     <td>
                                         <h3></h3>
                                     </td>
-                                    <td> <button className="btn btn-primary">Buy Now</button></td>
-                                </tr>
+                                    <td></td>
+                                    {/* <td> <button className="btn btn-primary">Buy Now</button></td> 
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>
