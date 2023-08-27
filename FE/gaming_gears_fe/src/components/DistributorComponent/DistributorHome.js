@@ -64,18 +64,15 @@ const DistributorHome = () => {
                 {/* Navigation Links */}
                 <ul className="nav-links">
 
-                    <li className={`nav-link ${board === 'Product' ? 'active' : ''}`} onClick={() => handleItemClick('Product')}>
+                    <li className={`nav-link ${board === 'Product' ? 'active' : ''}`} onClick={() => handleItemClick('Product')} style={{height:'40px'}}>
                         Products
                     </li>
-                    <li className={`nav-link ${board === 'AddProduct' ? 'active' : ''}`} onClick={() => handleItemClick('AddProduct')}>
+                    <li className={`nav-link ${board === 'AddProduct' ? 'active' : ''}`} onClick={() => handleItemClick('AddProduct')} style={{height:'40px'}}>
                         Add Product
                     </li>
-                    <li className={`nav-link ${board === 'SalesReport' ? 'active' : ''}`} onClick={() => handleItemClick('SalesReport')}>Sales Report</li>
-                    <li className={`nav-link ${board === 'logout' ? 'active' : ''}`} onClick={handleLogout}>LogOut</li>
+                    <li className={`nav-link ${board === 'SalesReport' ? 'active' : ''}`} onClick={() => handleItemClick('SalesReport')} style={{height:'40px'}}>Sales Report</li>
+                    <li className={`nav-link ${board === 'logout' ? 'active' : ''}`} onClick={handleLogout} style={{height:'40px'}}>LogOut</li>
                     
-                        
-                   
-
                 </ul>
             </div>
 
