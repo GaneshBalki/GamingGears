@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import './Payment.css'; // Import your CSS file
-import { useUser } from '../UserContext';
-import { useAddress } from '../AdressContext';
-import CustomerService from '../../service/CustomerService';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import React, { useState } from 'react';
+import './DeliveryAddress.css'; // Import your CSS file
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Import Axios for making HTTP requests
+import { toast } from 'react-toastify'; // Import toast for notifications
+import { useAddress } from '../AdressContext';
 
-const Payment = () => {
-  const [searcharr, setSearcharr] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [totalItem, setTotalItem] = useState(0);
-  const { custid } = useUser();
-  const { address } = useAddress();
-  const [paymentMode, setPaymentMode] = useState("COD");
+const DeliveryAddressPage = () => {
+  const { setAddress } = useAddress()
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    mobileNumber: '',
+    pincode: '',
+    locality: '',
+    street: '',
+    city: '',
+    state: '',
+  });
+
   const [paymentData, setPaymentData] = useState({
     cardNumber: '',
     cardHolderName: '',
@@ -23,71 +26,63 @@ const Payment = () => {
     cvv: '',
   });
 
-  const handleInputChange = (e) => {
+  const [currentStep, setCurrentStep] = useState('address');
+
+  // Define paymentMode in the component state
+  const [paymentMode, setPaymentMode] = useState('Online');
+
+  const handleInputChange = (e, target) => {
     const { name, value } = e.target;
-    setPaymentData({
-      ...paymentData,
-      [name]: value,
-    });
-  };
-
-  const fetchdata = () => {
-    CustomerService.getCart(custid)
-      .then((response) => {
-        setSearcharr([...response.data]);
-      })
-      .catch((error) => {
-        console.error(error);
+    if (target === 'address') {
+      setFormData({
+        ...formData,
+        [name]: value,
       });
+    } else if (target === 'payment') {
+      setPaymentData({
+        ...paymentData,
+        [name]: value,
+      });
+    }
   };
 
-  const handlePaymentModeChange = (e) => {
-    setPaymentMode(e.target.value);
+  const handleDeliveryClick = () => {
+    // Update the address in the context
+    const address = `${formData.name}, ${formData.mobileNumber}, ${formData.locality} ${formData.city} ${formData.state} ${formData.pincode}`;
+    setAddress(address);
+    setCurrentStep('payment'); // Change the step to 'payment'
   };
-
-  // useEffect(() => {
-  //   fetchdata();
-  //   const calculateTotalPrice = () => {
-  //     let totalPrice = 0;
-  //     let totalItemincart = 0;
-  //     for (const cartItem of searcharr) {
-  //       totalPrice += cartItem.qty * cartItem.price;
-  //       totalItemincart += cartItem.qty;
-  //     }
-  //     setTotal(totalPrice);
-  //     setTotalItem(totalItemincart);
-  //   };
-
-  //   calculateTotalPrice();
-  // }, [searcharr]);
 
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      window.alert(custid + " " + " " + address + " " + paymentMode);
-      const response = await axios.post("http://localhost:8282/products/purchase/cart",
-        {
-          "custid": custid,
-          "address": address,
-          "paymentmode": paymentMode,
-        });
- 
+      // Define custid and address (you need to define these variables somewhere in your code)
+      const custid = '123'; // Replace with the actual customer ID
+      const address = '123 Main St, City, State, 12345'; // Replace with the actual address
+
+      // Make an HTTP POST request to your server
+      const response = await axios.post('http://localhost:8282/products/purchase/cart', {
+        custid: custid,
+        address: address,
+        paymentmode: paymentMode,
+        // Include other payment data here if needed
+      });
+
       if (response.status === 200) {
-       
-        navigate('/order/history');
-        toast.success("Payment Successful", {
+        navigate('/order/history'); // Redirect to the order history page
+        toast.success('Payment Successful', {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 3000,
         });
       } else {
-        toast.error("Payment Failed error", {
+        toast.error('Payment Failed error', {
           position: toast.POSITION.TOP_RIGHT,
           autoClose: 3000,
         });
       }
     } catch (err) {
-      toast.error("Payment Failed", {
+      toast.error('Payment Failed', {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 3000,
       });
@@ -95,100 +90,62 @@ const Payment = () => {
   };
 
   return (
-    <div className="payment-container">
-      <div className="purchase-summary">
-        <h2 className="summary-title">Purchase Summary</h2>
-        {/* <p>Total Items: {totalItem}</p>
-        <p>Total Amount: {total}</p> */}
-      </div>
-
-      <div className="payment-details">
-        <label>Select Payment</label><br></br>
-        <select
-          style={{
-            width: '40%',
-            padding: '10px',
-            fontSize: '16px',
-            border: '1px solid #ccc',
-            borderRadius: '5px',
-            backgroundColor: '#fff',
-            color: '#333',
-            outline: 'none',
-            textAlign: 'center',
-          }}
-          onChange={handlePaymentModeChange}
-        >
-          <option value="COD">COD</option>
-          <option value="Online">PayNow</option>
-        </select>
-
-        {paymentMode === "Online" && (
-          <form className="payment-form" onSubmit={handlePaymentSubmit}>
-            <h2 className="payment-title">Payment Details</h2>
-            <div className="form-group">
-              <label htmlFor="cardNumber">Card Number</label>
-              <input
-                type="text"
-                id="cardNumber"
-                name="cardNumber"
-                placeholder="1234 5678 9012 3456"
-                value={paymentData.cardNumber}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cardHolderName">Cardholder's Name</label>
-              <input
-                type="text"
-                id="cardHolderName"
-                name="cardHolderName"
-                placeholder="John Doe"
-                value={paymentData.cardHolderName}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="expirationDate">Expiration Date</label>
-                <input
-                  type="text"
-                  id="expirationDate"
-                  name="expirationDate"
-                  placeholder="MM/YYYY"
-                  value={paymentData.expirationDate}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="cvv">CVV</label>
-                <input
-                  type="text"
-                  id="cvv"
-                  name="cvv"
-                  placeholder="123"
-                  value={paymentData.cvv}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-            </div>
-            <button className="payment-button" type="submit">
-              Pay Now
-            </button>
-          </form>
-        )}
-
-        {paymentMode === "COD" && (
-          <button className="payment-button" type="submit" onClick={handlePaymentSubmit}>
-            Pay Later
+    <div className="delivery-container">
+      {currentStep === 'address' && (
+        <div className="address-form">
+          <h2 className="title">Delivery Address</h2>
+          {/* Address input fields */}
+          {/* ... */}
+          <button className="deliver-button" onClick={handleDeliveryClick}>
+            Deliver Here
           </button>
-        )}
-      </div>
+        </div>
+      )}
+
+      {currentStep === 'payment' && (
+        <div className="payment-container">
+          <h2 className="title">Payment Details</h2>
+          <div className="payment-details">
+            <label>Select Payment</label><br></br>
+            <select
+              style={{
+                width: '40%',
+                padding: '10px',
+                fontSize: '16px',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+                backgroundColor: '#fff',
+                color: '#333',
+                outline: 'none',
+                textAlign: 'center',
+              }}
+              onChange={(e) => setPaymentMode(e.target.value)}
+              value={paymentMode}
+            >
+              <option value="COD">COD</option>
+              <option value="Online">PayNow</option>
+            </select>
+
+            {currentStep === 'payment' && (
+              <form className="payment-form" onSubmit={handlePaymentSubmit}>
+                {/* Payment input fields */}
+                {/* ... */}
+                <button className="payment-button" type="submit">
+                  Pay Now
+                </button>
+              </form>
+            )}
+
+            {paymentMode === 'COD' && (
+              <button className="payment-button" onClick={handlePaymentSubmit}>
+                Pay Later
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Payment;
+export default DeliveryAddressPage;

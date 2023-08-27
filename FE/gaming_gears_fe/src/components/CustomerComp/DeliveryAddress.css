@@ -4,12 +4,15 @@
     margin-bottom: 20px;
     text-align: center;
   }
-  
+  .delivery-container{
+    margin-top: 10px;
+  }
   .address-form {
+  
     border: 1px solid #ccc;
     padding: 20px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-radius: 'none';
+    background-color: white;
     width: 400px; /* Adjust this width as needed */
     margin: 0 auto; /* Center the form */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */

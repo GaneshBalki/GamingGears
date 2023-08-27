@@ -9,10 +9,7 @@ export class Home extends Component {
 
   render() {
     return (
-
       <div>
-
-
         {/* corosole */}
         <CarouselComponent></CarouselComponent>
 
@@ -20,33 +17,10 @@ export class Home extends Component {
         <HomeCategory></HomeCategory>
         {/* <!-- category --> */}
 
-
-        {/* offerbar */}
-        {/* <div>
-          <nav className="navbar navbar-light bg-light align-items-center" style={{ height: '140px' }}>
-            <div className="container-fluid d-flex justify-content-center ">
-             <img src={logo} alt='logo' style={{width:'130px'}}></img>
-            </div>
-          </nav>
-        </div> */}
-
-
-
-
         {/* Products */}
         <HomeProducts></HomeProducts>
         {/* Products */}
-
-
-
-
-
-
-
       </div>
-
-
-
     );
   }
 }
