@@ -114,9 +114,9 @@ const ProductDetails = (props) => {
                         <span style={{ margin: '0 10px' }}></span>
                         {
                             custid>0 ?(
-                                <Link to={`/buy/product/cart/deliveryaddr/${custid}`} className="text-reset" style={{ textDecoration: 'none' }}>
-                                <button className="btn btn-primary">Buy Now</button>
-                            </Link>
+                               
+                                <button className="btn btn-primary" onClick={handleAddToCart}>Buy Now</button>
+                           
                             ):(
                                 <Link to={`/customerlogin`} className="text-reset" style={{ textDecoration: 'none' }}>
                                 <button className="btn btn-primary">Buy Now</button>

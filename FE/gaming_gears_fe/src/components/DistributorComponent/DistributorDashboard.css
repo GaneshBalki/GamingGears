@@ -31,12 +31,19 @@
   .nav-links {
     list-style: none;
     padding: 0;
+    font-size: 1.2rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    height: 1.6rem;
   }
   
   .nav-link {
+  
     padding: 10px 0;
     cursor: pointer;
     transition: background-color 0.3s;
+  
+
   }
   
   .nav-link:hover {
@@ -63,21 +70,6 @@
   
   .dashboard-header h1 {
     font-size: 2rem;
-  }
-  
-  /* Add Product button styles */
-  .add-product-button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .add-product-button:hover {
-    background-color: #218838;
   }
   
   /* Sales Report card styles */
