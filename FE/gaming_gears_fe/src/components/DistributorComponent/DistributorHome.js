@@ -35,8 +35,15 @@ const DistributorHome = () => {
     }, [disid]);
 
     const handleLogout=()=>{
-        setDisid(0);
+
+        const confirmLogout = window.confirm("Are you sure you want to log out?");
+        if (confirmLogout) {
+         
+          setDisid(0);
         navigate("/distributor-login")
+        }
+
+        
 
     }
 
@@ -59,6 +66,9 @@ const DistributorHome = () => {
 
                     <li className={`nav-link ${board === 'Product' ? 'active' : ''}`} onClick={() => handleItemClick('Product')}>
                         Products
+                    </li>
+                    <li className={`nav-link ${board === 'AddProduct' ? 'active' : ''}`} onClick={() => handleItemClick('AddProduct')}>
+                        Add Product
                     </li>
                     <li className={`nav-link ${board === 'SalesReport' ? 'active' : ''}`} onClick={() => handleItemClick('SalesReport')}>Sales Report</li>
                     <li className={`nav-link ${board === 'logout' ? 'active' : ''}`} onClick={handleLogout}>LogOut</li>
