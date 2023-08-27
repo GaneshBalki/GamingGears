@@ -10,53 +10,49 @@ import javax.persistence.FieldResult;
 		@FieldResult(name = "proid", column = "proid"), @FieldResult(name = "proname", column = "proname"),
 		@FieldResult(name = "qtysold", column = "qtysold"), @FieldResult(name = "sales", column = "sales") }) })
 public class SalesStatisticsDTO {
-	private Long proid;
-	private String proname;
-	private Long qtysold;
-	private BigDecimal sales;
-
-	public SalesStatisticsDTO(Long proid, String proname, Long qtysold, BigDecimal sales) {
+	private int proid;
+    private String proname;
+    private long qtysold;
+    private double sales;
+	public SalesStatisticsDTO(int proid, String proname, long qtysold, double sales) {
 		super();
 		this.proid = proid;
 		this.proname = proname;
 		this.qtysold = qtysold;
 		this.sales = sales;
 	}
-
 	public SalesStatisticsDTO() {
 		super();
 	}
-
-	public Long getProid() {
+	public int getProid() {
 		return proid;
 	}
-
-	public void setProid(Long proid) {
+	public void setProid(int proid) {
 		this.proid = proid;
 	}
-
 	public String getProname() {
 		return proname;
 	}
-
 	public void setProname(String proname) {
 		this.proname = proname;
 	}
-
-	public Long getQtysold() {
+	public long getQtysold() {
 		return qtysold;
 	}
-
-	public void setQtysold(Long qtysold) {
+	public void setQtysold(long qtysold) {
 		this.qtysold = qtysold;
 	}
-
-	public BigDecimal getSales() {
+	public double getSales() {
 		return sales;
 	}
-
-	public void setSales(BigDecimal sales) {
+	public void setSales(double sales) {
 		this.sales = sales;
 	}
+	@Override
+	public String toString() {
+		return "SalesStatisticsDTO [proid=" + proid + ", proname=" + proname + ", qtysold=" + qtysold + ", sales="
+				+ sales + "]";
+	}
+
 
 }
