@@ -5,10 +5,31 @@ import java.math.BigDecimal;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.EntityResult;
 import javax.persistence.FieldResult;
+import javax.persistence.NamedNativeQuery;
 
-@SqlResultSetMapping(name = "Mapp", entities = { @EntityResult(entityClass = SalesStatisticsDTO.class, fields = {
-		@FieldResult(name = "proid", column = "proid"), @FieldResult(name = "proname", column = "proname"),
-		@FieldResult(name = "qtysold", column = "qtysold"), @FieldResult(name = "sales", column = "sales") }) })
+
+@NamedNativeQuery(
+    name = "SalesStatisticsDTO.findSalesStatisticsByDistributorId",
+    query = "SELECT o.proid as proid, p.proname as proname, count(o.proid) as qtysold, SUM(o.price) AS sales " +
+            "FROM Orders o " +
+            "JOIN Product p ON o.proid = p.proid " +
+            "JOIN Distributor d ON p.disid = d.disid " +
+            "WHERE d.disid = :disid " +
+            "GROUP BY o.proid",
+    resultSetMapping = "Mapp"
+)
+@SqlResultSetMapping(
+    name = "Mapp",
+    entities = @EntityResult(
+        entityClass = SalesStatisticsDTO.class,
+        fields = {
+            @FieldResult(name = "proid", column = "proid"),
+            @FieldResult(name = "proname", column = "proname"),
+            @FieldResult(name = "qtysold", column = "qtysold"),
+            @FieldResult(name = "sales", column = "sales")
+        }
+    )
+)
 public class SalesStatisticsDTO {
 	private int proid;
     private String proname;
