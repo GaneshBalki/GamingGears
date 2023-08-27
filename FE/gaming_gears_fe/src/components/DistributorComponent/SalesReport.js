@@ -1,24 +1,41 @@
-
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Chart } from 'react-google-charts';
 function SalesReport(){
-    
+    const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/sales-statistics'); // Replace with your backend API endpoint
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const chartData = [['Product Name', 'Quantity Sold']];
+
+  data.forEach(item => {
+    chartData.push([item.proname, item.qtysold]);
+  });
+
     return(
-        <div className="container mt-5">
-        <h1 className="mb-4">Sales Statistics</h1>
-        <div className="row">
-          {/* {salesData.map(item => ( */}
-            <div className="col-md-4 mb-4">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Product ID: </h5>
-                  <p className="card-text">Product Name: </p>
-                  <p className="card-text">Quantity Sold: </p>
-                  <p className="card-text">Sales:  USD</p>
-                </div>
-              </div>
-            </div>
-          {/* ))} */}
-        </div>
+        <div>
+        <Chart
+          width={'900px'}
+          height={'500px'}
+          chartType="PieChart"
+          data={chartData}
+          options={{
+            title: 'Sales Statistics',
+            pieHole: 0.4,
+          }}
+          rootProps={{ 'data-testid': '1' }}
+        />
       </div>
     )
 }
