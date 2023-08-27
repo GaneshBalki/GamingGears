@@ -27,6 +27,7 @@ import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.entity.SalesStatisticsDTO;
 import com.demo.gaminggears.service.DistributorService;
 import com.demo.gaminggears.service.IDistributorService;
+import com.demo.gaminggears.service.IProductService;
 import com.demo.gaminggears.service.ProductService;
 
 
@@ -38,6 +39,9 @@ public class DistributorController {
 	
 	@Autowired (required = true)
 	IDistributorService distributorService;
+	
+	@Autowired
+	IProductService productService;
 	
 	@GetMapping("/distributors")
 	public List<Distributor> getAllDistributors() {
@@ -74,6 +78,13 @@ public class DistributorController {
 	@GetMapping("/distributor/sales/{disid}")
 	public List<SalesStatisticsDTO> getDisSalesStats(@PathVariable int disid){
 		return distributorService.getDisSalesStats(disid);
+	}
+	
+
+	@DeleteMapping("/delete/product/{proid}")
+	public ResponseEntity<String> DeleteQuery(@PathVariable int proid){
+		productService.DeleteProduct(proid);
+		  return ResponseEntity.ok("deleted successfully");
 	}
 	
 }

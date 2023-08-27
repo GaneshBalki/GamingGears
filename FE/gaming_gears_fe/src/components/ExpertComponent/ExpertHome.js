@@ -4,10 +4,14 @@ import expertlogo from '../../images/expert.png';
 import ExpertService from '../../service/ExpertService';
 import { useUser } from '../UserContext';
 import Assembly from './Assembly';
+
 const ExpertHome = (props) => {
     const { custid } = useUser();
     const [expert, setExpert] = useState(null);
     const [requests, setRequests] = useState([]);
+    const [resolve, setResolve] = useState('');
+    const [resolvingRequest, setResolvingRequest] = useState(null);
+
     useEffect(() => {
         // Fetch expert data
         ExpertService.getExpertById(custid)
@@ -17,41 +21,62 @@ const ExpertHome = (props) => {
             .catch((error) => {
                 console.error('Error fetching expert data:', error);
             });
-            fetchdata();
-   
+        fetchdata();
     }, [custid]);
 
-    const fetchdata=()=>{
-             // Fetch expert requests with status 0
-             axios.get(`http://localhost:8282/get-expert-req/${custid}`)
-             .then((response) => {
-                 const reqArr = response.data.filter((e) => e.status === 0);
-                 setRequests([...reqArr]);
-             })
-             .catch((error) => {
-                 console.error('Error fetching requests:', error);
-             });
-    }
+    const fetchdata = () => {
+        // Fetch expert requests with status 0
+        axios.get(`http://localhost:8282/get-expert-req/${custid}`)
+            .then((response) => {
+                const reqArr = response.data.filter((e) => e.status === 0);
+                setRequests([...reqArr]);
+            })
+            .catch((error) => {
+                console.error('Error fetching requests:', error);
+            });
+    };
+
     if (!expert || !expert.status) {
         return <p>Loading...</p>;
     }
 
-    async function removerequest(event, request) {
+    const handleRemoveRequest = async (event, request) => {
         event.preventDefault();
         try {
-          
-          await axios.delete(`http://localhost:8282/expert/request/rmv/${request.queId}`);
-          
-          fetchdata();
+            await axios.delete(`http://localhost:8282/expert/request/rmv/${request.queId}`);
+            fetchdata();
         } catch (err) {
-          console.error('Error deleting request', err);
+            console.error('Error deleting request', err);
         }
-      }
+    };
+
+    const handleResolveInputChange = (event) => {
+        setResolve(event.target.value);
+    };
+
+    const handleResolveRequest = async (event, request) => {
+        event.preventDefault();
+        try {
+        //     // Implement the logic to resolve a request here
+        //     // For example, you can set the status of the request to "resolved"
+        //     // and save the resolution in your database
+        //     await axios.put(`http://localhost:8282/expert/request/resolve/${request.queId}`, {
+        //         resolution: resolve, // You need to provide the resolution here
+        //     });
+
+            setResolvingRequest(null); // Reset the resolving request
+            setResolve(''); // Clear the resolution input
+            fetchdata();
+        } catch (err) {
+            console.error('Error resolving request', err);
+        }
+    };
+
     return (
         <div className="container">
-            <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px',position:'relative' }}>
-                <div className="row" >
-                    <div className="col-md-6 ">
+            <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px', position: 'relative' }}>
+                <div className="row">
+                    <div className="col-md-6">
                         <img src={expertlogo} className="d-block" style={{ height: '250px', paddingTop: '20px' }} alt="Slide 1" />
                     </div>
                     <div className="col-md-6">
@@ -65,7 +90,7 @@ const ExpertHome = (props) => {
                             <pre></pre>
                             <h5>Commission : &#8377; {expert.commission} </h5>
                             <pre></pre>
-                            <h5>Unit Sold : {expert.sells}</h5>
+                            <h5>Request Solved: {expert.sells}</h5>
                             <pre></pre>
                         </div>
                     </div>
@@ -88,16 +113,62 @@ const ExpertHome = (props) => {
                                             borderRadius: '5px',
                                             padding: '10px',
                                             marginBottom: '10px',
-                                        }} >
+                                            height: '20%',
+                                        }}
+                                    >
                                         <div className="list-group-item d-flex justify-content-between align-items-center">
                                             <div>
                                                 <p>{request.que}</p>
                                                 <small>Requested by: {request.custid.fname}</small>
                                             </div>
                                             <div>
-                                                <button className="btn btn-danger" style={{ marginRight: '30px' }} 
-                                                onClick={(event) => removerequest(event, request)}
-                                              >Remove</button>
+                                                {!resolvingRequest || resolvingRequest !== request.queId ? (
+                                                    <button
+                                                        className="btn btn-primary"
+                                                        style={{ marginRight: '30px', height: '20%' }}
+                                                        onClick={() => setResolvingRequest(request.queId)}
+                                                    >
+                                                        Resolve
+                                                    </button>
+                                                ) : (
+                                                    <div>
+                                                        <input
+                                                            type='text'
+                                                            style={{
+                                                                padding: '10px',
+                                                                border: '1px solid #ccc',
+                                                                borderRadius: '5px',
+                                                            }}
+                                                            placeholder='Enter Your Answer'
+                                                            value={resolve}
+                                                            onChange={handleResolveInputChange}
+                                                        />
+                                                        <button
+                                                            className="btn btn-primary"
+                                                            style={{ marginRight: '10px', height: '20%',marginLeft:'10px' }}
+                                                            onClick={(event) => handleResolveRequest(event, request)}
+                                                        >
+                                                            Submit
+                                                        </button>
+                                                        <button
+                                                            className="btn btn-secondary"
+                                                            style={{ height: '20%' }}
+                                                            onClick={() => setResolvingRequest(null)}
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                {!resolvingRequest || resolvingRequest !== request.queId ? (
+                                                    <button
+                                                        className="btn btn-danger"
+                                                        style={{ marginRight: '30px', height: '20%' }}
+                                                        onClick={(event) => handleRemoveRequest(event, request)}
+                                                    >
+                                                        Remove
+                                                    </button>
+                                                ) : null}
                                             </div>
                                         </div>
                                     </div>
@@ -108,9 +179,9 @@ const ExpertHome = (props) => {
                 </div>
             </div>
             <pre></pre>
-           
-            <Assembly expid={custid}></Assembly>
+            {/* <Assembly expid={custid}></Assembly> */}
         </div>
     );
-}
+};
+
 export default ExpertHome;

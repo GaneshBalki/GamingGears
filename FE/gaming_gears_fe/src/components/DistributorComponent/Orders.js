@@ -3,6 +3,8 @@
 
 export default function Order(){
     return(
-        <h1>orders</h1>
+        <div className="dashboard-header">
+        <h1 className="display-4">Distributor Dashboard</h1>
+    </div>
     )
 }

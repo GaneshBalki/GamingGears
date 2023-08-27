@@ -31,7 +31,6 @@ public class OrderService implements IOrderService{
 	
 	@Override
 	public List<Orders> getAllOrderbyCustID(int custid) {
-		// TODO Auto-generated method stub
 		return orderRepository.getAllOrderbyCustID(custid);
 	}
 

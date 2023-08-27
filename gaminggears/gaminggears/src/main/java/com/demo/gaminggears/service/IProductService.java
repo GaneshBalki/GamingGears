@@ -25,4 +25,6 @@ public interface IProductService {
 
 	ResponseEntity<ProductNew> addProductByDist(ProductNew product);
 
+	void DeleteProduct(int proid);
+
 }

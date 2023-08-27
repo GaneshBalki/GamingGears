@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './DistributorDashboard.css'; // Import your custom CSS file
-import Dash from './Dash';
+import './DistributorDashboard.css'; 
+import AddProduct from './AddProduct';
 import Product from './Product';
 import SalesReport from './SalesReport'
 import Orders from './Orders'
 import { useDistributor } from './DistributorContext';
 import DistributorService from '../../service/DistributorService';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 const DistributorHome = () => {
-    const [board, setBoard] = useState('Dash');
+
+    const [board, setBoard] = useState('Product');
     const [distributorInfo, setDistributorInfo] = useState(null);
     const navigate = useNavigate()
     const handleItemClick = (item) => {
@@ -19,8 +19,9 @@ const DistributorHome = () => {
 
     const { disid } = useDistributor();
     const { setDisid } = useDistributor();
-
+  
     useEffect(() => {
+  
         DistributorService.getDistributorById(disid)
             .then((response) => {
                 setDistributorInfo(response.data);
@@ -78,13 +79,11 @@ const DistributorHome = () => {
 
             {/* Main Content */}
             <div className="main-content">
-                {/* Dashboard Header */}
-                <div className="dashboard-header">
-                    <h1 className="display-4">Distributor Dashboard</h1>
-                </div>
+               
+                
 
                 {/* Content Area */}
-                {board === 'Dash' && <Dash />}
+                {board === 'AddProduct' && <AddProduct></AddProduct>}
                 {board === 'Product' && <Product />}
                 {board === 'SalesReport' && <SalesReport />}
                 {board === 'Orders' && <Orders />}

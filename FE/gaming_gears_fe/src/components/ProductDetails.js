@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import CustomerService from '../service/CustomerService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BuyNow from './CustomerComp/BuyNow'
 
 const ProductDetails = (props) => {
     const { pid } = useParams(); // Access the 'pid' property for url
@@ -36,17 +37,17 @@ const ProductDetails = (props) => {
                 const response = await CustomerService.addToCart(custid, product.proid);
                 if (response.status === 200) {
                     navigate("/cart");
-                    toast.success(product.proname+", Added to Cart !", {
+                    toast.success(product.proname + ", Added to Cart !", {
                         position: toast.POSITION.TOP_RIGHT, // You can change the position
                         autoClose: 900, // You can control how long the toast is displayed (in milliseconds)
-                      });
-                  
+                    });
+
                 } else {
                     setErrorMessage('Failed to add product');
                     toast.error("Failed to Add", {
                         position: toast.POSITION.TOP_RIGHT,
                         autoClose: 3000,
-                      });
+                    });
                 }
             } catch (error) {
                 console.error('Error adding product to cart', error);
@@ -93,7 +94,7 @@ const ProductDetails = (props) => {
                     </div>
                 </div>
                 <div className="col-md-6" >
-                    <div className="product-details" style={{ width: '100%', height: '100%' ,outline:'none'}} >
+                    <div className="product-details" style={{ width: '100%', height: '100%', outline: 'none' }} >
                         <pre></pre>
                         <pre></pre>
 
@@ -113,17 +114,17 @@ const ProductDetails = (props) => {
                         </svg> Add to Cart</button>
                         <span style={{ margin: '0 10px' }}></span>
                         {
-                            custid>0 ?(
-                               
-                                <button className="btn btn-primary" onClick={handleAddToCart}>Buy Now</button>
-                           
-                            ):(
+                            custid > 0 ? (
+                                <Link to={`/buy/now/${product.proid}`} className="text-reset" style={{ textDecoration: 'none' }}>
+                                    <button className="btn btn-primary">Buy Now</button>
+                                </Link>
+                            ) : (
                                 <Link to={`/customerlogin`} className="text-reset" style={{ textDecoration: 'none' }}>
-                                <button className="btn btn-primary">Buy Now</button>
-                            </Link>
+                                    <button className="btn btn-primary">Buy Now</button>
+                                </Link>
                             )
                         }
-                       
+
                     </div>
 
                 </div>

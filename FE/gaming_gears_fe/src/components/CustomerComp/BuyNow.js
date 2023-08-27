@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './DeliveryAddress.css'; // Import your CSS file
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'; // Import Axios for making HTTP requests
 import { toast } from 'react-toastify'; // Import toast for notifications
 import './Payment.css'
 import { useUser } from '../UserContext';
-const DeliveryAddressPage = () => {
+const BuyNow = () => {
+
+
+    // code to complete
+  const {proid}=useParams();
   const { custid } = useUser();
   const [deliveryaddress, setDeliveryAddress] = useState()
   const navigate = useNavigate();
@@ -196,4 +200,4 @@ const DeliveryAddressPage = () => {
   );
 };
 
-export default DeliveryAddressPage;
+export default BuyNow;

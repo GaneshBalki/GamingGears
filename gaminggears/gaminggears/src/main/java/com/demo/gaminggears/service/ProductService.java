@@ -69,6 +69,11 @@ public class ProductService implements IProductService {
 	
 		return  ResponseEntity.ok(savedProduct);
 	}
+	@Override
+	public void DeleteProduct(int proid) {
+		productRepository.deleteById(proid);
+		
+	}
 
 
 
