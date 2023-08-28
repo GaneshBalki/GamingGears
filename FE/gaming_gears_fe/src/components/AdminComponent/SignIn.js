@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const SignIn = () => {
 
-    const [usename, setUsername] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
@@ -15,14 +15,14 @@ const SignIn = () => {
         try {
             var response = await axios.post("http://localhost:8282/custlogin",
                 {
-                    "username": usename,
+                    "username": username,
                     "pass": password
                 });
 
-            if (response.status === 200 && response.data.username === usename && response.data.pass === password) {
+            if (response.status === 200 && response.data.username === username && response.data.pass === password) {
                 const username = response.data.username;
 
-                sessionStorage.setItem('customerid', username);
+                sessionStorage.setItem('admin', username);
                 navigate('/admindashbord');
                 toast.success("Welcome " + response.data.fname + " !!!", {
                     position: toast.POSITION.TOP_RIGHT,
@@ -59,7 +59,7 @@ const SignIn = () => {
                                 className="form-control"
                                 id="username"
                                 name="username"
-                                value={usename}
+                                value={username}
                                 onChange={(event) => {
                                     setUsername(event.target.value);
                                 }}
