@@ -57,6 +57,18 @@ public class DistributorService implements IDistributorService{
 		// TODO Auto-generated method stub
 		return distributorRepository.findById(disid).orElse(null);
 	}
+	@Override
+	public void deleteDistributor(int disid) {
+		// TODO Auto-generated method stub
+		distributorRepository.deleteById(disid);
+	}
+	@Override
+	public void updateDistributorStatus(int disid) {
+		// TODO Auto-generated method stub
+		Distributor d= distributorRepository.findById(disid).orElse(null);
+		d.setStatus(1);
+		distributorRepository.save(d);
+	}
 	
 	
 

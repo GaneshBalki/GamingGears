@@ -87,4 +87,16 @@ public class DistributorController {
 		  return ResponseEntity.ok("deleted successfully");
 	}
 	
+	@DeleteMapping
+	public ResponseEntity<String> deleteDistributor(@PathVariable int disid){
+		distributorService.deleteDistributor(disid);
+		return ResponseEntity.ok("deleted successfully");
+	}
+	
+	@PutMapping
+	public ResponseEntity<String> updateDistributorStatus(@PathVariable int disid){
+		distributorService.updateDistributorStatus(disid);
+		return ResponseEntity.ok("updated status successfully");
+	}
+	
 }

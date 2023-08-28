@@ -32,5 +32,19 @@ public class ExpertService implements IExpertSevice{
 		return expertRepository.findById(expid).orElse(null);
 		
 	}
+
+	@Override
+	public void deleteExpert(int expid) {
+		// TODO Auto-generated method stub
+		expertRepository.deleteById(expid);
+	}
+
+	@Override
+	public void updateExpertStatus(int expid) {
+		// TODO Auto-generated method stub
+		Expert e = expertRepository.findById(expid).orElse(null);
+		e.setStatus(1);
+		expertRepository.save(e);
+	}
     
 }

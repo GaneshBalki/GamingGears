@@ -17,5 +17,9 @@ public interface IDistributorService {
 
 	Distributor getDistributorbyID(int disid);
 
+	void deleteDistributor(int disid);
+
+	void updateDistributorStatus(int disid);
+
 	
 }

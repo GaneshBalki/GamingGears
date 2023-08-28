@@ -12,4 +12,8 @@ public interface IExpertSevice {
 
 	Expert getExpertById(int expid);
 
+	void deleteExpert(int expid);
+
+	void updateExpertStatus(int expid);
+
 }
