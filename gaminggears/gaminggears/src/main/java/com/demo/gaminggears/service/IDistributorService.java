@@ -17,7 +17,5 @@ public interface IDistributorService {
 
 	Distributor getDistributorbyID(int disid);
 
-	List<SalesStatisticsDTO> getDisSalesStats(int disid);
-	
 	
 }

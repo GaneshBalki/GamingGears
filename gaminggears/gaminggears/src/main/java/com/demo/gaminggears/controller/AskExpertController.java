@@ -54,6 +54,7 @@ public class AskExpertController {
 		  return ResponseEntity.ok("deleted successfully");
 	}
 	
+	@PostMapping("/expert/request/resolve")
 	public ResponseEntity<String> resolveQuery(@RequestBody AskexpertresolveBody ar){
 		iAskExpertService.resolveQuery(ar);
 		  return ResponseEntity.ok("query updated successfully");	

@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../UserContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const SignIn = () => {
-    const { setCustid } = useUser();
-    const [email, setEmail] = useState("");
+
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
@@ -17,55 +15,55 @@ const SignIn = () => {
         try {
             var response = await axios.post("http://localhost:8282/custlogin",
                 {
-                    "email": email,
+                    "username": username,
                     "pass": password
                 });
 
-                if (response.status === 200 && response.data.email==email && response.data.pass==password) {
-                    const custid = response.data.custId; // Replace with your customer ID
-                    
-                    sessionStorage.setItem('customerid', custid.toString());
-                    navigate('/');
-                    toast.success("Welcome "+response.data.fname+" !!!", {
-                      position: toast.POSITION.TOP_RIGHT, 
-                      autoClose: 3000,
-                    });
+            if (response.status === 200 && response.data.username === username && response.data.pass === password) {
+                const username = response.data.username;
 
-                  } else {
-                    setErrorMessage('Invalid email or password');
-                    
-                  }
+                sessionStorage.setItem('admin', username);
+                navigate('/admindashbord');
+                toast.success("Welcome " + response.data.fname + " !!!", {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 3000,
+                });
+
+            } else {
+                setErrorMessage('Invalid email or password');
+
+            }
 
         }
         catch (err) {
             toast.error("Login Failed", {
-                position: toast.POSITION.TOP_RIGHT, 
+                position: toast.POSITION.TOP_RIGHT,
                 autoClose: 3000,
-              });
+            });
         }
     }
- 
+
     return (
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-9">
-                {errorMessage && (
+                    {errorMessage && (
                         <div className="alert alert-danger mt-3">{errorMessage}</div>
                     )}
-                    <h2 className="mb-3">Sign In</h2>
+                    <h2 className="mb-3">Admin Login</h2>
                     <form onSubmit={save} className="w-100">
                         <div className="form-group">
                             <br></br>
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control"
-                                id="email"
-                                name="email"
-                                value={email}
+                                id="username"
+                                name="username"
+                                value={username}
                                 onChange={(event) => {
-                                    setEmail(event.target.value);
+                                    setUsername(event.target.value);
                                 }}
-                                placeholder='Enter Email'
+                                placeholder='Enter Username'
                                 required
                             />
                         </div>
@@ -86,15 +84,11 @@ const SignIn = () => {
                         </div>
                         <br></br>
                         <button type="submit" className="btn btn-primary">
-                            Sign in
-                        </button> 
+                            Login
+                        </button>
                         <pre></pre>
-                        <Link to={`/forgot-password/${email}`} className="text-reset" style={{ textDecoration: 'none' }}>
-                            forgot password ?</Link> |
-                        <Link to={`/customer-registration`} className="text-reset" style={{ textDecoration: 'none' }}>
-                             Create Account</Link>
                     </form>
-                    
+
                 </div>
             </div>
         </div>

@@ -19,6 +19,7 @@ import DeliveryAddressPage from "./components/CustomerComp/DeliveryAddressPage.j
 import Payment from "./components/CustomerComp/Payment.js";
 import BuyNow from "./components/CustomerComp/BuyNow.js";
 import AdminLogin from "./components/AdminComponent/AdminLogin.js"
+import AdminDashBoard from "./components/AdminComponent/AdminDashBoard.js"
 const AppRoutes = [
   {
     index: true,
@@ -104,6 +105,10 @@ const AppRoutes = [
   {
     path: '/adminlogin',
     element : <AdminLogin></AdminLogin>
+  },
+  {
+    path: '/admindashbord',
+    element : <AdminDashBoard></AdminDashBoard>
   }
  
 ];

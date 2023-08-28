@@ -57,11 +57,7 @@ public class DistributorService implements IDistributorService{
 		// TODO Auto-generated method stub
 		return distributorRepository.findById(disid).orElse(null);
 	}
-	@Override
-	public List<SalesStatisticsDTO> getDisSalesStats(int disid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 
 }
