@@ -18,6 +18,7 @@ import OrderHistory from "./components/CustomerComp/OrderHistory.js";
 import DeliveryAddressPage from "./components/CustomerComp/DeliveryAddressPage.js";
 import Payment from "./components/CustomerComp/Payment.js";
 import BuyNow from "./components/CustomerComp/BuyNow.js";
+
 const AppRoutes = [
   {
     index: true,

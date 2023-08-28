@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DeliveryAddress.css'; // Import your CSS file
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'; // Import Axios for making HTTP requests
 import { toast } from 'react-toastify'; // Import toast for notifications
 import './Payment.css'
 import { useUser } from '../UserContext';
+import ProductService from '../../service/ProductService';
 const BuyNow = () => {
 
 
@@ -14,6 +15,7 @@ const BuyNow = () => {
   const [deliveryaddress, setDeliveryAddress] = useState()
   const navigate = useNavigate();
   const [paymentMode, setPaymentMode] = useState('COD');
+  const [product,setProduct]=useState(null);
   const [formData, setFormData] = useState({
     name: '',
     mobileNumber: '',
@@ -24,6 +26,7 @@ const BuyNow = () => {
     state: '',
   });
 
+
   const [paymentData, setPaymentData] = useState({
     cardNumber: '',
     cardHolderName: '',
@@ -32,6 +35,23 @@ const BuyNow = () => {
   });
 
   const [currentStep, setCurrentStep] = useState('address');
+
+
+  useEffect(() => {
+    if(custid>0){
+      ProductService.getProductById(proid)
+      .then((response) => {
+          setProduct(response.data);
+      })
+      .catch((error) => {
+          console.error(error);
+      });
+
+    }else{
+      navigate("/customerlogin")
+    }
+
+}, [proid]);
 
   const handleInputChangeAddr = (e) => {
     const { name, value } = e.target;
@@ -60,8 +80,10 @@ const BuyNow = () => {
     try {
 
       console.log("payment begin")
-      const response = await axios.post('http://localhost:8282/products/purchase/cart', {
+      const response = await axios.post('http://localhost:8282/buy/now', {
         "custid": custid,
+        "proid":proid,
+        "amount":product.price,
         "address": deliveryaddress,
         "paymentmode": paymentMode,
 

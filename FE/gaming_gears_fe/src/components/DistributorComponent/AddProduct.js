@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useDistributor } from './DistributorContext';
 
 const AddProduct = (props) => {
   const [productName, setProductName] = useState('');
@@ -9,7 +10,8 @@ const AddProduct = (props) => {
   const [image1, setImage1] = useState('');
   const [image2, setImage2] = useState('');
   const [image3, setImage3] = useState('');
-
+  const [image4, setImage4] = useState('');
+  const {disid}=useDistributor()
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleChangeCat = (event) => {
@@ -38,11 +40,22 @@ const AddProduct = (props) => {
         price,
         status: 'ACTIVE',
       };
-
-      // Rest of your code for submitting the form...
+      const response = await axios.post("http://localhost:8282/add/product", {
+        "proname":productData.name,
+        "catid":selectedCategory,
+        "brandid":selectedBrand,
+        "price":productData.price,
+        "url1":image1,
+        "url2":image2,
+        "url3":image3,
+        "url4":image4,
+        "description":productData.description,
+        "disid":disid,  
+    });
+        
 
     } catch (error) {
-      // Handle errors and show error toast message
+      
       console.error('Error:', error);
       toast.error(error.message, { autoClose: 2000, position: toast.POSITION.TOP_RIGHT });
     }
@@ -81,6 +94,16 @@ const AddProduct = (props) => {
                 type="text"
                 className="form-control"
                 onChange={(e) => setImage3(e.target.value)}
+                placeholder="Add Image"
+                pattern="https?://.+"
+                title="Please enter a valid URL (e.g., http://example.com)"
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                onChange={(e) => setImage4(e.target.value)}
                 placeholder="Add Image"
                 pattern="https?://.+"
                 title="Please enter a valid URL (e.g., http://example.com)"
