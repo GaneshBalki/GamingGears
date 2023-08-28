@@ -47,4 +47,11 @@ public class AskExpertController {
 		  return ResponseEntity.ok("deleted successfully");
 	}
 	
+	@DeleteMapping("/customer/request/rmv/{queId}")
+	public ResponseEntity<String> custDeleteQuery(@PathVariable int queId){
+		iAskExpertService.custDeleteQuery(queId);
+		  return ResponseEntity.ok("deleted successfully");
+	}
+	
+	
 }

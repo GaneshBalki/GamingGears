@@ -13,4 +13,6 @@ public interface IAskExpertService {
 
 	void DeleteQuery(int queId);
 
+	void custDeleteQuery(int queId);
+
 }

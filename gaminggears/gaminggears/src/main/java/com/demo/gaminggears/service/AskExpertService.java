@@ -49,4 +49,12 @@ public class AskExpertService implements IAskExpertService{
 		askExpertRepository.save(askexpert);
 	}
 
+
+	@Override
+	public void custDeleteQuery(int queId) {
+		// TODO Auto-generated method stub
+		askExpertRepository.deleteById(queId);
+		
+	}
+
 }
