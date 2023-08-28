@@ -5,13 +5,14 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.ProductBody;
 import com.demo.gaminggears.entity.ProductNew;
 
 public interface IProductService {
 
 	List<Product> getAllProducts();
 
-	void addProduct(Product p);
+	void addProduct(ProductBody p);
 
 	void deleteById(int pid);
 

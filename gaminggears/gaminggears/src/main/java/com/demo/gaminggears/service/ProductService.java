@@ -6,8 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.demo.gaminggears.entity.Brand;
+import com.demo.gaminggears.entity.Category;
+import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.ProductBody;
 import com.demo.gaminggears.entity.ProductNew;
+import com.demo.gaminggears.repository.BrandRepository;
+import com.demo.gaminggears.repository.CategoryRepository;
+import com.demo.gaminggears.repository.DistributorRepository;
 import com.demo.gaminggears.repository.NewProductRepository;
 import com.demo.gaminggears.repository.ProductRepository;
 
@@ -15,7 +22,12 @@ import com.demo.gaminggears.repository.ProductRepository;
 public class ProductService implements IProductService {
 	@Autowired
     ProductRepository productRepository;
-
+	@Autowired
+	DistributorRepository distributorRepository;
+	@Autowired
+	CategoryRepository categoryRepository;
+	@Autowired
+	BrandRepository brandRepository;
 	
 	@Autowired
 	NewProductRepository newproductRepository;
@@ -36,10 +48,7 @@ public class ProductService implements IProductService {
 		
 	}
 
-	public void addProduct(Product p) {
-	        productRepository.save(p);
-	}
-
+	
 	public void deleteById(int pid) {	
 		productRepository.deleteById(pid);	
 	}
@@ -68,6 +77,15 @@ public class ProductService implements IProductService {
 
 	
 		return  ResponseEntity.ok(savedProduct);
+	}
+	@Override
+	public void addProduct(ProductBody p) {
+		// TODO Auto-generated method stub
+		Distributor d = distributorRepository.findById(p.getDisid()).orElse(null);
+		Category c= categoryRepository.findById(p.getCatid()).orElse(null);
+		Brand b = brandRepository.findById(p.getBrandid()).orElse(null);
+		Product product = new Product(p.getProname(), c, b, p.getPrice(), p.getUrl1(), p.getUrl2(), p.getUrl3(),p.getUrl4(),p.getDescription(), d);
+		productRepository.save(product);
 	}
 
 

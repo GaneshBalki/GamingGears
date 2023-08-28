@@ -28,6 +28,7 @@ import com.demo.gaminggears.entity.Brand;
 import com.demo.gaminggears.entity.Category;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.ProductBody;
 import com.demo.gaminggears.entity.ProductNew;
 import com.demo.gaminggears.service.IDistributorService;
 import com.demo.gaminggears.service.IProductService;
@@ -61,8 +62,8 @@ public class ProductController {
 	}
 	
 	
-	@PostMapping("/products")
-	public ResponseEntity<String> insertProduct( @RequestBody Product p) {
+	@PostMapping("/add/products")
+	public ResponseEntity<String> insertProduct(@RequestBody ProductBody p) {
 		  productService.addProduct(p);
 		  return ResponseEntity.ok("added successfully");
 	}
