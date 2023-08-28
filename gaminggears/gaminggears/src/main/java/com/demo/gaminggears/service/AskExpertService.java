@@ -64,6 +64,7 @@ public class AskExpertService implements IAskExpertService{
 		// TODO Auto-generated method stub
 		Askexpert askexpert = askExpertRepository.findById(ar.getQueId()).orElse(null);
 		askexpert.setResolution(ar.getResolution());
+		askexpert.setStatus(2);
 		askExpertRepository.save(askexpert);
 	}
 

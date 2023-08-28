@@ -57,15 +57,14 @@ const ExpertHome = (props) => {
     const handleResolveRequest = async (event, request) => {
         event.preventDefault();
         try {
-        //     // Implement the logic to resolve a request here
-        //     // For example, you can set the status of the request to "resolved"
-        //     // and save the resolution in your database
-        //     await axios.put(`http://localhost:8282/expert/request/resolve/${request.queId}`, {
-        //         resolution: resolve, // You need to provide the resolution here
-        //     });
-
-            setResolvingRequest(null); // Reset the resolving request
-            setResolve(''); // Clear the resolution input
+      console.log(request.queId+"       "+resolve)
+         await axios.post(`http://localhost:8282/expert/request/resolve`, {
+              "queId":request.queId,
+              "resolution": resolve, 
+            });
+            console.log(request.queId+"       "+resolve+" solved")
+            setResolvingRequest(null); 
+            setResolve(''); 
             fetchdata();
         } catch (err) {
             console.error('Error resolving request', err);

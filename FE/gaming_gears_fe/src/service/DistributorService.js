@@ -11,6 +11,9 @@ class DistributorService{
     findTotalSales(disid){
         return axios.get(`http://localhost:8282/distributor/sales/${disid}`)
     }
+    getAllDistributors(){
+        return axios.get(`http://localhost:8282/distributors`)
+    }
 
 }
 export default new DistributorService();

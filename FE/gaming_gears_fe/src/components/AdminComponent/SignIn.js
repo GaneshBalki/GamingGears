@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../UserContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const SignIn = () => {
@@ -21,7 +19,7 @@ const SignIn = () => {
                     "pass": password
                 });
 
-            if (response.status === 200 && response.data.username == usename && response.data.pass == password) {
+            if (response.status === 200 && response.data.username === usename && response.data.pass === password) {
                 const username = response.data.username;
 
                 sessionStorage.setItem('customerid', username);
