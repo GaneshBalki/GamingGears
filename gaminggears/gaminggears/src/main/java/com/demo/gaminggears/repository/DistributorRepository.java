@@ -18,7 +18,7 @@ import java.util.List;
 		List<Distributor> getDistributorByEmail(String email);
 		
 		
-		List<SalesStatisticsDTO> findSalesStatisticsByDistributorId(@Param("disid") int distributorId);
+		//List<SalesStatisticsDTO> findSalesStatisticsByDistributorId(@Param("disid") int distributorId);
 
 
 	    

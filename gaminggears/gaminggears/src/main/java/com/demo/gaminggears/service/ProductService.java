@@ -79,6 +79,7 @@ public class ProductService implements IProductService {
 		return  ResponseEntity.ok(savedProduct);
 	}
 	@Override
+<<<<<<< HEAD
 	public void addProduct(ProductBody p) {
 		// TODO Auto-generated method stub
 		Distributor d = distributorRepository.findById(p.getDisid()).orElse(null);
@@ -86,6 +87,11 @@ public class ProductService implements IProductService {
 		Brand b = brandRepository.findById(p.getBrandid()).orElse(null);
 		Product product = new Product(p.getProname(), c, b, p.getPrice(), p.getUrl1(), p.getUrl2(), p.getUrl3(),p.getUrl4(),p.getDescription(), d);
 		productRepository.save(product);
+=======
+	public void DeleteProduct(int proid) {
+		productRepository.deleteById(proid);
+		
+>>>>>>> f3bf19710c937efde00d84574a456bd253fc9a18
 	}
 
 

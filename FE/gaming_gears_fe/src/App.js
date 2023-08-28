@@ -8,16 +8,14 @@ import { UserProvider } from './components/UserContext';
 import { DistributorProvider } from './components/DistributorComponent/DistributorContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AddressProvider } from './components/AdressContext';
 function App() {
 
 
   return (
     <DistributorProvider>
-      
     <UserProvider>
           <div className="App">
-           <AddressProvider>
+          
             <NavMenu></NavMenu>
             <ToastContainer />
             <Routes>
@@ -26,8 +24,8 @@ function App() {
                 return <Route key={index} {...rest} element={element} />;
               })}
             </Routes>
-            <Footer></Footer>
-            </AddressProvider>
+            
+            
           </div>
     </UserProvider>
     

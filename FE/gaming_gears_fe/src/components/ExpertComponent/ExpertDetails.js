@@ -47,7 +47,7 @@ const ExpertDetails = () => {
                             <pre />
                             <h5>Skills: {expert.skills} yrs</h5>
                             <pre />
-                            <h5>Unit Sold: {expert.sells}</h5>
+                            <h5>Request Solved: {expert.sells}</h5>
                             <pre />
 
                             {isExpertBelongsToCustomer ? (
@@ -71,7 +71,7 @@ const ExpertDetails = () => {
                 <pre />
             </div>
             <pre />
-            <Assembly expid={expert.expid} />
+            {/* <Assembly expid={expert.expid} /> */}
         </div>
     );
 };
