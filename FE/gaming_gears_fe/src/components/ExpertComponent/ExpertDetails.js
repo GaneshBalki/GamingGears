@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react'; // Import useEffect
 import { Link, useParams } from 'react-router-dom';
 import expertlogo from '../../images/expert.png';
 import ExpertService from '../../service/ExpertService';
 import Assembly from './Assembly';
 import { useUser } from '../UserContext';
+import axios from 'axios';
+import { useState } from 'react';
 
 const ExpertDetails = () => {
     const { expid } = useParams();
     const [expert, setExpert] = React.useState(null);
     const { custid } = useUser();
-    const [isDropdownVisible, setDropdownVisible] = React.useState(false);
+    const [requests, setRequests] = useState([]);
 
-    React.useEffect(() => {
+    const fetchdata = () => {
+        axios.get(`http://localhost:8282/get-expert-req/${expid}`)
+            .then((response) => {
+                const reqArr = response.data.filter((e) => e.custid.custId === custid); // Corrected the comparison operator
+                setRequests([...reqArr]);
+            })
+            .catch((error) => {
+                console.error('Error fetching requests:', error);
+            });
+    };
+
+    useEffect(() => {
         ExpertService.getExpertById(expid)
             .then((response) => {
                 setExpert(response.data);
@@ -19,18 +32,24 @@ const ExpertDetails = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, [expid]);
 
-    const toggleDropdown = () => {
-        setDropdownVisible(!isDropdownVisible);
-    };
+        fetchdata();
+    }, [expid, custid]);
 
     if (!expert || !expert.status) {
         return <p>Loading...</p>;
     }
 
     const isExpertBelongsToCustomer = custid === expert.expid;
-
+    const handleRemoveRequest = async (event, request) => {
+        event.preventDefault();
+        try {
+            await axios.delete(`http://localhost:8282/expert/request/rmv/${request.queId}`);
+            fetchdata();
+        } catch (err) {
+            console.error('Error deleting request', err);
+        }
+    };
     return (
         <div className="container">
             <div className="container mt-5" style={{ backgroundColor: '#f0f0f0', height: '280px' }}>
@@ -52,7 +71,7 @@ const ExpertDetails = () => {
 
                             {isExpertBelongsToCustomer ? (
                                 <div >
-                                    
+
                                 </div>
                             ) : (
                                 custid > 0 ? (
@@ -72,6 +91,53 @@ const ExpertDetails = () => {
             </div>
             <pre />
             {/* <Assembly expid={expert.expid} /> */}
+
+            <div className="row">
+                <div className="col-md-12">
+                    <div className="container">
+                        <h2>List of Requests</h2>
+                        {requests.length === 0 ? (
+                            <p> you didnt make any request</p>
+                        ) : (
+                            <div className="row">
+                                {requests.map((request) => (
+                                    <div
+                                        className="col-md-12"
+                                        key={request.queId}
+                                        style={{
+                                            border: '1px solid #ccc',
+                                            borderRadius: '5px',
+                                            padding: '10px',
+                                            marginBottom: '10px',
+                                            height: '20%',
+                                        }}
+                                    >
+                                        <div className="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <p>{request.que}</p>
+                                            </div>
+                                            <div>
+                                                <p>{request.resolution}</p>
+                                            </div>
+                                            <div>
+                                                <button
+                                                    className="btn btn-danger"
+                                                    style={{ marginRight: '30px', height: '20%' }}
+                                                    onClick={(event) => handleRemoveRequest(event, request)}
+                                                >
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     );
 };
