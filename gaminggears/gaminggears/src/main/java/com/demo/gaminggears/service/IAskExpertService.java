@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.demo.gaminggears.entity.Askexpert;
 import com.demo.gaminggears.entity.AskexpertBody;
+import com.demo.gaminggears.entity.AskexpertresolveBody;
 
 public interface IAskExpertService {
 
@@ -14,5 +15,7 @@ public interface IAskExpertService {
 	void DeleteQuery(int queId);
 
 	void custDeleteQuery(int queId);
+
+	void resolveQuery(AskexpertresolveBody ar);
 
 }

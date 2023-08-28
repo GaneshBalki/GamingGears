@@ -5,6 +5,7 @@ import java.util.List;
 import com.demo.gaminggears.entity.Orderproducts;
 import com.demo.gaminggears.entity.Orders;
 import com.demo.gaminggears.entity.OrdersBody;
+import com.demo.gaminggears.entity.SalesStatisticsDTO;
 
 public interface IOrderService {
 
@@ -13,6 +14,8 @@ public interface IOrderService {
 	void addtoOrder(OrdersBody ob);
 
 	void addtoOrderfromCart(OrdersBody ob);
+	
+	public List<SalesStatisticsDTO> getDisSalesStats(int disid);
 
 //	Orderproducts save(Orderproducts order);
 

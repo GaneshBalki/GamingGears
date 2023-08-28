@@ -75,10 +75,10 @@ public class DistributorController {
 		
 	}
 	
-	@GetMapping("/distributor/sales/{disid}")
-	public List<SalesStatisticsDTO> getDisSalesStats(@PathVariable int disid){
-		return distributorService.getDisSalesStats(disid);
-	}
+//	@GetMapping("/distributor/sales/{disid}")
+//	public List<SalesStatisticsDTO> getDisSalesStats(@PathVariable int disid){
+//		return distributorService.getDisSalesStats(disid);
+//	}
 	
 
 	@DeleteMapping("/delete/product/{proid}")
