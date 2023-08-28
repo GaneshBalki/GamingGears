@@ -8,13 +8,21 @@ import org.springframework.stereotype.Service;
 import com.demo.gaminggears.entity.Customer;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Login;
+import com.demo.gaminggears.entity.Orders;
+import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.entity.SalesStatisticsDTO;
 import com.demo.gaminggears.repository.DistributorRepository;
+import com.demo.gaminggears.repository.OrderRepository;
+import com.demo.gaminggears.repository.ProductRepository;
 
 @Service
 public class DistributorService implements IDistributorService{
 	@Autowired
 	DistributorRepository distributorRepository;
+	@Autowired
+	ProductRepository productRepository;
+	@Autowired
+	OrderRepository orderRepository;
 	
 	@Override
 	public List<Distributor> getAllDistributors() {
@@ -52,8 +60,8 @@ public class DistributorService implements IDistributorService{
 	@Override
 	public List<SalesStatisticsDTO> getDisSalesStats(int disid) {
 		// TODO Auto-generated method stub
-		//return distributorRepository.findSalesStatisticsByDistributorId(disid);
 		return null;
 	}
+	
 
 }

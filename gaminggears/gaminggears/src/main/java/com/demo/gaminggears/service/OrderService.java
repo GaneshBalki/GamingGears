@@ -12,6 +12,7 @@ import com.demo.gaminggears.entity.Customer;
 import com.demo.gaminggears.entity.Orders;
 import com.demo.gaminggears.entity.OrdersBody;
 import com.demo.gaminggears.entity.Product;
+import com.demo.gaminggears.entity.SalesStatisticsDTO;
 import com.demo.gaminggears.repository.CartRepository;
 import com.demo.gaminggears.repository.CustomerRepository;
 import com.demo.gaminggears.repository.OrderRepository;
@@ -54,5 +55,12 @@ public class OrderService implements IOrderService{
 			cartRepository.delete(cart);
 		}
 	}
-
+	
+	@Override
+	public List<SalesStatisticsDTO> getDisSalesStats(int disid) {
+		// TODO Auto-generated method stub
+		//return distributorRepository.findSalesStatisticsByDistributorId(disid);
+		List<SalesStatisticsDTO> salesStatistics = orderRepository.findSalesStatisticsByDistributorId(disid);
+		return salesStatistics;
+	} 
 }

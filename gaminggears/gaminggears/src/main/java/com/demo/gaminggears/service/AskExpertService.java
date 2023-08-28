@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.demo.gaminggears.entity.Askexpert;
 import com.demo.gaminggears.entity.AskexpertBody;
+import com.demo.gaminggears.entity.AskexpertresolveBody;
 import com.demo.gaminggears.entity.Customer;
 import com.demo.gaminggears.entity.Expert;
 import com.demo.gaminggears.repository.AskExpertRepository;
@@ -55,6 +56,15 @@ public class AskExpertService implements IAskExpertService{
 		// TODO Auto-generated method stub
 		askExpertRepository.deleteById(queId);
 		
+	}
+
+
+	@Override
+	public void resolveQuery(AskexpertresolveBody ar) {
+		// TODO Auto-generated method stub
+		Askexpert askexpert = askExpertRepository.findById(ar.getQueId()).orElse(null);
+		askexpert.setResolution(ar.getResolution());
+		askExpertRepository.save(askexpert);
 	}
 
 }

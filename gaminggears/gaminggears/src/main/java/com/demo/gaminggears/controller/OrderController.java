@@ -17,6 +17,7 @@ import com.demo.gaminggears.entity.OrderProductBody;
 import com.demo.gaminggears.entity.Orderproducts;
 import com.demo.gaminggears.entity.Orders;
 import com.demo.gaminggears.entity.OrdersBody;
+import com.demo.gaminggears.entity.SalesStatisticsDTO;
 import com.demo.gaminggears.service.IOrderService;
 
 @CrossOrigin (origins = "*")
@@ -41,6 +42,11 @@ public class OrderController {
 	public ResponseEntity<String> addtoOrderfromCart(@RequestBody OrdersBody ob){
 		iOrderService.addtoOrderfromCart(ob);
 		return ResponseEntity.ok("added successfully");
+	}
+	
+	@GetMapping("/distributor/sales/{disid}")
+	public List<SalesStatisticsDTO> getDisSalesStats(@PathVariable int disid){
+		return iOrderService.getDisSalesStats(disid);
 	}
 	
 //	@PostMapping("/product/purchase")

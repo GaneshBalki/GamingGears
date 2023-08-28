@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.gaminggears.entity.Askexpert;
 import com.demo.gaminggears.entity.AskexpertBody;
+import com.demo.gaminggears.entity.AskexpertresolveBody;
 import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.service.IAskExpertService;
 import com.demo.gaminggears.service.IProductService;
@@ -51,6 +52,11 @@ public class AskExpertController {
 	public ResponseEntity<String> custDeleteQuery(@PathVariable int queId){
 		iAskExpertService.custDeleteQuery(queId);
 		  return ResponseEntity.ok("deleted successfully");
+	}
+	
+	public ResponseEntity<String> resolveQuery(@RequestBody AskexpertresolveBody ar){
+		iAskExpertService.resolveQuery(ar);
+		  return ResponseEntity.ok("query updated successfully");	
 	}
 	
 	
