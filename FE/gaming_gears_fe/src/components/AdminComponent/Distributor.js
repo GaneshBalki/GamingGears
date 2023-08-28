@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../HomeComponent/HomeProduct.css';
+import "./Distributor.css"
 import DistributorService from '../../service/DistributorService';
 const Distributor = () => {
     const [searcharr, setSearcharr] = useState([]);
@@ -9,7 +9,7 @@ const Distributor = () => {
         fetchExpertData();
     }, []);
     useEffect(() => {
-        const filteredarr = searcharr.filter((dis) => dis.status == 0);
+        const filteredarr = searcharr.filter((dis) => dis.status === 0);
         setDistributorReq(filteredarr)
     }, [searcharr]);
 
@@ -24,52 +24,40 @@ const Distributor = () => {
             .catch();
     };
     return (
-        <div className="container pt-5">
-             <div className="row" >
-                <h2>New Expert Requests</h2>
-                {distributorReq.map((dis) => (
-                    <div className="card-body">
-                    <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <h5 className="card-title mb-3">Name : {dis.disname}</h5>
-                    </a>
-                    <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <h5 className="card-title mb-3">Email : {dis.email}</h5>
-                    </a>
-                    <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <h5 className="card-title mb-3">Mobile No : {dis.mobile}</h5>
-                    </a>
-                    <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <h5 className="card-title mb-3"> Store Name : {dis.storename}</h5>
-                    </a>
-                    <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <h5 className="card-title mb-3"> Store Name : {dis.licence}</h5>
-                    </a>
+        <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h2>New Expert Requests</h2>
+            <div className="card-container">
+              {distributorReq.map((dis) => (
+                <div className="card" key={dis.disid}>
+                  <h5 className="card-title">Name: {dis.disname}</h5>
+                  <p className="card-content">Email: {dis.email}</p>
+                  <p className="card-content">Mobile No: {dis.mobile}</p>
+                  <p className="card-content">Store Name: {dis.storename}</p>
+                  <p className="card-content">License: {dis.licence}</p>
                 </div>
-                ))}
+              ))}
             </div>
-            <div className="row" >
-                <h2>Expert At Gaming Gears</h2>
-                {distributorarr.map((dis) => (
-                    <div className="card-body">
-                        <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                            <h5 className="card-title mb-3">Distributor ID : {dis.disid}</h5>
-                        </a>
-                        <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                        <h5 className="card-title mb-3">Name : {dis.disname}</h5>
-                        </a>
-                        <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                        <h5 className="card-title mb-3">Email : {dis.email}</h5>
-                        </a>
-                        <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                        <h5 className="card-title mb-3">Mobile No : {dis.mobile}</h5>
-                        </a>
-                        <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                        <h5 className="card-title mb-3"> Store Name : {dis.storename}</h5>
-                        </a>
-                    </div>
-                ))}
-            </div>
+          </div>
         </div>
+        <div className="row">
+          <div className="col-12">
+            <h2>Expert At Gaming Gears</h2>
+            <div className="card-container">
+              {distributorarr.map((dis) => (
+                <div className="card" key={dis.disid}>
+                  <h5 className="card-title">Distributor ID: {dis.disid}</h5>
+                  <h5 className="card-title">Name: {dis.disname}</h5>
+                  <p className="card-content">Email: {dis.email}</p>
+                  <p className="card-content">Mobile No: {dis.mobile}</p>
+                  <p className="card-content">Store Name: {dis.storename}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     );
 };
 

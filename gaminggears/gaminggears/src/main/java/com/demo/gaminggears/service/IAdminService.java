@@ -5,6 +5,9 @@ import com.demo.gaminggears.entity.Login;
 
 public interface IAdminService {
 
-	Admin getLogin(Login ln);
+
+
+
+	Admin getLogin(Admin ln);
 
 }

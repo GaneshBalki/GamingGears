@@ -8,27 +8,27 @@ import javax.persistence.Table;
 @Table(name = "Admin")
 public class Admin {
 	@Id
-	private String user;
-	private String pass;
+	private String username;
+	private String password;
 	public Admin() {
 		super();
 	}
-	public Admin(String user, String pass) {
+	public Admin(String username, String password) {
 		super();
-		this.user = user;
-		this.pass = pass;
+		this.username = username;
+		this.password = password;
 	}
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getPass() {
-		return pass;
+	public String getPassword() {
+		return password;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPass(String password) {
+		this.password = password;
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.demo.gaminggears.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,8 @@ public class AdminController {
 	@Autowired
 	IAdminService iAdminService;
 	
-	@GetMapping("")
-	public Admin getLogin(@RequestBody Login ln) {
+	@PostMapping("/admin/login")
+	public Admin getLogin(@RequestBody Admin ln) {
 		return iAdminService.getLogin(ln);
 	}
 }

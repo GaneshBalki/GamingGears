@@ -13,10 +13,10 @@ const SignIn = () => {
     async function save(event) {
         event.preventDefault();
         try {
-            var response = await axios.post("http://localhost:8282/custlogin",
+            var response = await axios.post("http://localhost:8282/admin/login",
                 {
                     "username": username,
-                    "pass": password
+                    "password": password
                 });
 
             if (response.status === 200 && response.data.username === username && response.data.password === password) {
@@ -24,8 +24,8 @@ const SignIn = () => {
 
                 sessionStorage.setItem('admin', username);
                 navigate('/admindashbord');
-                toast.success("Welcome " + response.data.fname + " !!!", {
-                    position: toast.POSITION.TOP_RIGHT,
+                toast.success("Welcome " + response.data.username+ " !!!", {
+                    position: toast.POSITION.TOP_CENTER,
                     autoClose: 3000,
                 });
 
