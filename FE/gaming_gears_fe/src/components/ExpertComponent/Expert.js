@@ -93,12 +93,10 @@ const Expert = () => {
               </div>
               <Link to={`/experts/${expert.expid}`} className="text-reset" style={{ textDecoration: 'none' }}>
                 <div className="card-body">
-                  <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
+                  <a href="#" className="text-reset" style={{ textDecoration: 'none',marginBottom:'20px' }}>
                     <h5 className="card-title mb-3">Name : {expert.expname}</h5>
                   </a>
-                  <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
-                    <p> Sells : {expert.sells} units</p>
-                  </a>
+                
                   <a href="#" className="text-reset" style={{ textDecoration: 'none' }}>
                     <p>Experience : {expert.experience} years</p>
                   </a>

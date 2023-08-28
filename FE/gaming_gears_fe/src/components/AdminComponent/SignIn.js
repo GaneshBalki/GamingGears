@@ -19,7 +19,7 @@ const SignIn = () => {
                     "pass": password
                 });
 
-            if (response.status === 200 && response.data.username === username && response.data.pass === password) {
+            if (response.status === 200 && response.data.username === username && response.data.password === password) {
                 const username = response.data.username;
 
                 sessionStorage.setItem('admin', username);

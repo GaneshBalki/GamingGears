@@ -64,7 +64,7 @@ const ExpertDetails = () => {
                             <pre />
                             <h5>Experience: {expert.experience} yrs</h5>
                             <pre />
-                            <h5>Skills: {expert.skills} yrs</h5>
+                            <h5>Skills: {expert.skills} </h5>
                             <pre />
                             <h5>Request Solved: {expert.sells}</h5>
                             <pre />

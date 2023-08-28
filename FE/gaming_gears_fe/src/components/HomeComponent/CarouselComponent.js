@@ -11,13 +11,13 @@ const CarouselComponent = () => {
     <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img src={cor4} className="d-block w-100" alt="Slide 1" />
+          <img src={cor4} className="d-block w-100" alt="Slide 1" style={{height:'450px'}}/>
         </div>
         <div className="carousel-item">
-          <img src={cor23} className="d-block w-100" alt="Slide 2" />
+          <img src={cor23} className="d-block w-100" alt="Slide 2" style={{height:'450px'}}/>
         </div>
         <div className="carousel-item">
-          <img src={cor22} className="d-block w-100" alt="Slide 3" />
+          <img src={cor22} className="d-block w-100" alt="Slide 3" style={{height:'450px'}}/>
         </div>
         {/* Add more carousel items here */}
       </div>

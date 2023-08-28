@@ -53,7 +53,7 @@ const AdminDashBoard = () => {
             <div className="sidebar">
                 {/* Distributor Profile */}
                 <div className="profile-card">
-                    {adminInfo ? (
+                    {adminInfo.length>0 ? (
                         <h3 style={{ color: 'rgba(51, 51, 51, 0.8)' }}> {adminInfo.username}</h3>
                     ) : (
                         <p>Loading distributor info...</p>
