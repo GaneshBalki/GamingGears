@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useDistributor } from './DistributorContext';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = (props) => {
   const [productName, setProductName] = useState('');
@@ -12,6 +13,7 @@ const AddProduct = (props) => {
   const [image3, setImage3] = useState('');
   const [image4, setImage4] = useState('');
   const {disid}=useDistributor()
+  const navigate =useNavigate()
   const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleChangeCat = (event) => {
@@ -26,7 +28,7 @@ const AddProduct = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    window.alert(productName + ' ' + description + ' ' + price + ' ' + selectedCategory + ' ' + selectedBrand + ' ' + image1);
+   // window.alert(productName + ' ' + description + ' ' + price + ' ' + selectedCategory + ' ' + selectedBrand + ' ' + image1);
     try {
       // Check if required fields are empty
       if (!productName || !description || !price || !selectedCategory || !selectedBrand) {
@@ -40,6 +42,7 @@ const AddProduct = (props) => {
         price,
         status: 'ACTIVE',
       };
+
       const response = await axios.post("http://localhost:8282/add/product", {
         "proname":productData.name,
         "catid":selectedCategory,
@@ -52,14 +55,28 @@ const AddProduct = (props) => {
         "description":productData.description,
         "disid":disid,  
     });
-        
 
+     
+    if (response.status === 200) {
+      toast.success("Product Added !!", {
+        position: toast.POSITION.TOP_CENTER, 
+        autoClose: 3000, 
+      });
+    } else {
+     
+      console.log('Registration failed');
+      
+    }
+   
+
+      
     } catch (error) {
       
       console.error('Error:', error);
       toast.error(error.message, { autoClose: 2000, position: toast.POSITION.TOP_RIGHT });
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
