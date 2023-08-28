@@ -95,7 +95,7 @@ const ExpertDetails = () => {
             <div className="row">
                 <div className="col-md-12">
                     <div className="container">
-                        <h2>List of Requests</h2>
+                        <h2>Your Requests to {expert.expname}</h2>
                         {requests.length === 0 ? (
                             <p> you didnt make any request</p>
                         ) : (
@@ -113,30 +113,39 @@ const ExpertDetails = () => {
                                         }}
                                     >
                                         <div className="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <p>{request.que}</p>
-                                            </div>
+
                                             {
                                                 request.resolution === "yet to resolved" ? (
-                                                    <div>
-                                                        <p>{request.resolution}</p>
-                                                    </div>
+                                                    <>
+                                                        <div>
+                                                            <p>{request.que}</p>
+                                                        </div>
+                                                        <div>
+                                                            <p>{request.resolution}</p>
+                                                        </div>
+                                                        <div>
+                                                            <button
+                                                                className="btn btn-danger"
+                                                                style={{ marginRight: '30px', height: '20%' }}
+                                                                onClick={(event) => handleRemoveRequest(event, request)}
+                                                            >
+                                                                Delete Request
+                                                            </button>
+                                                        </div>
+                                                    </>
                                                 ) : (
-                                                    <div >
-                                                        <p style={{color:'blue'}}>{request.resolution}</p>
-                                                    </div>
+                                                    <>
+                                                        <div>
+                                                            <p style={{ color: 'blue'}}>{request.que}</p>
+                                                        </div>
+                                                        <div style={{ alignContent: 'center', fontSize: '1.2rem' }}>
+                                                            <p style={{ color: 'blue', marginRight: '100px' }}>Response By {expert.expname} : {request.resolution}</p>
+                                                        </div>
+                                                    </>
                                                 )
                                             }
 
-                                            <div>
-                                                <button
-                                                    className="btn btn-danger"
-                                                    style={{ marginRight: '30px', height: '20%' }}
-                                                    onClick={(event) => handleRemoveRequest(event, request)}
-                                                >
-                                                    Remove
-                                                </button>
-                                            </div>
+
                                         </div>
                                     </div>
                                 ))}
