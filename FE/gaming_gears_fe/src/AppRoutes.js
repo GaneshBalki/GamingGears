@@ -18,7 +18,7 @@ import OrderHistory from "./components/CustomerComp/OrderHistory.js";
 import DeliveryAddressPage from "./components/CustomerComp/DeliveryAddressPage.js";
 import Payment from "./components/CustomerComp/Payment.js";
 import BuyNow from "./components/CustomerComp/BuyNow.js";
-
+import AdminLogin from "./components/AdminComponent/AdminLogin.js"
 const AppRoutes = [
   {
     index: true,
@@ -100,6 +100,10 @@ const AppRoutes = [
   {
     path: '/buy/now/:proid',
     element : <BuyNow></BuyNow>
+  },
+  {
+    path: '/adminlogin',
+    element : <AdminLogin></AdminLogin>
   }
  
 ];
