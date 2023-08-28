@@ -62,9 +62,13 @@ public class AskExpertService implements IAskExpertService{
 	@Override
 	public void resolveQuery(AskexpertresolveBody ar) {
 		// TODO Auto-generated method stub
+		
 		Askexpert askexpert = askExpertRepository.findById(ar.getQueId()).orElse(null);
 		askexpert.setResolution(ar.getResolution());
 		askexpert.setStatus(2);
+		Expert e = expertRepository.findById(askexpert.getExpid().getExpid()).orElse(null);
+		e.setSells(e.getSells()+1);
+		expertRepository.save(e);
 		askExpertRepository.save(askexpert);
 	}
 

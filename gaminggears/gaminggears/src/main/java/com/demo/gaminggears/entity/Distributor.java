@@ -22,6 +22,7 @@ public class Distributor {
     private String mobile;
     private String email;
     private String pass;
+    private int status;
 
     // Constructors
     public Distributor() {
@@ -35,6 +36,7 @@ public class Distributor {
         this.mobile = mobile;
         this.email = email;
         this.pass = pass;
+        this.status = 0;
     }
 
     // Getters and Setters
@@ -45,8 +47,17 @@ public class Distributor {
     public void setDisid(int disid) {
         this.disid = disid;
     }
+    
 
-    public String getDisname() {
+    public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getDisname() {
         return disname;
     }
 
