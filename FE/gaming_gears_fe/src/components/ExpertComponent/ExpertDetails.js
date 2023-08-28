@@ -44,7 +44,7 @@ const ExpertDetails = () => {
     const handleRemoveRequest = async (event, request) => {
         event.preventDefault();
         try {
-            await axios.delete(`http://localhost:8282/expert/request/rmv/${request.queId}`);
+            await axios.delete(`http://localhost:8282/customer/request/rmv/${request.queId}`);
             fetchdata();
         } catch (err) {
             console.error('Error deleting request', err);
@@ -116,9 +116,18 @@ const ExpertDetails = () => {
                                             <div>
                                                 <p>{request.que}</p>
                                             </div>
-                                            <div>
-                                                <p>{request.resolution}</p>
-                                            </div>
+                                            {
+                                                request.resolution === "yet to resolved" ? (
+                                                    <div>
+                                                        <p>{request.resolution}</p>
+                                                    </div>
+                                                ) : (
+                                                    <div >
+                                                        <p style={{color:'blue'}}>{request.resolution}</p>
+                                                    </div>
+                                                )
+                                            }
+
                                             <div>
                                                 <button
                                                     className="btn btn-danger"
