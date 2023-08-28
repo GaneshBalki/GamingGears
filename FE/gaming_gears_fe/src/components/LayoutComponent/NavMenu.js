@@ -78,8 +78,8 @@ function NavMenu() {
 
   return (
     <header>
-      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light style={{height:'4.5rem',fontSize:'1.1rem'}} >
-        <NavbarBrand tag={Link} to="/"> <img src={logo1} height="40" alt="MDB Logo" /></NavbarBrand>
+      <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3 nvbar" container light style={{height:'4.5rem',fontSize:'1.1rem'}} >
+        <NavbarBrand tag={Link} to="/"> <img src={logo1} height="40" alt="GamingGears Logo" /></NavbarBrand>
 
         <SearchBar setResults={setResults}></SearchBar>
 
@@ -155,7 +155,7 @@ function NavMenu() {
           </ul>
         </Collapse>
       </Navbar>
-      {/* <SearchResultsList results={results}></SearchResultsList> */}
+     
     </header>
   );
 }

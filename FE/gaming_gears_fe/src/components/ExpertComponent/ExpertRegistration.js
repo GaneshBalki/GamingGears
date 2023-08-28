@@ -28,8 +28,8 @@ const ExpertRegistration = () => {
                 sells: 0,
                 experience: formData.experience,
                 commision: 0,
-                isExpert: 1,
-                status:1
+                isExpert: 0,
+                status:0
             });
            
             if (response.status === 200) {

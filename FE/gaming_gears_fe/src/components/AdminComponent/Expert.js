@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ExpertService from '../../service/ExpertService';
-import '../HomeComponent/HomeProduct.css';
-import './Expert.css';
+import './AdminExpert.css';
 import axios from 'axios';
 const Expert = () => {
     const [searcharr, setSearcharr] = useState([]);
@@ -31,15 +30,18 @@ const Expert = () => {
 
     const reqaccepthandler = async (event, expert) => {
         event.preventDefault();
+        
         try {
-
+           console.log("before axios  "+expert.expid)
             await axios.put(`http://localhost:8282/make/expert/${expert.expid}`);
+            console.log("after axios  "+expert.expid)
             fetchExpertData();
         } catch (err) {
             console.error('Error resolving request', err);
         }
     };
     const reqrejecthandler = async (event, expert) => {
+     
         event.preventDefault();
         try {
 

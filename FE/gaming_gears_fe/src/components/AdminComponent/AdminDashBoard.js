@@ -7,7 +7,7 @@ import SalesReport from './SalesReport'
 import { useNavigate } from 'react-router-dom';
 
 const AdminDashBoard = () => {
-    const [board, setBoard] = useState('Product');
+    const [board, setBoard] = useState('Distributor');
     const [adminInfo, setAdminInfo] = useState("");
     const navigate = useNavigate();
 

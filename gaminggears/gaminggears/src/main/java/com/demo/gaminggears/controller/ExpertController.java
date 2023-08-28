@@ -42,13 +42,13 @@ public class ExpertController {
 		
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/remove/expert/{expid}")
 	public ResponseEntity<String> deleteExpert(@PathVariable int expid){
 		iexpertService.deleteExpert(expid);
 		return ResponseEntity.ok("deleted successfully");
 	}
 	
-	@PutMapping
+	@PutMapping("/make/expert/{expid}")
 	public ResponseEntity<String> updateExpertStatus(@PathVariable int expid){
 		iexpertService.updateExpertStatus(expid);
 		return ResponseEntity.ok("updated status successfully");
