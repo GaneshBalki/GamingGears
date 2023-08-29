@@ -77,7 +77,7 @@ function Cart(props) {
     //   console.error('Error while processing the Buy Now request:', error);
     // }
   };
-  
+
   return (
     <section className="h-100 h-custom" style={{ backgroundImage: 'linear-gradient(35deg, #e0e0e0, white)' }}>
       <div className="container py-5 h-100">
@@ -138,21 +138,21 @@ function Cart(props) {
                         </div>
                       </div>
                     ))}
-                    <h5>Total Amount &#8377; {total}</h5>
-                    {searcharr.length &&
-                    <button type="button" class="btn btn-primary btn-lg btn-block">
-                    
-                    
-                    <Link
-                                  to={`/buy/product/cart/deliveryaddr/${custid}`}
-                                  className="text-reset"
-                                  style={{ textDecoration: 'none' }}
-                                >
-                      Buy Now
-                     
-                      
-                      </Link>
-                      </button>}
+
+                    {searcharr.length > 0 ? (
+                      <>
+                        <h5>Total Amount &#8377; {total}</h5>
+                        <button type="button" class="btn btn-primary btn-lg btn-block">
+                          <Link to={`/buy/product/cart/deliveryaddr/${custid}`} className="text-reset" style={{ textDecoration: 'none' }} >
+                            Buy Now
+                          </Link>
+                        </button>
+                      </>
+
+                    ) : (
+                      <p> Your cart is empty!</p>
+                    )
+                    }
                   </div>
                 </div>
               </div>

@@ -135,10 +135,8 @@ const ExpertDetails = () => {
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <div>
-                                                            <p style={{ color: 'blue'}}>{request.que}</p>
-                                                        </div>
-                                                        <div style={{ alignContent: 'center', fontSize: '1.2rem' }}>
+                                                        <div style={{ textAlign:"left", fontSize: '1.1rem' }}>
+                                                            <p >{request.que}</p><br></br>
                                                             <p style={{ color: 'blue', marginRight: '100px' }}>Response By {expert.expname} : {request.resolution}</p>
                                                         </div>
                                                     </>

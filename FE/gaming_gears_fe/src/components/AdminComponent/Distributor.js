@@ -87,7 +87,7 @@ const Distributor = () => {
                                 <p className="card-content">Mobile No: {dis.mobile}</p>
                                 <p className="card-content">Store Name: {dis.storename}</p>
                                 <div className="btn-group">
-                                    <button className="btn btn-danger" onClick={(event) => reqrejecthandler(event, dis)}>Remove Expert</button>
+                                    <button className="btn btn-danger" onClick={(event) => reqrejecthandler(event, dis)}>Remove Distributor</button>
                                 </div>
                             </div>
                         ))}

@@ -21,7 +21,7 @@ const DistriSignIn = () => {
                     "pass": password
                 });
 
-            if (response.status == 200 && response.data.email == email && response.data.pass == password) {
+            if (response.status == 200 && response.data.email == email && response.data.pass == password && response.data.status==1) {
                
                 setDisid(response.data.disid);
                 

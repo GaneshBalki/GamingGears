@@ -104,9 +104,10 @@ const DeliveryAddressPage = () => {
 
       {currentStep === 'payment' && (
         <div className="payment-container" style={{ alignContent: 'center' }}>
-
+      
           <div className="payment-details">
-            <label>Select Payment</label><br></br>
+            
+            <label>Select Payment Method</label><br></br>
             <select
               style={{ width: '40%', padding: '10px', fontSize: '16px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#fff', color: '#333', outline: 'none', textAlign: 'center', }}
               onChange={(e) => setPaymentMode(e.target.value)}

@@ -52,7 +52,7 @@ const AdminDashBoard = () => {
                         <li className={`nav-link ${board === 'Expert' ? 'active' : ''}`} onClick={() => handleItemClick('Expert')} style={{ height: '40px' }}>
                             Expert
                         </li>
-                        <li className={`nav-link ${board === 'SalesReport' ? 'active' : ''}`} onClick={() => handleItemClick('SalesReport')} style={{ height: '40px' }}>Sales Report</li>
+                        {/* <li className={`nav-link ${board === 'SalesReport' ? 'active' : ''}`} onClick={() => handleItemClick('SalesReport')} style={{ height: '40px' }}>Sales Report</li> */}
                         <li className={`nav-link ${board === 'logout' ? 'active' : ''}`} onClick={handleLogout} style={{ height: '40px' }}>LogOut</li>
                     </ul>
                 </div>

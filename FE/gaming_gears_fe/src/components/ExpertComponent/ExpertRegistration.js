@@ -24,7 +24,7 @@ const ExpertRegistration = () => {
                 expid: custid,
                 expname: formData.expname,
                 certification: formData.certification,
-                skill: formData.skills,
+                skills: formData.skills,
                 sells: 0,
                 experience: formData.experience,
                 commision: 0,

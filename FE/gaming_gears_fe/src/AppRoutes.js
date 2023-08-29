@@ -20,6 +20,7 @@ import Payment from "./components/CustomerComp/Payment.js";
 import BuyNow from "./components/CustomerComp/BuyNow.js";
 import AdminLogin from "./components/AdminComponent/AdminLogin.js"
 import AdminDashBoard from "./components/AdminComponent/AdminDashBoard.js"
+import ForgotPasswordDis from "./components/DistributorComponent/ForgotPasswordDis.js";
 const AppRoutes = [
   {
     index: true,
@@ -48,6 +49,10 @@ const AppRoutes = [
   {
     path: '/customer-registration',
     element: <CustomerRegistration></CustomerRegistration>
+  },
+  {
+    path: '/forgot-password/:email',
+    element: <ForgotPassword></ForgotPassword>
   },
   {
     path: '/forgot-password/:email',
@@ -109,6 +114,10 @@ const AppRoutes = [
   {
     path: '/admindashbord',
     element : <AdminDashBoard></AdminDashBoard>
+  },
+  {
+    path: '/forgot/password/dis/:email',
+    elsment : <ForgotPasswordDis></ForgotPasswordDis>
   }
  
 ];

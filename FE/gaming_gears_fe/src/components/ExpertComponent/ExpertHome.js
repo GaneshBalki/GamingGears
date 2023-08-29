@@ -87,7 +87,7 @@ const ExpertHome = (props) => {
                             <pre></pre>
                             <h5>Skills : {expert.skills} </h5>
                             <pre></pre>
-                            <h5>Commission : &#8377; {expert.commission} </h5>
+                            <h5>Commission : &#8377; {expert.sells*5} </h5>
                             <pre></pre>
                             <h5>Request Solved: {expert.sells}</h5>
                             <pre></pre>

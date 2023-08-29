@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ForgotPassword = () => {
+const ForgotPasswordDis = () => {
   const [password , setPassword] = useState('');
   const [message, setMessage] = useState('');
   const { email } = useParams();
@@ -48,7 +48,7 @@ console.log("user email"+email)
           <h2>Forgot Password</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email Dis</label>
               <input
                 type="email"
                 className="form-control"
@@ -57,7 +57,7 @@ console.log("user email"+email)
                 value={email}
                 readOnly
               />
-              <label htmlFor="pass">New Password</label>
+              <label htmlFor="pass">Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -79,4 +79,4 @@ console.log("user email"+email)
   );
 };
 
-export default ForgotPassword;
+export default ForgotPasswordDis;
