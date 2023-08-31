@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.entity.ProductBody;
-import com.demo.gaminggears.entity.ProductNew;
+
 
 public interface IProductService {
 
@@ -24,7 +24,7 @@ public interface IProductService {
 
 	List<Product> getSearchProducts();
 
-	ResponseEntity<ProductNew> addProductByDist(ProductNew product);
+//	ResponseEntity<ProductNew> addProductByDist(ProductNew product);
 
 	void DeleteProduct(int proid);
 

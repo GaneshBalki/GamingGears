@@ -14,6 +14,10 @@ class DistributorService{
     getAllDistributors(){
         return axios.get(`http://localhost:8282/distributors`)
     }
+    getOrders(disid){
+        return axios.get(`http://localhost:8282/distributor/orders/${disid}`)
+    
+    }
 
 }
 export default new DistributorService();

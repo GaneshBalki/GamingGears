@@ -16,6 +16,8 @@ public interface IOrderService {
 	void addtoOrderfromCart(OrdersBody ob);
 	
 	public List<SalesStatisticsDTO> getDisSalesStats(int disid);
+	
+	public List<Orders> getOrdersByDisid(int disid);
 
 //	Orderproducts save(Orderproducts order);
 

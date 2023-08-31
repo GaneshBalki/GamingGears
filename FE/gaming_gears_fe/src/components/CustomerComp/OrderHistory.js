@@ -34,7 +34,7 @@ function OrderHistory() {
   };
 
   return (
-    <div className="order-history-container" style={{ maxWidth: '100%', margin: '0 auto', background: 'none', padding: '20px',border:'none',boxShadow:'none' }}>
+    <div className="order-history-container" style={{ maxWidth: '86%', margin: '0 auto', background: 'none', padding: '20px',border:'none',boxShadow:'none' }}>
       <h1 className="order-history-title">Order History</h1>
       <div className="order-list">
         {orders.map((order, index) => (
@@ -53,11 +53,13 @@ function OrderHistory() {
               </>
             ) : (
               <>
-              <p className="order-date">Delivery Status:<br />Deliverd</p>
-              <p className="order-date">Delivery Status:<br />Order Delivered on {formatDate(order.odate)}</p>
+              <p className="order-total">Delivery Status:<br />Deliverd</p>
+              <p className="order-total">Delivery Status:<br />Order Delivered on {formatDate(order.odate)}</p>
               </>
             )}
-            <p className="order-total">Total: &#8377; {order.price}</p>
+            <p className="order-date" style={{fontWeight:'bolder'}}>
+              OrderItem : {order.proid.proname}<br></br>
+              Total: &#8377; {order.price}</p>
           </div>
         ))}
       </div>

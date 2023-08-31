@@ -59,5 +59,8 @@ public class OrderController {
 //        return savedOrder;
 //    }
 
-	
+	@GetMapping("/distributor/orders/{disid}")
+	public List<Orders> getOrdersByDisid(@PathVariable int disid){
+		return iOrderService.getOrdersByDisid(disid);
+	}
 }

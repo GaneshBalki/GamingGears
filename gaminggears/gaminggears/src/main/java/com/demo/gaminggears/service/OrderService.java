@@ -40,7 +40,7 @@ public class OrderService implements IOrderService{
 		System.out.println("order price : "+ob.getPrice());
 		Customer c = customerRepository.findById(ob.getCustid()).orElse(null);
 		Product p = productRepository.findById(ob.getProid()).orElse(null);
-		Orders o = new Orders(c,p,LocalDateTime.now().toString(),ob.getStatus(),"CashOnDelivery",ob.getPrice(),""+c.getCustId()+LocalDateTime.now().toString(),ob.getAddress());
+		Orders o = new Orders(c,p,LocalDateTime.now().toString(),ob.getStatus(),ob.getPaymentmode(),ob.getPrice(),""+c.getCustId()+LocalDateTime.now().toString(),ob.getAddress());
 		orderRepository.save(o);
 	}
 
@@ -63,4 +63,19 @@ public class OrderService implements IOrderService{
 		List<SalesStatisticsDTO> salesStatistics = orderRepository.findSalesStatisticsByDistributorId(disid);
 		return salesStatistics;
 	} 
+	
+	@Override
+	public List<Orders> getOrdersByDisid(int disid) {
+	    List<Orders> olist = orderRepository.findAll();
+	    List<Orders> filteredList = new ArrayList<>();
+
+	    for (Orders o : olist) {
+	        if (o.getProid().getDisid().getDisid() == disid) {
+	            filteredList.add(o); // Add the element to the filtered list.
+	        }
+	    }
+
+	    return filteredList;
+	}
+
 }

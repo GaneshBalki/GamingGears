@@ -11,11 +11,11 @@ import com.demo.gaminggears.entity.Category;
 import com.demo.gaminggears.entity.Distributor;
 import com.demo.gaminggears.entity.Product;
 import com.demo.gaminggears.entity.ProductBody;
-import com.demo.gaminggears.entity.ProductNew;
+//import com.demo.gaminggears.entity.ProductNew;
 import com.demo.gaminggears.repository.BrandRepository;
 import com.demo.gaminggears.repository.CategoryRepository;
 import com.demo.gaminggears.repository.DistributorRepository;
-import com.demo.gaminggears.repository.NewProductRepository;
+//import com.demo.gaminggears.repository.NewProductRepository;
 import com.demo.gaminggears.repository.ProductRepository;
 
 @Service
@@ -29,8 +29,6 @@ public class ProductService implements IProductService {
 	@Autowired
 	BrandRepository brandRepository;
 	
-	@Autowired
-	NewProductRepository newproductRepository;
 	@Override
 	public List<Product> getAllProducts() {
 		//List<Product> plist= productRepository.findAll();
@@ -71,13 +69,7 @@ public class ProductService implements IProductService {
 		// TODO Auto-generated method stub
 		return productRepository.getProductsbyDis(disid);
 	}
-	@Override
-	public ResponseEntity<ProductNew> addProductByDist(ProductNew product) {
-	    ProductNew savedProduct = newproductRepository.save(product);
-
 	
-		return  ResponseEntity.ok(savedProduct);
-	}
 	@Override
 	public void addProduct(ProductBody p) {
 		// TODO Auto-generated method stub

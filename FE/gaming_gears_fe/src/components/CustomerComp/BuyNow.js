@@ -78,12 +78,13 @@ const BuyNow = () => {
     e.preventDefault();
 
     try {
+      window.alert("product price "+product.price+" "+paymentMode)
 
       console.log("payment begin")
       const response = await axios.post('http://localhost:8282/buy/now', {
         "custid": custid,
         "proid":proid,
-        "amount":product.price,
+        "price":product.price,
         "address": deliveryaddress,
         "paymentmode": paymentMode,
 
