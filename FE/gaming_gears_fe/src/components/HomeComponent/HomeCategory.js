@@ -17,7 +17,8 @@ function HomeCategory() {
             <a href="#" className="text-center d-flex flex-column justify-content-center" style={{ textDecoration: 'none' }}>
             <Link to={`/category-products/${224}`} className="text-reset" style={{ textDecoration: 'none' }}>
               <button type="button" className="btn btn-outline-secondary mx-auto p-3 mb-2" style={{ border: 'none' }} data-mdb-ripple-color="dark">
-                  <img src={cabinet} className="rounded mx-auto d-block" alt="..." height={100} width={100} />
+                  <img src={cabinet} className="rounded " alt="..." height={100} width={100}  />
+                  
               </button>
               <div className="text-dark">Cabinet</div>
               </Link>

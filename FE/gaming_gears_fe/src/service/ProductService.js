@@ -11,5 +11,8 @@ class ProductService{
     getProductByCatId(catid){
         return axios.get(`http://localhost:8282/category-products/${catid}`)
     }
+    getAllProduct(){
+        return axios.get(`http://localhost:8282/products`)
+    }
 }
 export default new ProductService();

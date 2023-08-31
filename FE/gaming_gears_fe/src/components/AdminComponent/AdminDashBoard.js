@@ -4,6 +4,7 @@ import '../DistributorComponent/DistributorDashboard.css';
 import Expert from "./Expert.js"
 import Distributor from "./Distributor.js"
 import SalesReport from './SalesReport'
+import Product from "./Product.js"
 import { useNavigate } from 'react-router-dom';
 
 const AdminDashBoard = () => {
@@ -52,6 +53,9 @@ const AdminDashBoard = () => {
                         <li className={`nav-link ${board === 'Expert' ? 'active' : ''}`} onClick={() => handleItemClick('Expert')} style={{ height: '40px' }}>
                             Expert
                         </li>
+                        <li className={`nav-link ${board === 'products' ? 'active' : ''}`} onClick={() => handleItemClick('products')} style={{ height: '40px' }}>
+                            All Products
+                        </li>
                         {/* <li className={`nav-link ${board === 'SalesReport' ? 'active' : ''}`} onClick={() => handleItemClick('SalesReport')} style={{ height: '40px' }}>Sales Report</li> */}
                         <li className={`nav-link ${board === 'logout' ? 'active' : ''}`} onClick={handleLogout} style={{ height: '40px' }}>LogOut</li>
                     </ul>
@@ -65,6 +69,7 @@ const AdminDashBoard = () => {
                     <>
                         {board === 'Distributor' && <Distributor />}
                         {board === 'Expert' && <Expert />}
+                        {board === 'products' && <Product/>}
                         {board === 'SalesReport' && <SalesReport />}
                     </>
                 )}
